@@ -1,8 +1,14 @@
 //step 1
-let carpet_roll_diameter = 22; // divide num by 2 to get radius
-let tube_diameter = 6;
+//22; // divide num by 2 to get radius
+let carpet_roll_diameter = document.getElementById('roll-diameter');  
+let tube_diameter = document.getElementById('tube-diameter');  //6;
 let carpet_thickness = 1.25;
 let carpet_width = 12;
+// Get form buttons
+let submitBtn = document.getElementById('submit-btn');
+
+console.log("Value from input = " + carpet_roll_diameter.value);
+
 
 //step 2
 let carpet_radius = carpet_roll_diameter / 2;
@@ -34,3 +40,20 @@ console.log("Square feet of 12' goods = " + carpet_sf + " sf");
 //Get square yards of the carpet
 let carpet_sy = Number(carpet_sf / 9).toFixed(2);
 console.log("Total square yards of the carpet = " + carpet_sy + " sqyd");
+
+//Listen for submit button click
+
+submitBtn.addEventListener('click', () => {
+   event.preventDefault();
+
+   let output = document.getElementById('output');
+   output.innerText = `
+   Diameter of the roll = ${carpet_roll_diameter.value}in
+   `
+   
+   console.log("Diameter of the roll = " + carpet_roll_diameter.value + " in");
+   console.log("Radius of the roll = " + carpet_roll_diameter.value / 2  + " in");
+   console.log("Diameter of the tube = " + tube_diameter.value + " in");
+});
+
+console.log("Radius of the roll = " + carpet_radius.value + " inches");

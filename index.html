@@ -16,18 +16,20 @@
          </div>
          <div id="input-group">
             <label for="tube-diameter">Diameter of the tube</label>
-            <input type="number" name="tube-diameter" id="tube-diameter">
+            <input type="number" name="tube-diameter" id="tube-diameter" value="0">
          </div>
          <div id="input-group">
             <label for="carpet-thickness">Thickness of the carpet</label>
             <input type="number" name="carpet-thickness" id="carpet-thickness">
          </div>
          <div class="buttons-container">
-            <button type="submit" value="Calculate" id="submit-btn">Get Square Yards</button>
+            <button type="submit" value="Calculate" id="submit-btn" prevent default>Get Square Yards</button>
             <button type="reset" value="Reset" id="reset-btn">Reset</button>
          </div>
          
       </form>
+
+      <div id="output"></div>
    </div>
 
 
