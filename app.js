@@ -76,6 +76,7 @@ hdBtn.addEventListener('click', () => {
    
    let addedDiameters = (Number(carpet_roll_diameter.value) + Number(tube_diameter.value));
    console.log(addedDiameters);
+   console.log("Rings = " + numRings.value);
 
    let diametersTimesRings = (addedDiameters * Number(numRings.value));
    console.log(diametersTimesRings);
