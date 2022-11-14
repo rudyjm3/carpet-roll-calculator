@@ -4,23 +4,25 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- Style Sheet -->
+   <link rel="stylesheet" href="styles.css">
    <title>Carpet Square Yard Calculator</title>
 </head>
 <body>
    
    <div class="form-container">
       <form action="" method="post" id="form1">
-         <div id="input-group">
+         <div class="input-group">
             <label for="roll-diameter">Diameter of the entier roll</label>
-            <input type="number" name="roll-diameter" id="roll-diameter">
+            <input type="number" name="roll-diameter" id="roll-diameter" value="" placeholder="0" min="0" step="any">
          </div>
-         <div id="input-group">
+         <div class="input-group">
             <label for="tube-diameter">Diameter of the tube</label>
-            <input type="number" name="tube-diameter" id="tube-diameter" value="0">
+            <input type="number" name="tube-diameter" id="tube-diameter" value="" placeholder="0" min="1" step="any">
          </div>
-         <div id="input-group">
+         <div class="input-group">
             <label for="carpet-thickness">Thickness of the carpet</label>
-            <input type="number" name="carpet-thickness" id="carpet-thickness">
+            <input type="number" name="carpet-thickness" id="carpet-thickness" value="" placeholder="0.00" min="0" step="any">
          </div>
          <div class="buttons-container">
             <button type="submit" value="Calculate" id="submit-btn" prevent default>Get Square Yards</button>
