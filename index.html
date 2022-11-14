@@ -6,12 +6,20 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <!-- Style Sheet -->
    <link rel="stylesheet" href="styles.css">
-   <title>Carpet Square Yard Calculator</title>
+   <title>Carpet Roll Square Yard Calculator</title>
 </head>
 <body>
    
    <div class="form-container">
       <form action="" method="post" id="form1">
+         <div class="calc-toggle-wrapper">
+            <input type="checkbox" class="checkbox" id="chk">
+               <label class="label" for="chk">
+                  <i class="fas fa-sun"></i>
+                  <i class="fas fa-moon"></i>
+                  <div class="slider"></div>
+               </label>
+         </div>
          <div class="input-group">
             <label for="roll-diameter">Diameter of the entier roll</label>
             <input type="number" name="roll-diameter" id="roll-diameter" value="" placeholder="0" min="0" step="any">
@@ -30,7 +38,7 @@
          </div>
          <div class="buttons-container">
             <button type="submit" value="Calculate" id="submit-btn" prevent default>Get Square Yards</button>
-            <button type="reset" value="Reset" id="reset-btn">HD Cal Sqyds</button>
+            <button type="reset" value="" id="reset-btn">HD Calc Sqyds</button>
          </div>
          
       </form>

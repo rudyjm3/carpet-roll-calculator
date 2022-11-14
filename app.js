@@ -1,8 +1,8 @@
 //step 1
 //22; // divide num by 2 to get radius
 let carpet_roll_diameter = document.getElementById('roll-diameter');  
-let tube_diameter = document.getElementById('tube-diameter');  //6;
-let carpet_thickness = document.getElementById('carpet-thickness'); //1.25;
+let tube_diameter = document.getElementById('tube-diameter');
+let carpet_thickness = document.getElementById('carpet-thickness');
 let carpet_width = 12;
 
 // HD Variables

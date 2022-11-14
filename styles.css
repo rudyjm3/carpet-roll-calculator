@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
 /* Clear padding, and margin */
 * {
    padding: 0;
@@ -16,15 +18,22 @@ body {
    align-items: center;
    height: 100vh;
    background-color: grey;
+   font-family: 'Roboto', sans-serif;
 }
 
 .form-container {
-   padding: 10px;
+   padding: 18px;
    border-radius: 8px;
    background-color: #f6f6f6;
    width: 300px;
 }
 
+.calc-toggle-wrapper {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+}
 .input-group {
    display: flex;
    justify-content: space-between;
@@ -41,9 +50,12 @@ body {
    height: 50px;
    border-radius: 5px;
    text-align: center;
+   font-size: 15px;
+   font-weight: 500;
+   color: grey;
 }
-.input-group:nth-child(3) {
-   margin-bottom: 25px;
+.input-group:nth-last-child(1) {
+   margin-bottom: 30px;
 }
 
 /* Form Buttom Styling */
@@ -57,7 +69,7 @@ body {
    display: flex;
    justify-content: center;
    align-items: center;
-   width: 60%;
+   width: 45%;
    height: 35px;
    color: white;
    font-weight: 600;
@@ -65,12 +77,13 @@ body {
    background-color: rgb(236, 171, 20);
    border-radius: 5px;
    border: none;
+   cursor: pointer;
 }
 #reset-btn {
    display: flex;
    justify-content: center;
    align-items: center;
-   width: 30%;
+   width: 45%;
    height: 35px;
    color: white;
    font-weight: 600;
@@ -78,6 +91,7 @@ body {
    background-color: rgb(72, 72, 72);
    border-radius: 5px;
    border: none;
+   cursor: pointer;
 }
 
 
