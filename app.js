@@ -2,7 +2,7 @@
 //22; // divide num by 2 to get radius
 let carpet_roll_diameter = document.getElementById('roll-diameter');  
 let tube_diameter = document.getElementById('tube-diameter');  //6;
-let carpet_thickness = document.getElementById('carpet-thickness') //1.25;
+let carpet_thickness = document.getElementById('carpet-thickness'); //1.25;
 let carpet_width = 12;
 
 // HD Variables
@@ -76,7 +76,7 @@ hdBtn.addEventListener('click', () => {
    
    let addedDiameters = (Number(carpet_roll_diameter.value) + Number(tube_diameter.value));
    console.log(addedDiameters);
-   console.log("Rings = " + numRings.value);
+   console.log("Rings = " + Number(numRings.value));
 
    let diametersTimesRings = (addedDiameters * Number(numRings.value));
    console.log(diametersTimesRings);
