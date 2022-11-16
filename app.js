@@ -29,7 +29,7 @@ submitBtn.addEventListener('click', () => {
    let addedDiameters = (Number(carpet_roll_diameter.value) + Number(tube_diameter.value));
    console.log(addedDiameters);
    // Total diameter multiplied by number of rings
-   let diametersTimesRings = Number(addedDiameters.value) * Number(numRings.value);
+   let diametersTimesRings = addedDiameters * Number(numRings.value);
    console.log(diametersTimesRings);
    // Multiply total from above by 12ft roll width multiplier
    
