@@ -6,7 +6,7 @@ let carpet_thickness = document.getElementById('carpet-thickness') //1.25;
 let carpet_width = 12;
 
 // HD Variables
-let numRings = document.getElementById('rings').value;
+let numRings = document.getElementById('rings');
 let twevelFootMultiplier = 0.1744;
 
 // Get form buttons
@@ -29,7 +29,7 @@ submitBtn.addEventListener('click', () => {
    let addedDiameters = (Number(carpet_roll_diameter.value) + Number(tube_diameter.value));
    console.log(addedDiameters);
    // Total diameter multiplied by number of rings
-   let diametersTimesRings = addedDiameters * Number(numRings.value);
+   let diametersTimesRings = Number(addedDiameters.value) * Number(numRings.value);
    console.log(diametersTimesRings);
    // Multiply total from above by 12ft roll width multiplier
    
