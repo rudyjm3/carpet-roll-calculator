@@ -99,6 +99,7 @@ body {
 /* Output Styling */
 #output {
    margin-top: 25px;
+   padding: 15px 25px;
    width: 100%;
    background-color: #f6f6f6;
 }
