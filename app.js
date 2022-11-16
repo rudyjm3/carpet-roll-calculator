@@ -6,7 +6,7 @@ let carpet_thickness = document.getElementById('carpet-thickness') //1.25;
 let carpet_width = 12;
 
 // HD Variables
-let numRings = document.getElementById('rings');
+let numRings = document.getElementById('rings').value;
 let twevelFootMultiplier = 0.1744;
 
 // Get form buttons
