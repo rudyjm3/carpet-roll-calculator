@@ -14,6 +14,14 @@ let submitBtn = document.getElementById('submit-btn');
 let clearBtn = document.getElementById('reset-btn');
 console.log("Value from input = " + carpet_roll_diameter.value);
 
+const rollWidthMultiplier = {
+   sixFoot:0.0872,
+   tenFoot:0.1454,
+   twevelFoot:0.1744,
+   fifteenFoot:0.2182
+};
+console.log(multiplier.tenFoot);
+console.log(multiplier.length);
 /* Roll Width Multipliers
 - 6' multiplier = 0.0872
 - 10' multiplier = 0.1454
