@@ -7,7 +7,8 @@ let carpet_width = 12;
 
 // HD Variables
 let numRings = document.getElementById('carpet-rings');
-let twevelFootMultiplier = 0.1744;
+// let twevelFootMultiplier = 0.1744;
+let twevelFootMultiplier = document.getElementById('roll-width');
 
 // Get form buttons
 let submitBtn = document.getElementById('submit-btn');
@@ -21,7 +22,6 @@ const rollWidthMultiplier = {
    fifteenFoot:0.2182
 };
 console.log(multiplier.tenFoot);
-console.log(multiplier.length);
 /* Roll Width Multipliers
 - 6' multiplier = 0.0872
 - 10' multiplier = 0.1454
