@@ -11,7 +11,15 @@
 <body>
    
    <div class="form-container">
+      <div class="tab-wrapper">
+         <button class="tab-links calc-selection-btn" id="cal-rollSize-form" onclick="openForm(event, 'form1')">Calc Roll Size</button>
+         <button class="tab-links calc-selection-btn" id="cal-price-form" onclick="openForm(event, 'form2')">Calc Carpet Price</button>
+      </div>
+      <hr>
       <form action="" method="post" id="form1">
+         <div class="form-heading">
+            <h1>Calculate Roll Good Size</h1>
+         </div>
          <div class="input-group">
             <label for="roll-width">Select carpet roll width</label>
             <select name="roll-width" id="roll-width">
@@ -38,6 +46,37 @@
             <button type="reset" value="Reset" id="reset-btn">Clear</button>
          </div>
          
+      </form>
+
+      <form action="" method="post" id="form2">
+         <div class="form-heading">
+            <h1>Calculate Cut Price</h1>
+         </div>
+         <div class="input-group">
+            <label for="roll-width">Select carpet roll width</label>
+            <select name="roll-width" id="roll-width">
+               <option value="0.0872">6</option>
+               <option value="0.1454">10</option>
+               <option value="0.1744">12</option>
+               <option value="0.2182">15</option>
+            </select>
+         </div>
+         <div class="input-group">
+            <label for="roll-diameter">Diameter of the entier roll</label>
+            <input type="number" name="roll-diameter" id="roll-diameter" value="" placeholder="0" min="0" step="any">
+         </div>
+         <div class="input-group">
+            <label for="tube-diameter">Diameter of the tube</label>
+            <input type="number" name="tube-diameter" id="tube-diameter" value="" placeholder="0" min="1" step="any">
+         </div>
+         <div class="input-group">
+            <label for="carpet-rings">Carpet rings</label>
+            <input type="number" name="rings" id="carpet-rings" value="" placeholder="0" min="1" step="any">
+         </div>
+         <div class="buttons-container">
+            <button type="submit" value="Calculate" id="submit-btn" prevent default>Get Square Yards</button>
+            <button type="reset" value="Reset" id="reset-btn">Clear</button>
+         </div>
       </form>
 
       <div id="output"></div>
