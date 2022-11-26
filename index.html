@@ -57,18 +57,29 @@
          <div class="input-group">
             <label for="roll-width">Select roll width</label>
             <select name="roll-width" id="roll-width">
-               <option value="6">6</option>
-               <option value="12" selected>12</option>
+               <option value="6">6ft Wide</option>
+               <option value="12" selected>12ft Wide</option>
             </select>
          </div>
          <div class="input-group">
             <label for="cut-size" class="cut-size-input">Cut 1</label>
-            <input type="number" name="cut-size" value="" placeholder="0" min="0" step="any"> 
-            <button type="button" class="delete-input" >X</button>
+            <div class="input-wrapper">
+               <input type="number" name="cut-size-ft" value="" placeholder="0" min="1" step="1">
+               <input type="number" name="cut-size-in" value="" placeholder="0" min="0" step="any">  
+               <button type="button" class="delete-input" >X</button>
+            </div> 
          </div>
-         
+
+         <div class="input-group">
+            <label for="sell-price">Enter price of roll good</label>
+            <div class="input-wrapper">
+               <span class="currency-symbol">$</span>
+               <input type="number" name="roll-good-price" id="sell-price-input" placeholder="$0.00" value="0.00">
+            </div> 
+         </div>
+
          <div class="buttons-container">
-            <button type="submit" value="Calculate" id="submit-btn" prevent default>Get Square Yards</button>
+            <button type="submit" value="Calculate" id="submit-btn" prevent default>Get Price</button>
             <button type="reset" value="Reset" id="reset-btn">Clear</button>
          </div>
       </form>

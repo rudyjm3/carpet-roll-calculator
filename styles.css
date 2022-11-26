@@ -55,6 +55,27 @@ hr {
    align-items: center;
    margin-bottom: 15px;
 }
+.input-group input[type="number"] {
+   width: 50px;
+   height: 50px;
+   border-radius: 5px;
+   text-align: center;
+   font-size: 15px;
+   font-weight: 500;
+   color: #333;
+}
+.input-group:nth-last-child(1) {
+   margin-bottom: 30px;
+}
+.input-wrapper {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
+}
+#sell-price-input {
+   width: 100px;
+}
 .input-group label {
    font-weight: 500;
    font-size: 15px;
@@ -68,18 +89,7 @@ hr {
    font-weight: 500;
    color: #333;
 }
-.input-group input[type="number"] {
-   width: 50px;
-   height: 50px;
-   border-radius: 5px;
-   text-align: center;
-   font-size: 15px;
-   font-weight: 500;
-   color: #333;
-}
-.input-group:nth-last-child(1) {
-   margin-bottom: 30px;
-}
+
 
 /* Form Buttom Styling */
 .buttons-container {
