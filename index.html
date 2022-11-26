@@ -16,6 +16,8 @@
          <button class="tab-links calc-selection-btn" id="cal-price-form" onclick="openForm(event, 'form2')">Calc Carpet Price</button>
       </div>
       <hr>
+
+      <!-- FIRST FORM START - CALC ROLLS SQYD -->      
       <form action="" method="post" id="form1">
          <div class="form-heading">
             <h1>Calculate Roll Good Size</h1>
@@ -44,35 +46,27 @@
          <div class="buttons-container">
             <button type="submit" value="Calculate" id="submit-btn" prevent default>Get Square Yards</button>
             <button type="reset" value="Reset" id="reset-btn">Clear</button>
-         </div>
-         
+         </div>  
       </form>
 
+      <!-- SECOND FORM START - CALC CUT SIZE SQYDS AND PRICE -->
       <form action="" method="post" id="form2">
          <div class="form-heading">
             <h1>Calculate Cut Price</h1>
          </div>
          <div class="input-group">
-            <label for="roll-width">Select carpet roll width</label>
+            <label for="roll-width">Select roll width</label>
             <select name="roll-width" id="roll-width">
-               <option value="0.0872">6</option>
-               <option value="0.1454">10</option>
-               <option value="0.1744">12</option>
-               <option value="0.2182">15</option>
+               <option value="6">6</option>
+               <option value="12" selected>12</option>
             </select>
          </div>
          <div class="input-group">
-            <label for="roll-diameter">Diameter of the entier roll</label>
-            <input type="number" name="roll-diameter" id="roll-diameter" value="" placeholder="0" min="0" step="any">
+            <label for="cut-size" class="cut-size-input">Cut 1</label>
+            <input type="number" name="cut-size" value="" placeholder="0" min="0" step="any"> 
+            <button type="button" class="delete-input" >X</button>
          </div>
-         <div class="input-group">
-            <label for="tube-diameter">Diameter of the tube</label>
-            <input type="number" name="tube-diameter" id="tube-diameter" value="" placeholder="0" min="1" step="any">
-         </div>
-         <div class="input-group">
-            <label for="carpet-rings">Carpet rings</label>
-            <input type="number" name="rings" id="carpet-rings" value="" placeholder="0" min="1" step="any">
-         </div>
+         
          <div class="buttons-container">
             <button type="submit" value="Calculate" id="submit-btn" prevent default>Get Square Yards</button>
             <button type="reset" value="Reset" id="reset-btn">Clear</button>
@@ -80,6 +74,7 @@
       </form>
 
       <div id="output"></div>
+
    </div>
 
 
