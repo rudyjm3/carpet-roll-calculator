@@ -35,7 +35,7 @@ body {
    align-items: center;
    width: 100%;
 }
-.tab-links {
+.tablinks {
    width: 50%;
    height: 45px;
    color: white;
@@ -47,15 +47,15 @@ body {
    cursor: pointer;
    transition: 0.3s;
 }
-.tab-links:hover {
+.tablinks:hover {
    background-color: rgb(250, 145, 48);
 }
-.tab-links.active {
+.tablinks.active {
    background-color: rgba(249, 99, 2, 1);
 }
-/* .tab-content {
+.tabcontent {
    display: none;
-} */
+}
 
 hr {
    margin: 20px 0;
