@@ -35,17 +35,28 @@ body {
    align-items: center;
    width: 100%;
 }
-.calc-selection-btn {
-   width: 48%;
+.tab-links {
+   width: 50%;
    height: 45px;
    color: white;
    font-weight: 600;
    padding: 10px 15px;
-   background-color: rgba(249, 99, 2, 1);
-   border-radius: 4px;
+   background-color: rgb(112, 112, 112);
+   /* border-radius: 4px; */
    border: none;
    cursor: pointer;
+   transition: 0.3s;
 }
+.tab-links:hover {
+   background-color: rgb(250, 145, 48);
+}
+.tab-links.active {
+   background-color: rgba(249, 99, 2, 1);
+}
+/* .tab-content {
+   display: none;
+} */
+
 hr {
    margin: 20px 0;
 }
@@ -72,9 +83,6 @@ hr {
    justify-content: space-between;
    align-items: center;
    width: 100%;
-}
-#sell-price-input {
-   width: 100px;
 }
 .input-group label {
    font-weight: 500;
@@ -111,6 +119,7 @@ hr {
    border-radius: 4px;
    border: none;
    cursor: pointer;
+   transition: 0.3s;
 }
 #reset-btn {
    display: flex;
@@ -125,9 +134,65 @@ hr {
    border-radius: 4px;
    border: none;
    cursor: pointer;
+   transition: 0.3s;
 }
 
+/* ### FORM 2 STYLING ### */
+.input-group2 {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 15px;
+}
+.input-group2 input[type="number"] {
+   width: 50px;
+   height: 50px;
+   border-radius: 5px;
+   text-align: center;
+   font-size: 15px;
+   font-weight: 500;
+   color: #333;
+}
+.input-group2:nth-last-child(1) {
+   margin-bottom: 30px;
+}
 
+.input-wrapper {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 50%;
+}
+.currency-symbol {
+   margin-right: 5px;
+   font-weight: 600;
+   font-size: 1.5rem;
+}
+/* #sell-price-input {
+   width: 100px;
+} */
+.input-group2 label {
+   width: 50%;
+   font-weight: 500;
+   font-size: 15px;
+}
+#roll-width2 {
+   width: 50%;
+   height: 50px;
+   border-radius: 5px;
+   text-align: center;
+   font-size: 15px;
+   font-weight: 500;
+   color: #333;
+}
+#sell-price-input {
+   width: 100px;
+   margin: 0 5px;
+}
+.price-unit-measurement {
+   font-size: 15px;
+   font-weight: 600;
+}
 
 /* Output Styling */
 #output {
