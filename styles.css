@@ -34,6 +34,7 @@ body {
    justify-content: space-between;
    align-items: center;
    width: 100%;
+   margin-bottom: 25px;
 }
 .tablinks {
    width: 50%;
@@ -60,6 +61,11 @@ body {
 hr {
    margin: 20px 0;
 }
+.form-heading {
+   font-size: 13px;
+   margin-bottom: 25px;
+   border-bottom: 1.5px solid rgba(249, 99, 2, 1);
+} 
 .input-group {
    display: flex;
    justify-content: space-between;
