@@ -44,7 +44,7 @@
             <input type="number" name="rings" id="carpet-rings" value="" placeholder="0" min="1" step="any">
          </div>
          <div class="buttons-container">
-            <button type="submit" value="Calculate" id="submit-btn" prevent default>Get Square Yards</button>
+            <button type="submit" value="Calculate-sqyd" id="submit-btn" class="submit-btn" >Get Square Yards</button>
             <button type="reset" value="Reset" id="reset-btn">Clear</button>
          </div>  
       </form>
@@ -64,10 +64,12 @@
          <div class="input-group2">
             <label for="cut-size" class="cut-size-input">Cut 1</label>
             <div class="input-wrapper">
+               
+               <input type="number" name="cut-size-ft" id="cut-size-ft" value="" placeholder="0"  min="1" step="1">
                <span class="measurement-unit">ft</span>
-               <input type="number" name="cut-size-ft" value="" placeholder="0" min="1" step="1">
-               <span class="measurement-unit">in</span>
-               <input type="number" name="cut-size-in" value="" placeholder="0" min="0" step="any">  
+               
+               <input type="number" name="cut-size-in" id="cut-size-in" value="" placeholder=".00" min="0" step="any">
+               <span class="measurement-unit">in</span>  
                <button type="button" class="delete-input" >X</button>
             </div> 
          </div>
@@ -82,7 +84,7 @@
          </div>
 
          <div class="buttons-container">
-            <button type="submit" value="Calculate" id="submit-btn" prevent default>Get Price</button>
+            <button type="submit" value="Calculate-cut-price-btn" id="submit-btn" class="submit-btn" >Get Price</button>
             <button type="reset" value="Reset" id="reset-btn">Clear</button>
          </div>
       </form>

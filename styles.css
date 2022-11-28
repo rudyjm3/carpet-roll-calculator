@@ -177,7 +177,7 @@ hr {
    width: 50%;
 }
 .measurement-unit {
-   margin-right: 5px;
+   margin-left: -5px;
 }
 .delete-input {
    display: flex;
