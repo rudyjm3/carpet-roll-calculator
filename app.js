@@ -43,6 +43,7 @@ submitButton.addEventListener('click', () => {
       case "Calculate-cut-price-btn":
          console.log("Form 2's submit button was pressed."); 
          // Run function for form 2
+         getCutPrice();
          break;
    }
 });
@@ -118,13 +119,35 @@ output.innerHTML = `
 function getCutPrice() {
    event.preventDefault();
 
+   let inInput = document.getElementById('cut-size-in');
+   // inInput.addEventListener('change', () => {
+   //    let inDecimal = (inInput.value / 12).toFixed(3);
+   // console.log(inDecimal);
+   // });
+   let inDecimal = (inInput.value / 12).toFixed(3);
+   console.log(inDecimal);
+
+   const getSelectedText = (el) => {
+      if (el.selectedIndex === -1) {
+         return null;
+      }
+      return el.options[el.selectedIndex].text;
+      }
+      // Get roll width Multiplier value from selected carpet roll width
+      const getSelectedValue = (el) => {
+      if (el.selectedIndex === -1) {
+         return null;
+      }
+      return el.options[el.selectedIndex].value;
+      }
+      const select = document.querySelector('select')//Roll width selection
+      // let carpetWidth = getSelectedText(select);
+      let rollGoodWidth = getSelectedValue(select);
+      // console.log(Number(carpetWidth));
+      console.log(Number(rollGoodWidth));
 };
 
-let inInput = document.getElementById('cut-size-in');
-inInput.addEventListener('change', () => {
-   let inDecimal = (inInput.value / 12).toFixed(3);
-console.log(inDecimal);
-});
+
 
 
 
