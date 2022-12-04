@@ -1,15 +1,15 @@
 # Home Depot Rolled Goods Inventory Calculator / Price Calculator
 
-### Screenshot
-![Screen cap]()
+### Screenshot 1 - Carpet Roll Size Calculator
+![Screen cap](images/HD_calc-roll-size_screenShot.png)
+### Screenshot 2 - Carpet Size Size Calculator
+![Screen cap](images/HD_calc-cut-price_screenShot.png)
 
 - [Github Pages live link](https://rudyjm3.github.io/carpet-roll-calculator/)
 - [Netlify live link](https://carpet-cal.netlify.app/)
 
 ## Project Overview
 This project was inspired by preping for inventory for the store Nov 2022. The application figures the square yards of rolled goods still on the pin. The application also has another function to take inputted cut sizes, and price of the product to give the user a total square yard of cut/s and price. 
-
-
 
 
 

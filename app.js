@@ -118,14 +118,22 @@ output.innerHTML = `
  */
 function getCutPrice() {
    event.preventDefault();
+   // debugger;
 
-   let inInput = document.getElementById('cut-size-in');
+   let feetInput = document.getElementById('cut-size-ft');
+   let inchInput = document.getElementById('cut-size-in');
    // inInput.addEventListener('change', () => {
    //    let inDecimal = (inInput.value / 12).toFixed(3);
    // console.log(inDecimal);
    // });
-   let inDecimal = (inInput.value / 12).toFixed(3);
-   console.log(inDecimal);
+   let inchDecimal = (inchInput.value / 12).toFixed(3);
+   console.log(inchDecimal);
+
+   let cutLength = (Number(feetInput.value) + Number(inchDecimal));
+   console.log(cutLength);
+
+   let itemPrice = document.getElementById('sell-price-input').value;
+   console.log("Price of carpet " + itemPrice);
 
    const getSelectedText = (el) => {
       if (el.selectedIndex === -1) {
@@ -140,11 +148,22 @@ function getCutPrice() {
       }
       return el.options[el.selectedIndex].value;
       }
-      const select = document.querySelector('select')//Roll width selection
-      // let carpetWidth = getSelectedText(select);
-      let rollGoodWidth = getSelectedValue(select);
+      const select = document.getElementById('roll-width2')//Roll width selection
+      let carpetWidthText = getSelectedText(select);
+      let carpetWidthValue = getSelectedValue(select);
       // console.log(Number(carpetWidth));
-      console.log(Number(rollGoodWidth));
+      console.log(Number(carpetWidthValue));
+      console.log(carpetWidthText);
+
+      // Get SYDS
+      let sqyds = ((cutLength * 12) / 9).toFixed(2);
+      console.log(sqyds);
+
+      if (carpetWidthValue === "6") {
+         console.log("6 ft statement ran")
+      } else {
+         console.log("12 ft calculation will run.")
+      };
 };
 
 
