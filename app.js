@@ -48,6 +48,43 @@ submitButton.addEventListener('click', () => {
    }
 });
 
+//###### Add a new cut input
+let numberOfCuts = 1;
+function addCut() {
+   let div = document.createElement('div');
+   div.classList.add('input-group2');
+   let newLabel = document.createElement('label');
+   newLabel.setAttribute('for', 'cut-size');
+   newLabel.classList.add('cut-size-input-label');
+   let inputFt = 
+   `<input type="number" name="cut-size-ft" id="cut-size-ft" value="" placeholder="0"  min="1" step="1">
+   <span class="measurement-unit">ft</span>`;
+   let inputInch = 
+   `<input type="number" name="cut-size-in" id="cut-size-in" value="" placeholder="0" min="0" max="11" step="1">
+   <span class="measurement-unit">in</span>  
+   <button type="button" class="delete-input" >X</button>`;
+
+}
+
+// ##### Delete Cut Size Function
+let removeCutBtn = document.getElementsByClassName('delet-input');
+   for(var i = 0; i < removeCutBtn.length; i++) {
+      var myBtnRemove = removeCutBtn[i];
+   }
+
+   myBtnRemove.addEventListener('click', deleteCut);
+
+   function deleteCut() {
+      var item = this.parentNode.parentNode;
+      var parent = item.ParentNode;
+      parent.removeChild(item);
+
+      myBtnRemove.removeEventListener('click', deleteCut);
+
+   };
+
+
+
 // #####  Clear button function  ####### //
 clearBtn.addEventListener('click', () => {
    document.getElementById('form1').reset();
@@ -122,10 +159,6 @@ function getCutPrice() {
 
    let feetInput = document.getElementById('cut-size-ft');
    let inchInput = document.getElementById('cut-size-in');
-   // inInput.addEventListener('change', () => {
-   //    let inDecimal = (inInput.value / 12).toFixed(3);
-   // console.log(inDecimal);
-   // });
    let inchDecimal = (inchInput.value / 12).toFixed(3);
    console.log(inchDecimal);
 
