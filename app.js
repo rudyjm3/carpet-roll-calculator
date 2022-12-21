@@ -51,20 +51,36 @@ submitButton.addEventListener('click', () => {
 //###### Add a new cut input
 let numberOfCuts = 1;
 function addCut() {
+   event.preventDefault(); // Prevent form from submitting/clearing
+   const target = document.querySelector('.add-btn-container');
    let div = document.createElement('div');
    div.classList.add('input-group2');
    let newLabel = document.createElement('label');
    newLabel.setAttribute('for', 'cut-size');
    newLabel.classList.add('cut-size-input-label');
-   let inputFt = 
+   let inputWrapper = document.createElement('div');
+   inputWrapper.classList.add('input-wrapper');
+   
+   let newInputs = 
    `<input type="number" name="cut-size-ft" id="cut-size-ft" value="" placeholder="0"  min="1" step="1">
-   <span class="measurement-unit">ft</span>`;
-   let inputInch = 
-   `<input type="number" name="cut-size-in" id="cut-size-in" value="" placeholder="0" min="0" max="11" step="1">
+   <span class="measurement-unit">ft</span>
+   
+   <input type="number" name="cut-size-in" id="cut-size-in" value="" placeholder="0" min="0" max="11" step="1">
    <span class="measurement-unit">in</span>  
    <button type="button" class="delete-input" >X</button>`;
 
+   inputWrapper.innerHTML = newInputs;
+   div.appendChild(newLabel);
+   console.log("with label " + div);
+   div.appendChild(inputWrapper);
+
+   target.parentNode.insertBefore(div, target);   
+   // target.before(div); // most current way
+
+   console.log("Should have label and inputs now " + div);
+   return;
 }
+
 
 // ##### Delete Cut Size Function
 let removeCutBtn = document.getElementsByClassName('delet-input');

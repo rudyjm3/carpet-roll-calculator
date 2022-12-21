@@ -104,7 +104,32 @@ hr {
    font-weight: 500;
    color: #333;
 }
-
+.add-btn-container {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
+}
+#add-cut-btn {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 50%;
+   height: 45px;
+   color: rgba(249, 99, 2, 1);
+   font-weight: 600;
+   margin-bottom: 25px;
+   padding: 10px 15px;
+   border: 2px solid rgba(249, 99, 2, 1);
+   background-color: #fff;
+   border-radius: 2px;
+   cursor: pointer;
+   transition: 0.3s; 
+}
+#add-cut-btn:hover {
+   color: #fff;
+   background-color:rgba(249, 99, 2, 1);
+}
 
 /* Form Buttom Styling */
 .buttons-container {
