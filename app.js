@@ -102,9 +102,10 @@ let removeCutBtn = document.getElementsByClassName('delet-input');
 
 
 // #####  Clear button function  ####### //
+const outPut = document.getElementById('out-put');
 clearBtn.addEventListener('click', () => {
    document.getElementById('form1').reset();
-   document.getElementById('output').innerText = "";
+   outPut.textContent = " ";
 });
 
 // ##### HD Calc Square Yards Function  ##### //
