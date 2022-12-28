@@ -67,11 +67,11 @@
             <div class="input-wrapper">
                
                <input type="number" name="cut-size-ft" id="cut-size-ft" value="" placeholder="0"  min="1" step="1">
-               <span class="measurement-unit">ft</span>
+               <span class="measurement-unit" id="measurement-unit-ft">ft</span>
                
                <input type="number" name="cut-size-in" id="cut-size-in" value="" placeholder="0" min="0" max="11" step="1">
-               <span class="measurement-unit">in</span>  
-               <button type="button" class="delete-input">X</button>
+               <span class="measurement-unit" id="measurement-unit-in">in</span>  
+               <button class="delete-input" onclick="return this.parentNode.parentNode.remove();" >Remove Cut</button>
             </div> 
          </div>
 

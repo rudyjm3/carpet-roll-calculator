@@ -74,14 +74,16 @@ hr {
    margin-bottom: 15px;
 }
 .input-group input[type="number"] {
-   width: 50px;
+   width: 60px;
    height: 50px;
+   padding: 0 20px 0 5px;
    border-radius: 5px;
    text-align: center;
    font-size: 15px;
    font-weight: 500;
    color: #333;
 }
+
 .input-group:nth-child(5) {
    margin-bottom: 40px;
 }
@@ -95,6 +97,9 @@ hr {
    font-weight: 500;
    font-size: 15px;
 }
+/* #cut-size-ft, #cut-size-in {
+   width: 60px;
+} */
 #roll-width {
    width: 50px;
    height: 50px;
@@ -182,9 +187,16 @@ hr {
    align-items: center;
    margin-bottom: 15px;
 }
+.input-group2 label {
+   width: 40%;
+   font-weight: 500;
+   font-size: 15px;
+}
+
 .input-group2 input[type="number"] {
-   width: 50px;
+   width: 60px;
    height: 50px;
+   padding-right: 20px;
    border-radius: 5px;
    text-align: center;
    font-size: 15px;
@@ -195,26 +207,35 @@ hr {
    margin-bottom: 30px;
 }
 
+
 .input-wrapper {
+   position: relative;
    display: flex;
    justify-content: space-between;
    align-items: center;
-   width: 50%;
+   width: 60%;
 }
 .measurement-unit {
-   margin-left: -5px;
+   position: absolute;
+   font-weight: 500;
+}
+#measurement-unit-ft {/* for foot unit */
+   left: 40px; 
+}
+#measurement-unit-in {
+   left: 107px; /* for inch unit */
 }
 .delete-input {
    display: flex;
    justify-content: center;
    align-items: center;
-   width: 25px;
+   width: fit-content;
    height: 25px;
    background-color: rgb(160, 144, 144);
    color: white;
    font-weight: 500;
-   border-radius: 50%;
-   padding: 4px;
+   border-radius: 2px;
+   padding: 0 5px;
    border: none;
    cursor: pointer;
    transition: all 0.2s ease-out;
@@ -228,16 +249,9 @@ hr {
    font-weight: 600;
    font-size: 1.5rem;
 }
-/* #sell-price-input {
-   width: 100px;
-} */
-.input-group2 label {
-   width: 50%;
-   font-weight: 500;
-   font-size: 15px;
-}
-#roll-width2 {
-   width: 50%;
+
+#roll-width2 { 
+   width: 60%;
    height: 50px;
    border-radius: 5px;
    text-align: center;
