@@ -207,7 +207,6 @@ hr {
    margin-bottom: 30px;
 }
 
-
 .input-wrapper {
    position: relative;
    display: flex;
@@ -244,6 +243,9 @@ hr {
    background-color: rgb(252, 30, 30);
 }
 
+.hidden-remove-btn {
+   visibility: hidden;
+}
 .currency-symbol {
    margin-right: 5px;
    font-weight: 600;
