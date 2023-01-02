@@ -3,32 +3,33 @@ let carpet_roll_diameter = document.getElementById('roll-diameter');
 let tube_diameter = document.getElementById('tube-diameter');  //6;
 let numRings = document.getElementById('carpet-rings');
 // Get form buttons
-// let submitBtn = document.getElementById('submit-btn');
 let submitButtons = document.querySelectorAll('.submit-btn');
 let clearBtn = document.getElementById('reset-btn');
 
-// #### Tab Function  ######## //
+/* #### Tab Function  ########################################################
+#############################################################################*/
 function openForm(evt, formName) {
    // Declare all variables
    var i, tabcontent, tablinks;
- 
    // Get all elements with class="tabcontent" and hide them
    tabcontent = document.getElementsByClassName("tabcontent");
    for (i = 0; i < tabcontent.length; i++) {
      tabcontent[i].style.display = "none";
    }
- 
    // Get all elements with class="tablinks" and remove the class "active"
    tablinks = document.getElementsByClassName("tablinks");
    for (i = 0; i < tablinks.length; i++) {
      tablinks[i].className = tablinks[i].className.replace(" active", "");
    }
- 
    // Show the current tab, and add an "active" class to the button that opened the tab
    document.getElementById(formName).style.display = "block";
    evt.currentTarget.className += " active";
  }
-//  ##### Submit button listener  ###### //
+ //######################### END ######################################//
+
+
+/* ##### Submit button listener  #########################################
+#######################################################################*/
 for (const submitButton of submitButtons)
 submitButton.addEventListener('click', () => {
    event.preventDefault();
@@ -47,8 +48,11 @@ submitButton.addEventListener('click', () => {
          break;
    }
 });
+//######################### END ######################################//
 
-//###### Add a new cut input
+
+/* ###### Add a new cut input ###########################################
+#######################################################################*/
 let numberOfCuts = 1;
 function addCut() {
    event.preventDefault(); // Prevent form from submitting/clearing
@@ -80,35 +84,40 @@ function addCut() {
    console.log("Should have label and inputs now " + div);
    return;
 }
+//######################### END ######################################//
 
 
-// ##### Delete Cut Size Function
+/* ##### Delete Cut Size Function ################################
+################################################################*/
 let removeCutBtn = document.getElementsByClassName('delet-input');
    for(var i = 0; i < removeCutBtn.length; i++) {
       var myBtnRemove = removeCutBtn[i];
+
+      myBtnRemove.addEventListener('click', deleteCut);
+
+      function deleteCut() {
+         var item = this.parentNode.parentNode;
+         var parent = item.ParentNode;
+         parent.removeChild(item);
+
+         myBtnRemove.removeEventListener('click', deleteCut);
+      };
    }
-
-   myBtnRemove.addEventListener('click', deleteCut);
-
-   function deleteCut() {
-      var item = this.parentNode.parentNode;
-      var parent = item.ParentNode;
-      parent.removeChild(item);
-
-      myBtnRemove.removeEventListener('click', deleteCut);
-
-   };
+//######################### END ######################################//
 
 
-
-// #####  Clear button function  ####### //
+/* #####  Clear button function ################################
+################################################################*/
 const outPut = document.getElementById('out-put');
 clearBtn.addEventListener('click', () => {
    document.getElementById('form1').reset();
    outPut.textContent = " ";
 });
+//######################### END ######################################//
 
-// ##### HD Calc Square Yards Function  ##### //
+
+/* ##### HD Calc Square Yards Function ################################
+################################################################*/
 function getSqyds() {
    event.preventDefault(); // Prevent form from submitting/clearing
 // Get carpet roll width text
@@ -164,15 +173,16 @@ output.innerHTML = `
 <b>Linear foot of the roll = ${linear_feet}</b>
 `
 }
+//######################### END ######################################//
 
-// ### CALC CUT SIZE PRICE FUNCTION  ### //
 
+/* ### CALC CUT SIZE PRICE FUNCTION ################################
+################################################################*/
 /* Formula to convert inch to decimal (Divide inch by 12)
  example: 4in / 12 = 0.333
  */
 function getCutPrice() {
    event.preventDefault();
-   // debugger;
 
    let feetInput = document.getElementById('cut-size-ft');
    let inchInput = document.getElementById('cut-size-in');
@@ -215,7 +225,7 @@ function getCutPrice() {
          console.log("12 ft calculation will run.")
       };
 };
-
+//######################### END ######################################//
 
 
 
