@@ -56,7 +56,7 @@ submitButton.addEventListener('click', () => {
 for(const clearButton of clearButtons)
 clearButton.addEventListener('click', () => {
    // event.preventDefault();
-   debugger;
+   
    let buttonValue = clearButton.value;
    switch (buttonValue) {
       case "Reset-sqyd-form":
@@ -65,7 +65,6 @@ clearButton.addEventListener('click', () => {
          document.getElementById('output-roll-size').textContent = "";
          break;
       case "Reset-price-form":
-
          console.log("Clear button on form 2 was clicked");
          document.getElementById('form2').reset();
          document.getElementById('output-cut-price').innerHTML = "";
@@ -79,7 +78,7 @@ clearButton.addEventListener('click', () => {
 ################################################################*/
 function getSqyds() {
    event.preventDefault(); // Prevent form from submitting/clearing
-// Get carpet roll width text
+// Get carpet roll width text and value
 const getSelectedText = (el) => {
    if (el.selectedIndex === -1) {
       return null;
@@ -176,27 +175,8 @@ if(carpetWidth === "6") {
  example: 4in / 12 = 0.333
  */
 
-/* ##### Delete Cut Size Function ################################
-################################################################*/
-// let removeCutBtn = document.getElementsByClassName('delet-input');
-//    for(var i = 0; i < removeCutBtn.length; i++) {
-//       var myBtnRemove = removeCutBtn[i];
-
-//       myBtnRemove.addEventListener('click', deleteCut);
-
-//       function deleteCut() {
-//          debugger;
-//          var item = this.parentNode;
-//          var parent = item.ParentNode;
-//          parent.removeChild(item);
-
-//          myBtnRemove.removeEventListener('click', deleteCut);
-//       };
-
-//    }
-//######################### END ######################################//
 function updateCounter() {
-   debugger;
+   
    --cutCounter;
    console.log(cutCounter);
 }
@@ -234,6 +214,24 @@ document.getElementById("cuts").appendChild(cutDiv);
 function getCutPrice() {
    event.preventDefault();
 
+   const getSelectedText = (el) => {
+      if (el.selectedIndex === -1) {
+         return null;
+      }
+      return el.options[el.selectedIndex].text;
+      }
+      // Get roll width Multiplier value from selected carpet roll width
+      const getSelectedValue = (el) => {
+      if (el.selectedIndex === -1) {
+         return null;
+      }
+      return el.options[el.selectedIndex].value;
+      }
+      const select = document.getElementById('roll-width2')//Roll width selection
+      let selectedCarpetWidth = getSelectedValue(select);
+      console.log(Number(selectedCarpetWidth));
+      
+
    const feetInputs = document.querySelectorAll('.cutLengthFt');
    // console.log(feetInputs.length);
    let totalFt = 0;
@@ -260,13 +258,42 @@ function getCutPrice() {
 
    // Get SYDS
    let sqyds = ((totalCutLength * 12) / 9).toFixed(2);
-   console.log(sqyds);     
+   console.log(sqyds);   
    
-   // Get total price for all cuts
-   totalPrice = (sqyds * itemPrice).toFixed(2);
-   console.log(totalPrice);
+   let linearFeet = totalCutLength;
+   console.log("Total LF = " + linearFeet);
+   
+   // Squrae Yards: Get total price for all cuts
+   sqydTotalPrice = (sqyds * itemPrice).toFixed(2);
+   console.log(sqydTotalPrice);
+   // Linear Feet: Get total price for all cuts
+   lfTotalPrice = (linearFeet * itemPrice).toFixed(2);
+   console.log("LF total price= " + lfTotalPrice);
 
-   // Display results
+   // Display results based on roll width selected
+   if(selectedCarpetWidth === "6") {
+      let output = document.getElementById('output-cut-price');
+      output.innerHTML = `
+      <hr>
+      <h2>Total Price = $ ${lfTotalPrice}</h2>
+      <br>
+      <p>Total Cuts = ${cutCounter}</p>
+      <br>
+      <p>Total linear feet of all cuts = ${linearFeet}
+      `
+   } else {
+      output.innerHTML = 
+      `
+      <hr>
+      <h2>Total Price = $${sqydTotalPrice}</h2>
+      <br>
+      <p>Total Cuts = ${cutCounter}</p>
+      <br>
+      <p>Total square yards of all cuts = ${sqyds}
+      `
+   }
+
+
    let output = document.getElementById('output-cut-price');
    output.innerHTML = `
    <hr>
