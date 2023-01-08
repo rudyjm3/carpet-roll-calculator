@@ -45,8 +45,10 @@
          </div>
          <div class="buttons-container">
             <button type="submit" value="Calculate-sqyd" id="submit-btn" class="submit-btn" >Get Square Yards</button>
-            <button type="reset" value="Reset" id="reset-btn">Clear</button>
+            <button type="reset" value="Reset-sqyd-form" id="reset-btn" class="clear-btn">Clear</button>
          </div>  
+
+         <div id="output-roll-size"></div>
       </form>
 
       <!-- SECOND FORM START - CALC CUT SIZE SQYDS AND PRICE -->
@@ -57,12 +59,13 @@
          <div class="input-group2">
             <label for="roll-width2">Select roll width</label>
             <select name="roll-width2" id="roll-width2">
+               <option value="" disabled selected hidden>Select Width</option>
                <option value="6">6ft Wide</option>
                <option value="12" selected>12ft Wide</option>
             </select>
          </div>
          
-         <div class="input-group2">
+         <!-- <div class="input-group2">
             <label for="cut-size" class="cut-size-input-label">Cut <span class="cut-num">1</span> </label>
             <div class="input-wrapper">
                
@@ -73,10 +76,25 @@
                <span class="measurement-unit" id="measurement-unit-in">in</span>  
                <button class="delete-input hidden-remove-btn" onclick="return this.parentNode.parentNode.remove();" >Remove Cut</button>
             </div> 
+         </div> -->
+         <!-- Rewrite for cuts container -->
+         <div class="input-group2">
+            <div id="cuts">
+               <div class="cut-input-wrapper">
+                  <label for="cut1Length">Length of cut 1:</label>
+                  <input type="number" class="cutLengthFt" name="cut-size-ft" min="0" step="1" value="" placeholder="0">
+                  <span class="measurement-unit" id="measurement-unit-ft">ft</span>
+                  <!-- Inch Input -->
+                  <input type="number" id="cut1LengthInch" class="cutLengthInch" name="cut-size-in" min="0" max="11" step="1" value="" placeholder="0">
+                  <span class="measurement-unit" id="measurement-unit-in">in</span>
+                  <!-- <button type="button" class="delete-input hidden-remove-btn" onclick="return this.parentNode.remove();" >Remove Cut</button> -->
+                  <button type="button" class="delete-input hidden-remove-btn" >Remove Cut</button>
+                </div>
+            </div>
          </div>
 
          <div class="add-btn-container">
-            <button id="add-cut-btn" class="add-cut-btn" onclick="addCut()">Add Cut</button>
+            <button type="button" id="add-cut-btn" class="add-cut-btn" onclick="addCut()">Add Cut</button>
          </div>
 
          <div class="input-group2">
@@ -90,11 +108,12 @@
 
          <div class="buttons-container">
             <button type="submit" value="Calculate-cut-price-btn" id="submit-btn" class="submit-btn" >Get Price</button>
-            <button type="reset" value="Reset" id="reset-btn">Clear</button>
+            <button type="button" value="Reset-price-form" id="reset-btn" class="clear-btn">Clear</button>
          </div>
+         
+         <div id="output-cut-price"></div>
       </form>
-
-      <div id="output"></div>
+      
 
    </div>
 
