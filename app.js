@@ -5,6 +5,7 @@ let numRings = document.getElementById('carpet-rings');
 // Get form buttons
 let submitButtons = document.querySelectorAll('.submit-btn');
 let clearButtons = document.querySelectorAll('.clear-btn');
+const output = document.getElementById('output-roll-size');
 
 /* #### Tab Function  ########################################################
 #############################################################################*/
@@ -116,21 +117,54 @@ let sqyd = result.toFixed(2);
 console.log("Sq. Yds. = " + sqyd);
 let linear_feet = ((sqyd * 9) / carpetWidth).toFixed(2);
 console.log(linear_feet + " lf.");
+/* Determmine weather to show total square yards or linear footage 
+based on selected roll width size */
+if(carpetWidth === "6") {
+   
+   output.innerHTML = 
+   `
+   <hr>
+   <p>Width of roll = ${carpetWidth} ft</p>
+   <br>
+   <p>Diameter of the roll = ${carpet_roll_diameter.value}in</p>
+   <br>
+   <p>Diameter of the tube = ${tube_diameter.value}in</p>
+   <br>
+   <p>Carpet rings = ${numRings.value}</p>
+   <br>
+   <h2>Total linear feet = ${linear_feet}</h2>
+   `
+} else {
+   output.innerHTML = 
+   `
+   <hr>
+   <p>Width of roll = ${carpetWidth} ft</p>
+   <br>
+   <p>Diameter of the roll = ${carpet_roll_diameter.value}in</p>
+   <br>
+   <p>Diameter of the tube = ${tube_diameter.value}in</p>
+   <br>
+   <p>Carpet rings = ${numRings.value}</p>
+   <br>
+   <h2>Square Yards = ${sqyd}</h2>
+   <b>Linear foot of the roll = ${linear_feet}</b>
+   `
+}
 
-let output = document.getElementById('output-roll-size');
-output.innerHTML = `
-<hr>
-<p>Width of roll = ${carpetWidth} ft</p>
-<br>
-<p>Diameter of the roll = ${carpet_roll_diameter.value}in</p>
-<br>
-<p>Diameter of the tube = ${tube_diameter.value}in</p>
-<br>
-<p>Carpet rings = ${numRings.value}</p>
-<br>
-<h2>Square Yards = ${sqyd}</h2>
-<b>Linear foot of the roll = ${linear_feet}</b>
-`
+// let output = document.getElementById('output-roll-size');
+// output.innerHTML = `
+// <hr>
+// <p>Width of roll = ${carpetWidth} ft</p>
+// <br>
+// <p>Diameter of the roll = ${carpet_roll_diameter.value}in</p>
+// <br>
+// <p>Diameter of the tube = ${tube_diameter.value}in</p>
+// <br>
+// <p>Carpet rings = ${numRings.value}</p>
+// <br>
+// <h2>Square Yards = ${sqyd}</h2>
+// <b>Linear foot of the roll = ${linear_feet}</b>
+// `
 }
 //######################### END ROLLED GOODS CALC ##########################//
 
