@@ -74,7 +74,7 @@ clearButton.addEventListener('click', () => {
 //######################### END CLEAR BTN FUNCTION ##########################//
 
 
-/* ##### CALC ROLLED GOODS FUNCTION ##############################
+/* ##### CALC ROLLED GOODS QUANTITY FUNCTION ##############################
 ################################################################*/
 function getSqyds() {
    event.preventDefault(); // Prevent form from submitting/clearing
@@ -120,50 +120,29 @@ console.log(linear_feet + " lf.");
 based on selected roll width size */
 if(carpetWidth === "6") {
    
+   output.style.cssText = 'visibility: visible;opacity: 1;';
    output.innerHTML = 
    `
-   <hr>
-   <p>Width of roll = ${carpetWidth} ft</p>
-   <br>
-   <p>Diameter of the roll = ${carpet_roll_diameter.value}in</p>
-   <br>
-   <p>Diameter of the tube = ${tube_diameter.value}in</p>
-   <br>
-   <p>Carpet rings = ${numRings.value}</p>
-   <br>
-   <h2>Total linear feet = ${linear_feet}</h2>
+   <div class="output-title-wrapper">
+      <p class="results-title">Results</p>
+   </div>   
+   
+   <p class="total-qty-results">Total = ${linear_feet}<span class="total-measure-unit-tag">Linear Feet</span></p>
    `
 } else {
+   output.style.cssText = 'visibility: visible;opacity: 1;';
    output.innerHTML = 
    `
-   <hr>
-   <p>Width of roll = ${carpetWidth} ft</p>
-   <br>
-   <p>Diameter of the roll = ${carpet_roll_diameter.value}in</p>
-   <br>
-   <p>Diameter of the tube = ${tube_diameter.value}in</p>
-   <br>
-   <p>Carpet rings = ${numRings.value}</p>
-   <br>
-   <h2>Square Yards = ${sqyd}</h2>
-   <b>Linear foot of the roll = ${linear_feet}</b>
+   <div class="output-title-wrapper">
+      <p class="results-title">Results</p>
+   </div>   
+   
+   <p class="total-qty-results">Total = ${sqyd}<span class="total-measure-unit-tag">Square Yards</span></p>
+
+   <p>Linear feet = ${linear_feet}</p>
    `
 }
 
-// let output = document.getElementById('output-roll-size');
-// output.innerHTML = `
-// <hr>
-// <p>Width of roll = ${carpetWidth} ft</p>
-// <br>
-// <p>Diameter of the roll = ${carpet_roll_diameter.value}in</p>
-// <br>
-// <p>Diameter of the tube = ${tube_diameter.value}in</p>
-// <br>
-// <p>Carpet rings = ${numRings.value}</p>
-// <br>
-// <h2>Square Yards = ${sqyd}</h2>
-// <b>Linear foot of the roll = ${linear_feet}</b>
-// `
 }
 //######################### END ROLLED GOODS CALC ##########################//
 
@@ -197,12 +176,12 @@ let cutDiv = document.createElement("div");
 cutDiv.classList.add('cut-input-wrapper');
 // Add the necessary input for the new cut
 cutDiv.innerHTML = `
-   <label for="cut${cutCounter}Length">Length of cut${cutCounter}:</label>
+   <label for="cut${cutCounter}Length">Length of cut ${cutCounter}:</label>
    <input type="number" class="cutLengthFt" name="cut-size-ft" min="0" step="1" value="" placeholder="0"> 
-   <span class="measure-unit-ft">ft</span> 
+   <span class="measurement-unit measurement-unit-ft">ft</span> 
    <!-- Inch Input -->
    <input type="number" id="cut1LengthInch" class="cutLengthInch" name="cut-size-in" min="0" max="11" step="1" value="" placeholder="0">
-   <span class="measurement-unit" id="measurement-unit-in">in</span>
+   <span class="measurement-unit measurement-unit-in">in</span>
    <button type="button" class="delete-input"onclick="updateCounter(); return this.parentNode.remove();" >Remove Cut</button>
 `
 // Add the new div to the form
@@ -271,37 +250,38 @@ function getCutPrice() {
    console.log("LF total price= " + lfTotalPrice);
 
    // Display results based on roll width selected
+   let output2 = document.getElementById('output-cut-price');
    if(selectedCarpetWidth === "6") {
-      let output = document.getElementById('output-cut-price');
-      output.innerHTML = `
-      <hr>
-      <h2>Total Price = $ ${lfTotalPrice}</h2>
-      <br>
-      <p>Total Cuts = ${cutCounter}</p>
-      <br>
-      <p>Total linear feet of all cuts = ${linearFeet}
+      output2.style.cssText = 'visibility: visible;opacity: 1;';
+      output2.innerHTML = 
+      `
+      <div class="output-title-wrapper">
+         <p class="results-title">Results</p>
+      </div>   
+   
+      <p class="total-price-results">Total = $${lfTotalPrice}
+      <span class="total-measure-unit-tag">Linear Feet</span></p>
+      
+      <p class="total-cuts-results">Total Cuts = ${cutCounter}</p>
+      
+      <p class="total-lf-results">Total linear feet of all cuts = ${linearFeet}
       `
    } else {
-      output.innerHTML = 
+      output2.style.cssText = 'visibility: visible;opacity: 1;';
+      output2.innerHTML = 
       `
-      <hr>
-      <h2>Total Price = $${sqydTotalPrice}</h2>
-      <br>
-      <p>Total Cuts = ${cutCounter}</p>
-      <br>
-      <p>Total square yards of all cuts = ${sqyds}
+      <div class="output-title-wrapper">
+         <p class="results-title">Results</p>
+      </div>
+    
+      <p class="total-price-results">Total = $${sqydTotalPrice}<span class="before-tax-tag">(Before tax)</span></p>
+      
+      
+      
+      <p class="total-sqyd-results">Total square yards of ${cutCounter} cuts = ${sqyds}<span class="total-measure-unit-tag">/sqyds</span>
       `
    }
 
-
-   let output = document.getElementById('output-cut-price');
-   output.innerHTML = `
-   <hr>
-   <p>Total Price = $ ${totalPrice}</p>
-   <br>
-   <p>Total Cuts = ${cutCounter}</p>
-   <br>
-   `
 };
 
 function selectedWidth() {

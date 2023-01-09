@@ -13,6 +13,13 @@ input[type=number]::-webkit-outer-spin-button {
    -moz-appearance: none;
    margin: 0; 
 }
+input::placeholder {
+   color: rgba(158, 158, 158, 0.5);
+   font-weight: 600;
+}
+input:focus::placeholder {
+   color: transparent;
+}
 
 body {
    display: flex;
@@ -20,13 +27,18 @@ body {
    align-items: center;
    height: 100%;
    margin: 25px 0;
-   background-color: grey;
+   background-color: #393939;
+   background-image: url("images/meatal-background-black.jpg");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-blend-mode: overlay;
    font-family: 'Roboto', sans-serif;
 }
 
 .form-container {
    padding: 18px;
-   border-radius: 8px;
+   border-radius: 4px;
    background-color: #f6f6f6;
    width: 400px;
 }
@@ -62,28 +74,43 @@ body {
 hr {
    margin: 20px 0;
 }
+
 .form-heading {
-   font-size: 13px;
+   position: relative;
+   font-size: 12px;
    margin-bottom: 25px;
-   border-bottom: 1.5px solid rgba(249, 99, 2, 1);
+   border-bottom: 3px solid rgb(168, 168, 168);
 } 
+.form-heading > h1 {
+   position: relative;
+   bottom: -3px;
+   width: fit-content;
+   border-bottom: 3px solid rgba(247, 100, 2);
+}
 .input-group {
+   position: relative;
    display: flex;
    justify-content: space-between;
    align-items: center;
    margin-bottom: 15px;
 }
+
 .input-group input[type="number"] {
-   width: 60px;
+   width: 25%;
    height: 50px;
-   padding: 0 20px 0 5px;
-   border-radius: 5px;
-   text-align: center;
-   font-size: 15px;
-   font-weight: 500;
+   padding: 0 30px 0 10px;
+   border-radius: 3px;
+   /* text-align: center; */
+   font-size: 17px;
+   font-weight: 600;
    color: #333;
 }
-
+.input-group > .input-unit-inch {
+   position: absolute;
+    right: 8px;
+    opacity: 0.5;
+    font-weight: 600;
+}
 .input-group:nth-child(5) {
    margin-bottom: 40px;
 }
@@ -100,13 +127,16 @@ hr {
 /* #cut-size-ft, #cut-size-in {
    width: 60px;
 } */
+
+/* Roll width selection styling */
 #roll-width {
-   width: 50px;
+   width: auto;
    height: 50px;
-   border-radius: 5px;
+   padding: 0 10px;
+   border-radius: 3px;
    text-align: center;
    font-size: 15px;
-   font-weight: 500;
+   font-weight: 600;
    color: #333;
 }
 .add-btn-container {
@@ -149,17 +179,18 @@ hr {
    align-items: center;
    width: 55%;
    height: 45px;
-   color: white;
+   color: rgba(249, 99, 2, 1);
    font-weight: 600;
    padding: 10px 15px;
-   background-color: rgba(249, 99, 2, 1);
-   border-radius: 4px;
-   border: none;
+   background-color: #fff;
+   border-radius: 2px;
+   border: 2px solid rgba(249, 99, 2, 1);
    cursor: pointer;
    transition: 0.3s;
 }
 #submit-btn:hover {
-   background-color: rgb(250, 145, 48);
+   color: #fff;
+   background-color: rgba(249, 99, 2, 1);
 }
 #reset-btn {
    display: flex;
@@ -171,7 +202,7 @@ hr {
    font-weight: 600;
    padding: 10px 15px;
    background-color: #484848;
-   border-radius: 4px;
+   border-radius: 2px;
    border: none;
    cursor: pointer;
    transition: 0.3s;
@@ -179,28 +210,102 @@ hr {
 #reset-btn:hover {
    background-color: rgb(112, 112, 112);
 }
+#output-roll-size,
+#output-cut-price {
+   border: 2px solid grey;
+   border-radius: 3px;
+   margin-top: 20px;
+   padding: 18px;
+   background-color: #f9f9f9;
+   visibility: hidden;
+   opacity: 0;
+   transition: visibility 0s linear 0.5s, opacity 0s;
+}
+/* .fade-in-outputs {
+   visibility: visible;
+   opacity: 1;
+   transition: visibility 0s linear 0s, opacity 300ms;
+} */
+.output-title-wrapper {
+   position: relative;
+   border-bottom: 3px solid rgb(168, 168, 168);
+   margin-bottom: 25px;
+}
+.results-title {
+   position: relative;
+   bottom: -3px;
+   font-size: 1.5em;
+   font-weight: bold;
+   width: fit-content;
+   border-bottom: 3px solid rgba(247, 100, 2);
+}
+.total-qty-results {
+   font-size: 1.3em;
+   font-weight: 600;
+}
+.total-measure-unit-tag,
+.before-tax-tag {
+   font-size: 13px;
+   font-weight: 500;
+   margin-left: 5px;
+}
+/*For price calc result section*/
+.total-price-results {
+   font-size: 1.3em;
+   font-weight: 600;
+}
+.total-cuts-results,
+.total-lf-results,
+.total-sqyd-results {
+   font-size: 1em;
+   font-weight: bold;
+}
 
-/* ### FORM 2 STYLING ### */
+
+
+/* ### FORM 2 STYLING #################################
+######################################################### */
 .input-group2 {
    display: flex;
    justify-content: space-between;
    align-items: center;
    margin-bottom: 15px;
 }
+#roll-width2 { 
+   width: 60%;
+   height: 50px;
+   border-radius: 3px;
+   text-align: center;
+   font-size: 15px;
+   font-weight: 600;
+   color: #333;
+}
+#cuts {
+   width: 100%;
+}
+.cut-input-wrapper {
+   position: relative;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 15px;
+   transition:all 0.5s ease-in-out;
+}
 .input-group2 label {
    width: 40%;
    font-weight: 500;
    font-size: 15px;
+   /* margin-right: 20px; */
 }
 
 .input-group2 input[type="number"] {
-   width: 60px;
+   width: 70px;
    height: 50px;
-   padding-right: 20px;
-   border-radius: 5px;
-   text-align: center;
-   font-size: 15px;
-   font-weight: 500;
+   padding: 0 17px 0 10px;
+   border-radius: 3px;
+   /* text-align: center; */
+   font-size: 17px;
+   font-weight: 600;
    color: #333;
 }
 .input-group2:nth-last-child(1) {
@@ -215,26 +320,29 @@ hr {
    width: 60%;
 }
 .measurement-unit {
-   position: absolute;
+   position: relative;
    font-weight: 500;
 }
-#measurement-unit-ft {/* for foot unit */
-   left: 40px; 
+.measurement-unit-ft {/* for foot unit */
+   left: -18px; 
+   color: grey;
 }
-#measurement-unit-in {
-   left: 107px; /* for inch unit */
+.measurement-unit-in {
+   left: -18px; /* for inch unit */
+   color: grey;
 }
 .delete-input {
    display: flex;
    justify-content: center;
    align-items: center;
    width: fit-content;
-   height: 25px;
+   height: 35px;
    background-color: rgb(160, 144, 144);
    color: white;
+   font-size: 10px;
    font-weight: 500;
    border-radius: 2px;
-   padding: 0 5px;
+   /* padding: 0 5px; */
    border: none;
    cursor: pointer;
    transition: all 0.2s ease-out;
@@ -246,28 +354,23 @@ hr {
 .hidden-remove-btn {
    visibility: hidden;
 }
+.input-price-wrapper {
+   justify-content: flex-start;
+}
 .currency-symbol {
    margin-right: 5px;
    font-weight: 600;
    font-size: 1.5rem;
 }
 
-#roll-width2 { 
-   width: 60%;
-   height: 50px;
-   border-radius: 5px;
-   text-align: center;
-   font-size: 15px;
-   font-weight: 500;
-   color: #333;
-}
 #sell-price-input {
-   width: 100%;
-   margin-right: 5px;
+   width: 100px;
+   /* margin-right: 5px; */
 }
 .price-unit-measurement {
    font-size: 15px;
    font-weight: 500;
+   margin-left: 5px;
 }
 
 /* Output Styling */
