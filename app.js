@@ -278,7 +278,7 @@ function getCutPrice() {
       
       <p class="total-sqyd-results">Total square yards of ${cutCounter} cuts = ${sqyds}<span class="total-measure-unit-tag">/sqyds</span>
 
-      <p class="total-lf-results">Total length of all cuts = ${totalCutLength} /lf;
+      <p class="total-lf-results">Total length of all cuts = ${totalCutLength} /lf
       `
    }
 
