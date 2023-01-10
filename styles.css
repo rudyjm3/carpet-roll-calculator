@@ -17,8 +17,19 @@ input::placeholder {
    color: rgba(158, 158, 158, 0.5);
    font-weight: 600;
 }
+input, select {
+   border: 2px solid rgb(165, 165, 165);
+}
 input:focus::placeholder {
    color: transparent;
+}
+input:focus, select:focus {
+   /* background-color: #FFFF66; */
+   border: 2px solid #F47E58;
+   outline: none;
+  /* box-shadow: 0 0 0 3px hsla(220, 100%, 50%, 80%); */
+  box-shadow: 0 0 4px 1px rgba(244, 126, 88, 0.8);
+   
 }
 
 body {
@@ -254,12 +265,14 @@ hr {
 .total-price-results {
    font-size: 1.3em;
    font-weight: 600;
+   margin-bottom: 5px;
 }
 .total-cuts-results,
 .total-lf-results,
 .total-sqyd-results {
    font-size: 1em;
    font-weight: bold;
+   margin-bottom: 5px;
 }
 
 
