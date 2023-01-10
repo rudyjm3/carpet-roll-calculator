@@ -25,10 +25,10 @@ input:focus::placeholder {
 }
 input:focus, select:focus {
    /* background-color: #FFFF66; */
-   border: 2px solid #F47E58;
+   border: 2px solid #fb853b;
    outline: none;
   /* box-shadow: 0 0 0 3px hsla(220, 100%, 50%, 80%); */
-  box-shadow: 0 0 4px 1px rgba(244, 126, 88, 0.8);
+  box-shadow: 0 0 4px 1px rgba(251, 133, 59, 0.8);
    
 }
 
