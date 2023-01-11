@@ -32,7 +32,8 @@ function openForm(evt, formName) {
 /* ##### SUBMIT BUTTON LISTENER  #########################################
 #######################################################################*/
 for (const submitButton of submitButtons)
-submitButton.addEventListener('click', () => {
+submitButton.addEventListener('click', (event) => {
+// This is causing browsers default form validation to not run/work    
    event.preventDefault();
 
    let buttonValue = submitButton.value;
@@ -41,11 +42,13 @@ submitButton.addEventListener('click', () => {
          console.log("Form 1's submit button has been pressed.");
          // Run function for form1-Roll-Size-Calc
          getSqyds();
+         
          break;
       case "Calculate-cut-price-btn":
          console.log("Form 2's submit button was pressed."); 
          // Run function for form 2
          getCutPrice();
+        
          break;
    }
 });
@@ -55,7 +58,6 @@ submitButton.addEventListener('click', () => {
 ################################################################*/
 for(const clearButton of clearButtons)
 clearButton.addEventListener('click', () => {
-   // event.preventDefault();
    
    let buttonValue = clearButton.value;
    switch (buttonValue) {
@@ -66,7 +68,7 @@ clearButton.addEventListener('click', () => {
          break;
       case "Reset-price-form":
          console.log("Clear button on form 2 was clicked");
-         document.getElementById('form2-Roll-Size-Calc').reset();
+         document.getElementById('form2-Cut-Calc').reset();
          document.getElementById('output-cut-price').innerHTML = "";
          break;
    }
@@ -77,7 +79,7 @@ clearButton.addEventListener('click', () => {
 /* ##### CALC ROLLED GOODS QUANTITY FUNCTION ##############################
 ################################################################*/
 function getSqyds() {
-   event.preventDefault(); // Prevent form from submitting/clearing
+   
 // Get carpet roll width text and value
 const getSelectedText = (el) => {
    if (el.selectedIndex === -1) {
@@ -177,10 +179,10 @@ cutDiv.classList.add('cut-input-wrapper');
 // Add the necessary input for the new cut
 cutDiv.innerHTML = `
    <label for="cut${cutCounter}Length">Length of cut ${cutCounter}:</label>
-   <input type="number" class="cutLengthFt" name="cut-size-ft" min="0" step="1" value="" placeholder="0"> 
+   <input type="number" class="cutLengthFt" name="cut-size-ft" min="0" step="1" value="" placeholder="0" required> 
    <span class="measurement-unit measurement-unit-ft">ft</span> 
    <!-- Inch Input -->
-   <input type="number" id="cut1LengthInch" class="cutLengthInch" name="cut-size-in" min="0" max="11" step="1" value="" placeholder="0">
+   <input type="number" id="cut1LengthInch" class="cutLengthInch" name="cut-size-in" min="0" max="11" step="1" value="" placeholder="0" required>
    <span class="measurement-unit measurement-unit-in">in</span>
    <button type="button" class="delete-input"onclick="updateCounter(); return this.parentNode.remove();" >Remove Cut</button>
 `
@@ -191,8 +193,7 @@ document.getElementById("cuts").appendChild(cutDiv);
 
 
 function getCutPrice() {
-   event.preventDefault();
-
+   
    const getSelectedText = (el) => {
       if (el.selectedIndex === -1) {
          return null;
