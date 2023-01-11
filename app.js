@@ -39,7 +39,7 @@ submitButton.addEventListener('click', () => {
    switch (buttonValue) {
       case "Calculate-sqyd":
          console.log("Form 1's submit button has been pressed.");
-         // Run function for form1
+         // Run function for form1-Roll-Size-Calc
          getSqyds();
          break;
       case "Calculate-cut-price-btn":
@@ -61,12 +61,12 @@ clearButton.addEventListener('click', () => {
    switch (buttonValue) {
       case "Reset-sqyd-form":
          console.log("Clear button on form 1 was clicked");
-         document.getElementById('form1').reset();
+         document.getElementById('form1-Roll-Size-Calc').reset();
          document.getElementById('output-roll-size').textContent = "";
          break;
       case "Reset-price-form":
          console.log("Clear button on form 2 was clicked");
-         document.getElementById('form2').reset();
+         document.getElementById('form2-Roll-Size-Calc').reset();
          document.getElementById('output-cut-price').innerHTML = "";
          break;
    }
