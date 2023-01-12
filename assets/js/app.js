@@ -80,70 +80,70 @@ clearButton.addEventListener('click', () => {
 ################################################################*/
 function getSqyds() {
    
-// Get carpet roll width text and value
-const getSelectedText = (el) => {
-   if (el.selectedIndex === -1) {
-      return null;
-   }
-   return el.options[el.selectedIndex].text;
-   }
-   // Get roll width Multiplier value from selected carpet roll width
-   const getSelectedValue = (el) => {
-   if (el.selectedIndex === -1) {
-      return null;
-   }
-   return el.options[el.selectedIndex].value;
-   }
-   const select = document.querySelector('select')//Roll width selection
-   let carpetWidth = getSelectedText(select);
-   let multiplier = getSelectedValue(select);
-   console.log(Number(carpetWidth));
-   console.log(Number(multiplier));
-   console.log(multiplier);
-   
-// Add carpet diameter and tube diameter together
-let addedDiameters = (Number(carpet_roll_diameter.value) + Number(tube_diameter.value));
-console.log("Roll diameter = " + carpet_roll_diameter.value);
-console.log("Tube diameter = " + tube_diameter.value);
-console.log("Total of carpet diameter and tube diameter = " + addedDiameters);
-console.log("Rings counted = " + numRings.value);
-// Total diameter multiplied by number of rings
-let diametersTimesRings = addedDiameters * Number(numRings.value);
-console.log("Result = " + diametersTimesRings);
+   // Get carpet roll width text and value
+   const getSelectedText = (el) => {
+      if (el.selectedIndex === -1) {
+         return null;
+      }
+      return el.options[el.selectedIndex].text;
+      }
+      // Get roll width Multiplier value from selected carpet roll width
+      const getSelectedValue = (el) => {
+      if (el.selectedIndex === -1) {
+         return null;
+      }
+      return el.options[el.selectedIndex].value;
+      }
+      const select = document.querySelector('select')//Roll width selection
+      let carpetWidth = getSelectedText(select);
+      let multiplier = getSelectedValue(select);
+      console.log(Number(carpetWidth));
+      console.log(Number(multiplier));
+      console.log(multiplier);
+      
+   // Add carpet diameter and tube diameter together
+   let addedDiameters = (Number(carpet_roll_diameter.value) + Number(tube_diameter.value));
+   console.log("Roll diameter = " + carpet_roll_diameter.value);
+   console.log("Tube diameter = " + tube_diameter.value);
+   console.log("Total of carpet diameter and tube diameter = " + addedDiameters);
+   console.log("Rings counted = " + numRings.value);
+   // Total diameter multiplied by number of rings
+   let diametersTimesRings = addedDiameters * Number(numRings.value);
+   console.log("Result = " + diametersTimesRings);
 
-// Multiply total from above line by roll width multiplier
-let result = diametersTimesRings * multiplier;
-console.log("Result = " + result + " * multipler used = " + multiplier + ", roll width selected = " + carpetWidth);
-let sqyd = result.toFixed(2);
-console.log("Sq. Yds. = " + sqyd);
-let linear_feet = ((sqyd * 9) / carpetWidth).toFixed(2);
-console.log(linear_feet + " lf.");
-/* Determmine weather to show total square yards or linear footage 
-based on selected roll width size */
-if(carpetWidth === "6") {
-   
-   output.style.cssText = 'visibility: visible;opacity: 1;';
-   output.innerHTML = 
-   `
-   <div class="output-title-wrapper">
-      <p class="results-title">Results</p>
-   </div>   
-   
-   <p class="total-qty-results">Total = ${linear_feet}<span class="total-measure-unit-tag">Linear Feet</span></p>
-   `
-} else {
-   output.style.cssText = 'visibility: visible;opacity: 1;';
-   output.innerHTML = 
-   `
-   <div class="output-title-wrapper">
-      <p class="results-title">Results</p>
-   </div>   
-   
-   <p class="total-qty-results">Total = ${sqyd}<span class="total-measure-unit-tag">Square Yards</span></p>
+   // Multiply total from above line by roll width multiplier
+   let result = diametersTimesRings * multiplier;
+   console.log("Result = " + result + " * multipler used = " + multiplier + ", roll width selected = " + carpetWidth);
+   let sqyd = result.toFixed(2);
+   console.log("Sq. Yds. = " + sqyd);
+   let linear_feet = ((sqyd * 9) / carpetWidth).toFixed(2);
+   console.log(linear_feet + " lf.");
+   /* Determmine weather to show total square yards or linear footage 
+   based on selected roll width size */
+   if(carpetWidth === "6") {
+      
+      output.style.cssText = 'visibility: visible;opacity: 1;';
+      output.innerHTML = 
+      `
+      <div class="output-title-wrapper">
+         <p class="results-title">Results</p>
+      </div>   
+      
+      <p class="total-qty-results">Total = ${linear_feet}<span class="total-measure-unit-tag">Linear Feet</span></p>
+      `
+   } else {
+      output.style.cssText = 'visibility: visible;opacity: 1;';
+      output.innerHTML = 
+      `
+      <div class="output-title-wrapper">
+         <p class="results-title">Results</p>
+      </div>   
+      
+      <p class="total-qty-results">Total = ${sqyd}<span class="total-measure-unit-tag">Square Yards</span></p>
 
-   <p>Linear feet = ${linear_feet}</p>
-   `
-}
+      <p>Linear feet = ${linear_feet}</p>
+      `
+   }
 
 }
 //######################### END ROLLED GOODS CALC ##########################//

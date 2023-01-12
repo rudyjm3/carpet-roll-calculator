@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
+
 /* Clear padding, and margin */
 * {
    padding: 0;
@@ -34,9 +35,10 @@ body {
    justify-content:center;
    align-items: center;
    height: 100%;
+   min-height: 100%;
    margin: 25px 0;
    background-color: #393939;
-   background-image: url("images/meatal-background-black.jpg");
+   background-image: url("/images/meatal-background-black.jpg");
    background-position: center;
    background-repeat: no-repeat;
    background-size: cover;
