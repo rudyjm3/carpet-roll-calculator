@@ -261,7 +261,7 @@ function getCutPrice() {
       </div>   
    
       <p class="total-price-results">Total = $${lfTotalPrice}
-      <span class="total-measure-unit-tag">Linear Feet</span></p>
+      <span class="before-tax-tag">(Before tax)</span></p>
       
       <p class="total-cuts-results">Total Cuts = ${cutCounter}</p>
       
