@@ -184,7 +184,7 @@ cutDiv.innerHTML = `
    <!-- Inch Input -->
    <input type="number" id="cut1LengthInch" class="cutLengthInch" name="cut-size-in" min="0" max="11" step="1" value="" placeholder="0" required>
    <span class="measurement-unit measurement-unit-in">in</span>
-   <button type="button" class="delete-input"onclick="updateCounter(); return this.parentNode.remove();" >Remove Cut</button>
+   <button type="button" class="delete-input-btn" onclick="return this.parentNode.remove();"><i class="far fa-trash-alt trash-icon"></i></button>
 `
 // Add the new div to the form
 document.getElementById("cuts").appendChild(cutDiv);
@@ -265,7 +265,7 @@ function getCutPrice() {
       
       <p class="total-cuts-results">Total Cuts = ${cutCounter}</p>
       
-      <p class="total-lf-results">Total linear feet of all cuts = ${linearFeet}
+      <p class="total-lf-results">Total length of all cuts = ${linearFeet} /lf
       `
    } else {
       output2.style.cssText = 'visibility: visible;opacity: 1;';
