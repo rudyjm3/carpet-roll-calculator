@@ -314,7 +314,7 @@ hr {
 }
 
 .input-group2 input[type="number"] {
-   width: 70px;
+   width: 24%;
    height: 50px;
    padding: 0 17px 0 10px;
    border-radius: 4px;
@@ -339,31 +339,29 @@ hr {
    font-weight: 500;
 }
 .measurement-unit-ft {/* for foot unit */
-   left: -18px; 
+   left: -22px; 
    color: grey;
 }
 .measurement-unit-in {
-   left: -18px; /* for inch unit */
+   left: -22px; /* for inch unit */
    color: grey;
 }
-.delete-input {
+.delete-input-btn {
    display: flex;
    justify-content: center;
    align-items: center;
-   width: fit-content;
-   height: 35px;
-   background-color: rgb(160, 144, 144);
-   color: white;
-   font-size: 10px;
-   font-weight: 600;
-   border-radius: 4px;
-   padding: 0 5px;
+   width: auto;
+   height: auto;
    border: none;
    cursor: pointer;
-   transition: all 0.2s ease-out;
 }
-.delete-input:hover {
-   background-color: rgb(252, 30, 30);
+.trash-icon {
+   color: rgba(249, 99, 2, 1);
+   font-size: 1.2em;
+   transition: color 0.6s ease-in-out;
+}
+.trash-icon:hover {
+   color: rgb(252, 30, 30);
 }
 
 .hidden-remove-btn {
