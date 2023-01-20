@@ -59,21 +59,30 @@
                <option value="0.1744">12</option>
                <option value="0.2182">15</option>
             </select>
+            <div class="error-text-wrapper"><i>* Roll diameter inches required</i></div>
+            <div class="error-icon-wrapper fist-error-icon"><i class="fas fa-exclamation-circle error-icon"></i></div>
          </div>
          <div class="input-group">
             <label for="roll-diameter">Diameter of the entier roll</label>
             <input type="number" name="roll-diameter" id="roll-diameter" value="" placeholder="0" min="0" step="any" required />
             <span class="input-unit-inch">in.</span>
+            <div class="error-text-wrapper"><i>* Roll diameter inches required</i></div>
+            <div class="error-icon-wrapper"><i class="fas fa-exclamation-circle error-icon"></i></div>
          </div>
          <div class="input-group">
             <label for="tube-diameter">Diameter of the tube</label>
             <input type="number" name="tube-diameter" id="tube-diameter" value="" placeholder="0" min="1" step="any" required />
             <span class="input-unit-inch">in.</span>
+            <div class="error-text-wrapper"><i>* Roll diameter inches required</i></div>
+            <div class="error-icon-wrapper"><i class="fas fa-exclamation-circle error-icon"></i></div>
          </div>
          <div class="input-group">
             <label for="carpet-rings">How many carpet rings</label>
             <input type="number" name="rings" id="carpet-rings" value="" placeholder="0" min="1" step="any" required />
+            <div class="error-text-wrapper"><i>* Roll diameter inches required</i></div>
+            <div class="error-icon-wrapper"><i class="fas fa-exclamation-circle error-icon"></i></div>
          </div>
+         
          <div class="buttons-container">
             <button type="submit" value="Calculate-sqyd" id="submit-btn" class="submit-btn" >Calculate</button>
             <button type="reset" value="Reset-sqyd-form" id="reset-btn" class="clear-btn">Clear</button>
