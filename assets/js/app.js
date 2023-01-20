@@ -58,7 +58,7 @@ submitButton.addEventListener('click', (event) => {
 ################################################################*/
 for(const clearButton of clearButtons)
 clearButton.addEventListener('click', () => {
-   
+   debugger;
    let buttonValue = clearButton.value;
    switch (buttonValue) {
       case "Reset-sqyd-form":
@@ -68,11 +68,18 @@ clearButton.addEventListener('click', () => {
          break;
       case "Reset-price-form":
          console.log("Clear button on form 2 was clicked");
+         const newCuts = document.querySelectorAll('.added-cut');
+            for (i = 0; i < newCuts.length; i++) {
+               console.log('amount of cuts being removed: ', newCuts.length);
+               newCuts[i].remove();
+               updateCounter();
+            }
          document.getElementById('form2-Cut-Calc').reset();
          document.getElementById('output-cut-price').innerHTML = "";
          break;
    }
 });
+
 //######################### END CLEAR BTN FUNCTION ##########################//
 
 
@@ -157,9 +164,14 @@ function getSqyds() {
  */
 
 function updateCounter() {
-   
+  debugger; 
    --cutCounter;
-   console.log(cutCounter);
+   console.log("cut count = " + cutCounter);
+}
+function removeCut(ele) {
+   debugger
+   ele.parentNode.remove();
+   updateCounter();
 }
 
 
@@ -171,11 +183,11 @@ function addCut() {
 // event.preventDefault(); // Prevent form from submitting/clearing
 // Increment the counter
 cutCounter++;
-console.log(cutCounter);
+console.log("cut count " + cutCounter);
 // Create a new div for the cut
 let cutDiv = document.createElement("div");
 // Add class to new div 
-cutDiv.classList.add('cut-input-wrapper');
+cutDiv.classList.add('cut-input-wrapper', 'added-cut');
 // Add the necessary input for the new cut
 cutDiv.innerHTML = `
    <label for="cut${cutCounter}Length">Length of cut ${cutCounter}:</label>
@@ -184,8 +196,10 @@ cutDiv.innerHTML = `
    <!-- Inch Input -->
    <input type="number" id="cut1LengthInch" class="cutLengthInch" name="cut-size-in" min="0" max="11" step="1" value="" placeholder="0" required>
    <span class="measurement-unit measurement-unit-in">in</span>
-   <button type="button" class="delete-input-btn" onclick="return this.parentNode.remove();"><i class="far fa-trash-alt trash-icon"></i></button>
+   <button type="button" class="delete-input-btn" onclick="removeCut(this);"><i class="far fa-trash-alt trash-icon"></i></button>
 `
+
+{/* <button type="button" class="delete-input-btn" onclick="removeCut(this);"><i class="far fa-trash-alt trash-icon"></i></button> */}
 // Add the new div to the form
 document.getElementById("cuts").appendChild(cutDiv);
 }
