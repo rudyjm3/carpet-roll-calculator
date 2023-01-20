@@ -58,13 +58,14 @@ submitButton.addEventListener('click', (event) => {
 ################################################################*/
 for(const clearButton of clearButtons)
 clearButton.addEventListener('click', () => {
-   debugger;
+   
    let buttonValue = clearButton.value;
    switch (buttonValue) {
       case "Reset-sqyd-form":
          console.log("Clear button on form 1 was clicked");
          document.getElementById('form1-Roll-Size-Calc').reset();
          document.getElementById('output-roll-size').textContent = "";
+         document.getElementById('output-roll-size').style.visibility = "hidden";
          break;
       case "Reset-price-form":
          console.log("Clear button on form 2 was clicked");
@@ -76,6 +77,7 @@ clearButton.addEventListener('click', () => {
             }
          document.getElementById('form2-Cut-Calc').reset();
          document.getElementById('output-cut-price').innerHTML = "";
+         document.getElementById('output-cut-price').style.visibility = "hidden";
          break;
    }
 });
@@ -164,12 +166,12 @@ function getSqyds() {
  */
 
 function updateCounter() {
-  debugger; 
+   
    --cutCounter;
    console.log("cut count = " + cutCounter);
 }
 function removeCut(ele) {
-   debugger
+   
    ele.parentNode.remove();
    updateCounter();
 }
