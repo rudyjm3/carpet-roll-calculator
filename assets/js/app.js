@@ -40,6 +40,8 @@ submitButton.addEventListener('click', (event) => {
    switch (buttonValue) {
       case "Calculate-sqyd":
          console.log("Form 1's submit button has been pressed.");
+         //Run form validation
+         validateInputs();
          // Run function for form1-Roll-Size-Calc
          getSqyds();
          
@@ -84,6 +86,75 @@ clearButton.addEventListener('click', () => {
 
 //######################### END CLEAR BTN FUNCTION ##########################//
 
+
+/* ##### FORM VALIDATION  ##############################
+################################################################*/
+const firstForm = document.getElementById('form1-Roll-Size-Calc');
+const select1 = document.getElementById('roll-width');
+const rollDiameter = document.getElementById('roll-diameter');
+const tubeDiameter = document.getElementById('tube-diameter');
+const countedRings = document.getElementById('carpet-rings');
+
+
+const setError = (element, message) => {
+   const errorOutline = element;
+   const errorTxt = inputControl.querySelector('.error-text-wrapper');
+   const errorIcon = inputControl.querySelector('.error-icon-wrapper');
+   console.log(errorIcon);
+
+   errorTxt.innerText = message;
+   errorTxt.style.cssText = 'display: block;';
+   errorIcon.style.cssText = 'transform: scale(1);';
+   errorIcon.classList.add('error-shake');
+   errorOutline.classList.add('error-input-border');
+   errorOutline.classList.remove('success-input-border');
+};
+
+const setSuccess = element => {
+   const successOutline = element;
+   const errorTxt = inputControl.querySelector('.error-text-wrapper');
+   const errorIcon = inputControl.querySelector('.error-icon-wrapper');
+
+   errorTxt.innerText = "";
+   errorTxt.style.cssText = 'display: block;';
+   errorIcon.style.cssText = 'transform: scale(0);';
+   errorIcon.classList.remove('error-shake');
+   successOutline.classList.remove('error-input-border');
+   successOutline.classList.add('success-input-border');
+};
+
+const validateInputs = () => {
+   const select1Value = document.getElementById('roll-width').value;
+   const rollDiameterValue = rollDiameter.value.trim();
+   const tubeDiameterValue = tubeDiameter.value.trim();
+   const countedRingsValue = countedRings.value.trim();
+
+   if (select1Value === 'Select width size') {
+      setError(select1Value, '*Roll width selection required');
+   } else {
+      setSuccess(select1Value);
+   }
+
+   if (rollDiameterValue === '') {
+      setError(rollDiameter, '*Roll diameter inches required');
+   } else {
+      setSuccess(rollDiameter);
+   }
+
+   if (tubeDiameterValue === '') {
+      setError(tubeDiameter, '*Tube diameter inches required');
+   } else {
+      setSuccess(tubeDiameter);
+   }
+
+   if (countedRingsValue === '') {
+      setError(countedRings, '*Number of carpet rings required');
+   } else {
+      setSuccess(countedRings);
+   }
+
+};
+//################### END FORM VALIDATION ##########################//
 
 /* ##### CALC ROLLED GOODS QUANTITY FUNCTION ##############################
 ################################################################*/

@@ -120,17 +120,20 @@ hr {
    color: red;
    top: 106%;
    left: 57%;
-   /* display: none; */
+   display: none;
 }
 .error-icon-wrapper {
    top: 32%;
    left: 88%;
    font-size: 1em;
    color: red;
-   transform: scale(1);
+   transform: scale(0);
    transition: all 0.3s ease-in-out
 }
-
+.fist-error-icon {  /*form1*/
+   top: 32%;
+   left: 91.5%;
+}
 .error-input-border {
    border: 2px solid red;
    border-radius: 4px;
@@ -167,10 +170,6 @@ hr {
    font-size: 17px;
    font-weight: 600;
    color: #333;
-}
-.fist-error-icon {  /*form1*/
-   top: 32%;
-   left: 91.5%;
 }
 .input-group > .input-unit-inch {
    position: absolute;
