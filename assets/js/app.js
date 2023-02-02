@@ -1,4 +1,6 @@
 // let widthSelection = document.getElementById('roll-width');
+const rollSizeForm = document.getElementById('form1-Roll-Size-Calc');
+const cutForm = document.getElementById('form2-Cut_clac');
 let carpet_roll_diameter = document.getElementById('roll-diameter');  
 let tube_diameter = document.getElementById('tube-diameter');  //6;
 let numRings = document.getElementById('carpet-rings');
@@ -33,17 +35,20 @@ function openForm(evt, formName) {
 #######################################################################*/
 for (const submitButton of submitButtons)
 submitButton.addEventListener('click', (event) => {
+   debugger;
 // This is causing browsers default form validation to not run/work    
    event.preventDefault();
-
+   
    let buttonValue = submitButton.value;
    switch (buttonValue) {
       case "Calculate-sqyd":
          console.log("Form 1's submit button has been pressed.");
          //Run form validation
-         validateInputs();
+         // validateInputs();
          // Run function for form1-Roll-Size-Calc
-         getSqyds();
+         if(validateInputs() === true) {
+           getSqyds(); 
+         }
          
          break;
       case "Calculate-cut-price-btn":
@@ -97,9 +102,11 @@ const countedRings = document.getElementById('carpet-rings');
 
 
 const setError = (element, message) => {
+   // debugger;
+   const inputControl1 = element.parentElement;
    const errorOutline = element;
-   const errorTxt = inputControl.querySelector('.error-text-wrapper');
-   const errorIcon = inputControl.querySelector('.error-icon-wrapper');
+   const errorTxt = inputControl1.querySelector('.error-text-wrapper');
+   const errorIcon = inputControl1.querySelector('.error-icon-wrapper');
    console.log(errorIcon);
 
    errorTxt.innerText = message;
@@ -108,12 +115,15 @@ const setError = (element, message) => {
    errorIcon.classList.add('error-shake');
    errorOutline.classList.add('error-input-border');
    errorOutline.classList.remove('success-input-border');
+   
 };
 
 const setSuccess = element => {
+   const inputControl1 = element.parentElement;
+   // console.log(inputControl1);
    const successOutline = element;
-   const errorTxt = inputControl.querySelector('.error-text-wrapper');
-   const errorIcon = inputControl.querySelector('.error-icon-wrapper');
+   const errorTxt = inputControl1.querySelector('.error-text-wrapper');
+   const errorIcon = inputControl1.querySelector('.error-icon-wrapper');
 
    errorTxt.innerText = "";
    errorTxt.style.cssText = 'display: block;';
@@ -122,23 +132,30 @@ const setSuccess = element => {
    successOutline.classList.remove('error-input-border');
    successOutline.classList.add('success-input-border');
 };
+// Removes setSuccess styling when validation passes 100%
+const setSuccessClear = element => {
+   const inputControl1 = element.parentElement;
+   const successOutline = element;
+
+   successOutline.classList.remove('success-input-border');   
+};
 
 const validateInputs = () => {
-   const select1Value = document.getElementById('roll-width').value;
+   const select1Value = document.getElementById('roll-width');
    const rollDiameterValue = rollDiameter.value.trim();
    const tubeDiameterValue = tubeDiameter.value.trim();
    const countedRingsValue = countedRings.value.trim();
 
-   if (select1Value === 'Select width size') {
-      setError(select1Value, '*Roll width selection required');
+   if (select1Value.selectedIndex === 0) {
+      setError(select1Value, '*Roll width selection required');  
    } else {
-      setSuccess(select1Value);
+      setSuccess(select1Value); 
    }
 
    if (rollDiameterValue === '') {
       setError(rollDiameter, '*Roll diameter inches required');
    } else {
-      setSuccess(rollDiameter);
+      setSuccess(rollDiameter); 
    }
 
    if (tubeDiameterValue === '') {
@@ -151,6 +168,18 @@ const validateInputs = () => {
       setError(countedRings, '*Number of carpet rings required');
    } else {
       setSuccess(countedRings);
+   }
+
+   if (select1Value.selectedIndex === 0 || !rollDiameterValue || !tubeDiameterValue || !countedRingsValue) {
+      console.log("All 3 of the last inputs must have value.");
+      return false;
+   } else {
+      console.log("All inputs have a value.");
+      setSuccessClear(select1Value);
+      setSuccessClear(rollDiameter);
+      setSuccessClear(tubeDiameter);
+      setSuccessClear(countedRings);
+      return true;
    }
 
 };

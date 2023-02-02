@@ -138,7 +138,7 @@ hr {
    border: 2px solid red;
    border-radius: 4px;
    outline: none;
-   box-shadow: 0 0 4px 1px rgba(255, 0, 0, 0.8);
+   /* box-shadow: 0 0 4px 1px rgba(255, 0, 0, 0.8); */
 }
 .error-shake {
    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
@@ -161,6 +161,12 @@ hr {
      transform: translate3d(4px, 0, 0);
    }
  }
+ .success-input-border {
+   border: 2px solid rgb(0, 215, 0);
+   border-radius: 4px;
+   outline: none;
+ }
+ 
 .input-group input[type="number"] {
    width: 25%;
    height: 50px;
