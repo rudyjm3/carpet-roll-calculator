@@ -124,15 +124,15 @@ hr {
 }
 .error-icon-wrapper {
    top: 32%;
-   left: 88%;
+   left: 87%;
    font-size: 1em;
    color: red;
    transform: scale(0);
    transition: all 0.3s ease-in-out
 }
-.fist-error-icon {  /*form1*/
+.fist-error-icon {  /*form1 drop down book*/
    top: 32%;
-   left: 91.5%;
+   left: 87%;
 }
 .error-input-border {
    border: 2px solid red;
@@ -166,7 +166,7 @@ hr {
    border-radius: 4px;
    outline: none;
  }
- 
+
 .input-group input[type="number"] {
    width: 25%;
    height: 50px;
@@ -200,7 +200,7 @@ hr {
 
 /* Roll width selection styling */
 #roll-width {
-   width: auto;
+   width: 60%;
    height: 50px;
    padding: 0 10px;
    border-radius: 4px;
