@@ -92,8 +92,8 @@ clearButton.addEventListener('click', () => {
 //######################### END CLEAR BTN FUNCTION ##########################//
 
 
-/* ##### FORM VALIDATION  ##############################
-################################################################*/
+/* ##### FORM 1 VALIDATION  ##############################
+#############################################################*/
 const firstForm = document.getElementById('form1-Roll-Size-Calc');
 const select1 = document.getElementById('roll-width');
 const rollDiameter = document.getElementById('roll-diameter');
@@ -183,7 +183,114 @@ const validateInputs = () => {
    }
 
 };
-//################### END FORM VALIDATION ##########################//
+//################### END FORM 1 VALIDATION ##########################//
+
+/* ##### FORM 2 VALIDATION  ##############################
+#############################################################*/
+const Form2 = document.getElementById('form1-Roll-Size-Calc');
+const select2 = document.getElementById('roll-width');
+const footInput = document.getElementById('roll-diameter');
+const inchInput = document.getElementById('tube-diameter');
+const priceInput = document.getElementById('carpet-rings');
+
+
+const setErrorForm2 = (element, message) => {
+   // debugger;
+   const inputControl2 = element.parentElement;
+   const errorOutline = element;
+   const errorFtTxt = inputControl2.querySelector('.error2-ft-text-wrapper');
+   const errorFtIcon = inputControl2.querySelector('.error2-ft-icon-wrapper');
+   const errorInchTxt = inputControl2.querySelector('.error2-inch-text-wrapper');
+   const errorInchIcon = inputControl2.querySelector('.error2-inch-icon-wrapper');
+   const errorPriceTxt = inputControl2.querySelector('.error-price-text-wrapper');
+   const errorPriceIcon = inputControl2.querySelector('.error-price-icon-wrapper');
+
+   errorFtTxt.innerText = message;
+   errorFtTxt.style.cssText = 'display: block;';
+   errorFtIcon.style.cssText = 'transform: scale(1);';
+   errorFtIcon.classList.add('error-shake');
+
+   errorInchTxt.innerText = message;
+   errorInchTxt.style.cssText = 'display: block;';
+   errorInchIcon.style.cssText = 'transform: scale(1);';
+   errorInchIcon.classList.add('error-shake');
+
+   errorPriceTxt.innerText = message;
+   errorPriceTxt.style.cssText = 'display: block;';
+   errorInchIcon.style.cssText = 'transform: scale(1);';
+   errorInchIcon.classList.add('error-shake');
+
+   errorOutline.classList.add('error-input-border');
+   errorOutline.classList.remove('success-input-border');
+   
+};
+
+const setSuccessForm2 = element => {
+   const inputControl1 = element.parentElement;
+   // console.log(inputControl1);
+   const successOutline = element;
+   const errorTxt = inputControl1.querySelector('.error-text-wrapper');
+   const errorIcon = inputControl1.querySelector('.error-icon-wrapper');
+
+   errorTxt.innerText = "";
+   errorTxt.style.cssText = 'display: block;';
+   errorIcon.style.cssText = 'transform: scale(0);';
+   errorIcon.classList.remove('error-shake');
+   successOutline.classList.remove('error-input-border');
+   successOutline.classList.add('success-input-border');
+};
+// Removes setSuccess styling when validation passes 100%
+const setSuccessClearForm2 = element => {
+   const inputControl1 = element.parentElement;
+   const successOutline = element;
+
+   successOutline.classList.remove('success-input-border');   
+};
+
+const validateInputsForm2 = () => {
+   const select1Value = document.getElementById('roll-width');
+   const rollDiameterValue = rollDiameter.value.trim();
+   const tubeDiameterValue = tubeDiameter.value.trim();
+   const countedRingsValue = countedRings.value.trim();
+
+   if (select1Value.selectedIndex === 0) {
+      setErrorForm2(select1Value, '*Roll width selection required');  
+   } else {
+      setSuccessForm2(select1Value); 
+   }
+
+   if (rollDiameterValue === '') {
+      setErrorForm2(rollDiameter, '*Roll diameter inches required');
+   } else {
+      setSuccessForm2(rollDiameter); 
+   }
+
+   if (tubeDiameterValue === '') {
+      setErrorForm2(tubeDiameter, '*Tube diameter inches required');
+   } else {
+      setSuccessForm2(tubeDiameter);
+   }
+
+   if (countedRingsValue === '') {
+      setErrorForm2(countedRings, '*Number of carpet rings required');
+   } else {
+      setSuccessForm2(countedRings);
+   }
+
+   if (select1Value.selectedIndex === 0 || !rollDiameterValue || !tubeDiameterValue || !countedRingsValue) {
+      console.log("All 3 of the last inputs must have value.");
+      return false;
+   } else {
+      console.log("All inputs have a value.");
+      setSuccessClearForm2(select1Value);
+      setSuccessClearForm2(rollDiameter);
+      setSuccessClearForm2(tubeDiameter);
+      setSuccessClearForm2(countedRings);
+      return true;
+   }
+
+};
+//################### END FORM 2 VALIDATION ##########################//
 
 /* ##### CALC ROLLED GOODS QUANTITY FUNCTION ##############################
 ################################################################*/
@@ -264,14 +371,11 @@ function getSqyds() {
 /* Formula to convert inch to decimal (Divide inch by 12)
  example: 4in / 12 = 0.333
  */
-
-function updateCounter() {
-   
+function updateCounter() { 
    --cutCounter;
    console.log("cut count = " + cutCounter);
 }
 function removeCut(ele) {
-   
    ele.parentNode.remove();
    updateCounter();
 }
