@@ -197,7 +197,6 @@ hr {
    font-size: 15px;
 }
 
-
 /* Roll width selection styling */
 #roll-width {
    width: 60%;
@@ -342,10 +341,11 @@ hr {
 /* ### FORM 2 STYLING #################################
 ######################################################### */
 .input-group2 {
+   position: relative;
    display: flex;
    justify-content: space-between;
    align-items: center;
-   margin-bottom: 15px;
+   margin-bottom: 20px;
 }
 #roll-width2 { 
    width: 60%;
@@ -364,7 +364,7 @@ hr {
    display: flex;
    justify-content: space-between;
    align-items: center;
-   margin-bottom: 15px;
+   margin-bottom: 20px;
    transition:all 0.5s ease-in-out;
 }
 .input-group2 label {
@@ -433,8 +433,8 @@ hr {
 }
 .currency-symbol {
    margin-right: 5px;
-   font-weight: 600;
-   font-size: 1.5rem;
+   font-weight: 500;
+   font-size: 1.3rem;
 }
 
 #sell-price-input {
@@ -447,7 +447,83 @@ hr {
    margin-left: 5px;
 }
 
-/* Output Styling */
+/* ########### ERROR STYLING FORM 2 ########## */
+.cut-input-wrapper > .error2-ft-text-wrapper, .error2-inch-text-wrapper, .error2-ft-icon-wrapper, .error2-inch-icon-wrapper {
+   position: absolute;
+   width: max-content;
+   height: auto;
+   /* background-color: red; */
+}
+.error2-ft-text-wrapper {
+   font-size: 0.7em;
+   font-weight: 600;
+   color: red;
+   top: 106%;
+   left: 40%;
+   /* display: none; */
+}
+.error2-ft-icon-wrapper {
+   top: 32%;
+   left: 53%;
+   font-size: 1em;
+   color: red;
+   /* transform: scale(0); */
+   transition: all 0.3s ease-in-out
+}
+
+.error2-inch-text-wrapper {
+   font-size: 0.7em;
+   font-weight: 600;
+   color: red;
+   top: 106%;
+   left: 68%;
+   /* display: none; */
+}
+.error2-inch-icon-wrapper {
+   top: 32%;
+   left: 80%;
+   font-size: 1em;
+   color: red;
+   /* transform: scale(0); */
+   transition: all 0.3s ease-in-out
+}
+.input-price-wrapper > .error-price-text-wrapper, 
+.error-rice-icon-wrapper {
+   position: absolute;
+   width: max-content;
+   height: auto;
+}
+.input-price-wrapper > .error-price-icon-wrapper {
+   position: absolute;
+   width: max-content;
+   height: auto;
+}
+.error-price-text-wrapper {
+   font-size: 0.7em;
+   font-weight: 600;
+   color: red;
+   top: 105%;
+   left: 8%;
+   /* display: none; */
+}
+
+.error-price-icon-wrapper {
+   top: 32%;
+   left: 40%;
+   font-size: 1em;
+   color: red;
+   /* transform: scale(0); */
+   transition: all 0.3s ease-in-out
+}
+.error2-input-border {
+   border: 2px solid red;
+   border-radius: 4px;
+   outline: none;
+}
+
+/* ########################################### */
+
+/* ########### Output Styling ########## */
 #output {
    margin-top: 25px;
    padding: 15px 25px;

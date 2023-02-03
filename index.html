@@ -114,9 +114,16 @@
                   <label for="cut1Length">Length of cut 1:</label>
                   <input type="number" class="cutLengthFt" name="cut-size-ft" min="0" step="1" value="" placeholder="0" required>
                   <span class="measurement-unit measurement-unit-ft">ft</span>
+
+                  <div class="error2-ft-text-wrapper"><i>* Feet required</i></div>
+                  <div class="error2-ft-icon-wrapper"><i class="fas fa-exclamation-circle error2-icon"></i></div>
                   <!-- Inch Input -->
                   <input type="number" id="cut1LengthInch" class="cutLengthInch" name="cut-size-in" min="0" max="11" step="1" value="" placeholder="0" required>
                   <span class="measurement-unit measurement-unit-in">in</span>
+
+                  <div class="error2-inch-text-wrapper"><i>* Inch required</i></div>
+                  <div class="error2-inch-icon-wrapper"><i class="fas fa-exclamation-circle error2-icon"></i></div>
+
                   <button type="button" class="delete-input-btn hidden-delete-btn" onclick="return this.parentNode.remove(); "><i class="far fa-trash-alt trash-icon"></i></button>
                 </div>
             </div>
@@ -133,6 +140,8 @@
                <span class="currency-symbol">$</span>
                <input type="number" name="roll-good-price" id="sell-price-input" placeholder="0.00" value="" required>
                <span class="price-unit-measurement">Per SqYd</span>
+               <div class="error-price-text-wrapper"><i>* Price required</i></div>
+               <div class="error-price-icon-wrapper"><i class="fas fa-exclamation-circle error2-icon"></i></div>
             </div> 
          </div>
 
