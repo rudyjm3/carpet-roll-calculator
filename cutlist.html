@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+   <!-- Google Tag Manager -->
+
+   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon/favicon-32x32.png">
+   <!-- Style Sheet -->
+   <link rel="stylesheet" href="assets/css/styles.css">
+   <!--load all Font Awesome styles -->
+   <link rel="stylesheet" href="assets/css/all.css" >
+   <title>Carpet Cut List</title>
+</head>
+
+
+<body>
+
+<div class="form-container">
+   <form action="" method="post" id="form2-Cut-Calc" >
+      <div class="input-group2">
+         <ol id="cuts-list" class="cut-input-wrapper">
+               <!-- <label for="cut1Length">Length of cut 1:</label> -->
+            <li>
+               <input type="number" class="cutLengthFt" name="cut-size-ft" min="0" step="1" value="" placeholder="0" required>
+               <span class="measurement-unit measurement-unit-ft">ft</span>
+
+               <div class="error2-ft-text-wrapper"><i>* Feet required</i></div>
+               <div class="error2-ft-icon-wrapper"><i class="fas fa-exclamation-circle error2-icon"></i></div>
+               <!-- Inch Input -->
+               <input type="number" id="cut1LengthInch" class="cutLengthInch" name="cut-size-in" min="0" max="11" step="1" value="" placeholder="0" required>
+               <span class="measurement-unit measurement-unit-in">in</span>
+
+               <div class="error2-inch-text-wrapper"><i>* Inch required</i></div>
+               <div class="error2-inch-icon-wrapper"><i class="fas fa-exclamation-circle error2-icon"></i></div>
+
+               <button type="button" class="delete-input-btn hidden-delete-btn" onclick="return this.parentNode.remove(); "><i class="far fa-trash-alt trash-icon"></i></button>
+            </li>
+
+            <li>
+               <input type="number" class="cutLengthFt" name="cut-size-ft" min="0" step="1" value="" placeholder="0" required>
+               <span class="measurement-unit measurement-unit-ft">ft</span>
+
+               <div class="error2-ft-text-wrapper"><i>* Feet required</i></div>
+               <div class="error2-ft-icon-wrapper"><i class="fas fa-exclamation-circle error2-icon"></i></div>
+               <!-- Inch Input -->
+               <input type="number" id="cut1LengthInch" class="cutLengthInch" name="cut-size-in" min="0" max="11" step="1" value="" placeholder="0" required>
+               <span class="measurement-unit measurement-unit-in">in</span>
+
+               <div class="error2-inch-text-wrapper"><i>* Inch required</i></div>
+               <div class="error2-inch-icon-wrapper"><i class="fas fa-exclamation-circle error2-icon"></i></div>
+
+               <button type="button" class="delete-input-btn hidden-delete-btn" onclick="return this.parentNode.remove(); "><i class="far fa-trash-alt trash-icon"></i></button>
+            </li>
+         </ol>
+      </div>
+   </form>
+</div>
+
+</body>

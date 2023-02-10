@@ -1,3 +1,4 @@
+@import "list.css"; 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 
@@ -348,7 +349,7 @@ hr {
    margin-bottom: 20px;
 }
 #roll-width2 { 
-   width: 60%;
+   width: 61%;
    height: 50px;
    border-radius: 4px;
    text-align: center;
@@ -356,28 +357,55 @@ hr {
    font-weight: 600;
    color: #333;
 }
-#cuts {
+/* Ordered list custom list counter and styling */
+#cuts-list {
+   /* delete default counter */
+   list-style-type: none;
+   /* create custom counter and set it to 0 */
+   counter-reset: elementcounter;
    width: 100%;
-}
-.cut-input-wrapper {
+ }
+ 
+ #cuts-list>li:before {
+   /* print out "Element " followed by the current counter value */
+   content: "Length of cut " counter(elementcounter) ": ";
+   /* increment counter */
+   counter-increment: elementcounter;
+   padding-right: 28px;
+ }
+ .cut-list-item {
    position: relative;
    display: flex;
    justify-content: space-between;
    align-items: center;
+   margin-bottom: 25px;
+ }
+/* End custom list counter and styling */
+
+
+/* old #cuts {
+   width: 100%;
+} */
+.cut-input-wrapper { /* Orderered List*/
+   position: relative;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-direction: column;
    margin-bottom: 20px;
    transition:all 0.5s ease-in-out;
 }
-.input-group2 label {
+/* old .input-group2 label {
    width: 40%;
    font-weight: 500;
    font-size: 15px;
-   /* margin-right: 20px; */
-}
+   
+} */
 
 .input-group2 input[type="number"] {
    width: 24%;
    height: 50px;
-   padding: 0 17px 0 10px;
+   padding: 0 22px 0 10px;
    border-radius: 4px;
    /* text-align: center; */
    font-size: 17px;
@@ -400,11 +428,13 @@ hr {
    font-weight: 500;
 }
 .measurement-unit-ft {/* for foot unit */
-   left: -22px; 
+   left: -8%; 
+   width: 0;
    color: grey;
 }
 .measurement-unit-in {
-   left: -22px; /* for inch unit */
+   left: -8%; /* for inch unit */
+   width: 0;
    color: grey;
 }
 .delete-input-btn {
@@ -459,15 +489,15 @@ hr {
    font-weight: 600;
    color: red;
    top: 106%;
-   left: 40%;
-   /* display: none; */
+   left: 41%;
+   display: none;
 }
 .error2-ft-icon-wrapper {
    top: 32%;
    left: 53%;
    font-size: 1em;
    color: red;
-   /* transform: scale(0); */
+   transform: scale(0);
    transition: all 0.3s ease-in-out
 }
 
@@ -476,19 +506,19 @@ hr {
    font-weight: 600;
    color: red;
    top: 106%;
-   left: 68%;
-   /* display: none; */
+   left: 70%;
+   display: none;
 }
 .error2-inch-icon-wrapper {
    top: 32%;
-   left: 80%;
+   left: 81%;
    font-size: 1em;
    color: red;
-   /* transform: scale(0); */
+   transform: scale(0);
    transition: all 0.3s ease-in-out
 }
 .input-price-wrapper > .error-price-text-wrapper, 
-.error-rice-icon-wrapper {
+.error-price-icon-wrapper {
    position: absolute;
    width: max-content;
    height: auto;
@@ -503,8 +533,8 @@ hr {
    font-weight: 600;
    color: red;
    top: 105%;
-   left: 8%;
-   /* display: none; */
+   left: 11%;
+   display: none;
 }
 
 .error-price-icon-wrapper {
@@ -512,7 +542,7 @@ hr {
    left: 40%;
    font-size: 1em;
    color: red;
-   /* transform: scale(0); */
+   transform: scale(0);
    transition: all 0.3s ease-in-out
 }
 .error2-input-border {
