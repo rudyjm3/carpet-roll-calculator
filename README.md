@@ -15,7 +15,9 @@ This project was inspired by preping for inventory for the store Nov 2022. The a
 
 ### Helpful Links
 
+- [Custom Ordered List text content](https://stackoverflow.com/questions/9258070/adding-text-before-list)
 - [How to Retrieve the Text of the Selected option Element in a select Element with JavaScript?](https://javascript.plainenglish.io/how-to-retrieve-the-text-of-the-selected-option-element-in-a-select-element-with-javascript-6933e5d4457d)
+- [Add or remove multiple classes ES6](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList#examples)
 - [Hide the HTML5 number input’s spin box?](https://stackoverflow.com/questions/3790935/can-i-hide-the-html5-number-input-s-spin-box)
 - [Scope of variables](https://www.w3schools.com/js/js_scope.asp)
 - [Carpet icon](https://www.istockphoto.com/illustrations/rolled-up-carpet)

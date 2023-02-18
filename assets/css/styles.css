@@ -412,17 +412,20 @@ hr {
    font-weight: 600;
    color: #333;
 }
-.input-group2:nth-last-child(3) {
+.input-group2:has(select) {
+   margin-bottom: 25px;
+}
+.input-group2:has(#input-price-wrapper) {
    margin-bottom: 40px;
 }
 
-.input-wrapper {
+/* .input-wrapper {
    position: relative;
    display: flex;
    justify-content: space-between;
    align-items: center;
    width: 60%;
-}
+} */
 .measurement-unit {
    position: relative;
    font-weight: 500;
@@ -458,7 +461,12 @@ hr {
 .hidden-delete-btn {
    visibility: hidden;
 }
-.input-price-wrapper {
+#input-price-wrapper {
+   position: relative;
+   display: flex;
+   /* justify-content: space-between; */
+   align-items: center;
+   width: 60%;
    justify-content: flex-start;
 }
 .currency-symbol {
@@ -478,6 +486,26 @@ hr {
 }
 
 /* ########### ERROR STYLING FORM 2 ########## */
+.error2-select-text-wrapper, .error2-select-icon-wrapper {
+   position: absolute;
+   width: max-content;
+   height: auto;
+}
+.error2-select-text-wrapper {
+   font-size: 0.7em;
+   font-weight: 600;
+   color: red;
+   top: 106%;
+   left: 41%;
+   display: none;
+}
+.error2-select-icon-wrapper {
+   right: 10%;
+   font-size: 1em;
+   color: red;
+   transform: scale(0);
+   transition: all 0.3s ease-in-out;
+}
 .cut-input-wrapper > .error2-ft-text-wrapper, .error2-inch-text-wrapper, .error2-ft-icon-wrapper, .error2-inch-icon-wrapper {
    position: absolute;
    width: max-content;
@@ -498,7 +526,7 @@ hr {
    font-size: 1em;
    color: red;
    transform: scale(0);
-   transition: all 0.3s ease-in-out
+   transition: all 0.3s ease-in-out;
 }
 
 .error2-inch-text-wrapper {
@@ -515,15 +543,15 @@ hr {
    font-size: 1em;
    color: red;
    transform: scale(0);
-   transition: all 0.3s ease-in-out
+   transition: all 0.3s ease-in-out;
 }
-.input-price-wrapper > .error-price-text-wrapper, 
+#input-price-wrapper > .error-price-text-wrapper, 
 .error-price-icon-wrapper {
    position: absolute;
    width: max-content;
    height: auto;
 }
-.input-price-wrapper > .error-price-icon-wrapper {
+#input-price-wrapper > .error-price-icon-wrapper {
    position: absolute;
    width: max-content;
    height: auto;
@@ -543,7 +571,7 @@ hr {
    font-size: 1em;
    color: red;
    transform: scale(0);
-   transition: all 0.3s ease-in-out
+   transition: all 0.3s ease-in-out;
 }
 .error2-input-border {
    border: 2px solid red;

@@ -192,58 +192,78 @@ const validateInputs = () => {
 const Form2 = document.getElementById('form2-Cut-Calc');
 const select2Width = document.getElementById('roll-width2');
 const cutList = document.getElementById('cuts-list');
-const inputControl2 = document.getElementById('cut-list-item');
-const footInput = document.querySelector('.cutLengthFt');
-const inchInput = document.querySelector('.cutLengthInch');
-const inputControlPrice = document.querySelector('.input-price-wrapper');
+const footInputs = document.getElementsByClassName('cutLengthFt');
+const inchInputs = document.getElementsByClassName('cutLengthInch');
 const priceInput = document.getElementById('sell-price-input');
 
-console.log(cutList, inputControl2, inputControlPrice, priceInput);
-
-const setErrorForm2 = (element, message) => {
-   // debugger;
+const setErrorSelect = (element, message) => {
    const inputControl2 = element.parentElement;
-   // const inputControlPrice = element.parentElement;
+   const error2Outline = element;
+   const error2SelectTxt = inputControl2.querySelector('.error2-select-text-wrapper');
+   const error2SelectIcon = inputControl2.querySelector('.error2-select-icon-wrapper');
+   error2SelectTxt.innerText = message;
+   error2SelectTxt.style.cssText = 'display: block;';
+   error2SelectIcon.style.cssText = 'transform: scale(1);';
+   error2SelectIcon.classList.add('error-shake');
+   error2Outline.classList.add('error-input-border');
+   error2Outline.classList.remove('success-input-border');
+};
+const setErrorFt = (element, message) => {
+   const inputControl2 = element.parentElement;
    const error2Outline = element;
    const error2FtTxt = inputControl2.querySelector('.error2-ft-text-wrapper');
    const error2FtIcon = inputControl2.querySelector('.error2-ft-icon-wrapper');
-   const error2InchTxt = inputControl2.querySelector('.error2-inch-text-wrapper');
-   const error2InchIcon = inputControl2.querySelector('.error2-inch-icon-wrapper');
-   const errorPriceTxt = inputControl2.querySelector('.error-price-text-wrapper');
-   const errorPriceIcon = inputControl2.querySelector('.error-price-icon-wrapper');
-
    error2FtTxt.innerText = message;
    error2FtTxt.style.cssText = 'display: block;';
    error2FtIcon.style.cssText = 'transform: scale(1);';
    error2FtIcon.classList.add('error-shake');
-
+   error2Outline.classList.add('error-input-border');
+   error2Outline.classList.remove('success-input-border');
+};
+const setErrorInch = (element, message) => {
+   const inputControl2 = element.parentElement;
+   const error2Outline = element;
+   const error2InchTxt = inputControl2.querySelector('.error2-inch-text-wrapper');
+   const error2InchIcon = inputControl2.querySelector('.error2-inch-icon-wrapper');
    error2InchTxt.innerText = message;
    error2InchTxt.style.cssText = 'display: block;';
    error2InchIcon.style.cssText = 'transform: scale(1);';
    error2InchIcon.classList.add('error-shake');
-
-   errorPriceTxt.innerText = message;
-   errorPriceTxt.style.cssText = 'display: block;';
-   error2InchIcon.style.cssText = 'transform: scale(1);';
-   error2InchIcon.classList.add('error-shake');
-
+   error2Outline.classList.add('error-input-border');
+   error2Outline.classList.remove('success-input-border');
+};
+const setErrorPrice = (element, message) => {
+   const inputControl2 = element.parentElement;
+   const error2Outline = element;
+   const errorPriceTxt = inputControl2.querySelector('.error-price-text-wrapper');
+   const errorPriceIcon = inputControl2.querySelector('.error-price-icon-wrapper');
    errorPriceTxt.innerText = message;
    errorPriceTxt.style.cssText = 'display: block;';
    errorPriceIcon.style.cssText = 'transform: scale(1);';
    errorPriceIcon.classList.add('error-shake');
-
    error2Outline.classList.add('error-input-border');
    error2Outline.classList.remove('success-input-border');
-   
 };
 
-const setSuccessForm2 = element => {
+const setSuccessForm2Select2 = element => {
    const inputControl2 = element.parentElement;
-   // console.log(inputControl1);
    const successOutline = element;
-   const error2Txt = inputControl2.querySelector('.error2-text-wrapper');
-   const error2Icon = inputControl2.querySelector('.error2-icon-wrapper');
+   const error2SelectTxt = inputControl2.querySelector('.error2-select-text-wrapper');
+   const error2SelectIcon = inputControl2.querySelector('.error2-select-icon-wrapper');
 
+   error2SelectTxt.innerText = "";
+   error2SelectTxt.style.cssText = 'display: block;';
+   error2SelectIcon.style.cssText = 'transform: scale(0);';
+   error2SelectIcon.classList.remove('error-shake');
+   successOutline.classList.remove('error-input-border');
+   successOutline.classList.add('success-input-border');
+}
+const setSuccessForm2Ft = element => {
+   const inputControl2 = element.parentElement;
+   const successOutline = element;
+   
+   const error2Txt = inputControl2.querySelector('.error2-ft-text-wrapper');
+   const error2Icon = inputControl2.querySelector('.error2-ft-icon-wrapper');
    error2Txt.innerText = "";
    error2Txt.style.cssText = 'display: block;';
    error2Icon.style.cssText = 'transform: scale(0);';
@@ -251,52 +271,82 @@ const setSuccessForm2 = element => {
    successOutline.classList.remove('error-input-border');
    successOutline.classList.add('success-input-border');
 };
+const setSuccessForm2Inch = element => {
+   const inputControl2 = element.parentElement;
+   const successOutline = element;
+   
+   const error2Txt = inputControl2.querySelector('.error2-inch-text-wrapper');
+   const error2Icon = inputControl2.querySelector('.error2-inch-icon-wrapper');
+   error2Txt.innerText = "";
+   error2Txt.style.cssText = 'display: block;';
+   error2Icon.style.cssText = 'transform: scale(0);';
+   error2Icon.classList.remove('error-shake');
+   successOutline.classList.remove('error-input-border');
+   successOutline.classList.add('success-input-border');
+};
+const setSuccessForm2Price = element => {
+   const inputControl2 = element.parentElement;
+   const successOutline = element;
+   const errorPriceTxt = inputControl2.querySelector('.error-price-text-wrapper');
+   const errorPriceIcon = inputControl2.querySelector('.error-price-icon-wrapper');
+
+   errorPriceTxt.innerText = "";
+   errorPriceTxt.style.cssText = 'display: block;';
+   errorPriceIcon.style.cssText = 'transform: scale(0);';
+   errorPriceIcon.classList.remove('error-shake');
+   successOutline.classList.remove('error-input-border');
+   successOutline.classList.add('success-input-border');
+}
 // Removes setSuccess styling when validation passes 100%
 const setSuccessClearForm2 = element => {
    const inputControl2 = element.parentElement;
    const successOutline = element;
-
    successOutline.classList.remove('success-input-border');   
 };
 
+// ### START VALIDATION CHECK ###
 const validateInputsForm2 = () => {
-   // const select2Value = document.getElementById('roll-width2');
-   const footInputValue = footInput.value.trim();
-   const inchInputValue = inchInput.value.trim();
+   if (select2Width.selectedIndex === 0) {
+         setErrorSelect(select2Width, '* Roll width selection required');  
+      } else {
+         setSuccessForm2Select2(select2Width); 
+      }
+   const feet = Array.from(footInputs).forEach((footInput) => {
+      footInput.value.trim();
+      console.log("Input: " + footInput.value);
+      if (footInput.value === '') {
+      setErrorFt(footInput, '* Feet required');
+      } else {
+         setSuccessForm2Ft(footInput); 
+      }
+   })
+
+   const inch = Array.from(inchInputs).forEach((inchInput) => {
+      console.log("Input: " + inchInput.value);
+      if (inchInput.value === '') {
+      setErrorInch(inchInput, '* Inch required');
+      } else {
+         setSuccessForm2Inch(inchInput); 
+      }
+   })
+   inchInputs
+   // const inchInputValue = inchInput.value.trim();
    const priceInputValue = priceInput.value.trim();
 
-   // if (select2Value.selectedIndex === 0) {
-   //    setErrorForm2(select2Value, '* Roll width selection required');  
-   // } else {
-   //    setSuccessForm2(select2Value); 
-   // }
-
-   if (footInputValue === '') {
-      setErrorForm2(footInput, '* Feet required');
-   } else {
-      setSuccessForm2(footInput); 
-   }
-
-   if (inchInputValue === '') {
-      setErrorForm2(inchInput, '* Inch required');
-   } else {
-      setSuccessForm2(inchInput);
-   }
-
    if (priceInputValue === '') {
-      setErrorForm2(priceInput, '* Price required');
+      setErrorPrice(priceInput, '* Price required');
    } else {
-      setSuccessForm2(priceInput);
+      setSuccessForm2Price(priceInput);
    }
-// select2Value.selectedIndex === 0 ||
-   if ( !footInputValue || !inchInputValue || !priceInputValue) {
-      console.log("All 3 of the last inputs must have value.");
+
+   if ( select2Width.selectedIndex === 0 || footInputs.value === "" || inchInputs.value === "" || priceInputValue === "") {
+      console.log("All inputs must have value.");
       return false;
    } else {
       console.log("All inputs have a value.");
-      // setSuccessClearForm2(select2Value);
-      setSuccessClearForm2(footInput);
-      setSuccessClearForm2(inchInput);
+      setSuccessClearForm2(select2Width);
+      // setSuccessClearForm2(footInputs);
+      // setSuccessClearForm2(inchInputs);
       setSuccessClearForm2(priceInput);
       return true;
    }

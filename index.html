@@ -105,6 +105,8 @@
                <option value="6">6ft Wide</option>
                <option value="12">12ft Wide</option>
             </select>
+            <div class="error2-select-text-wrapper"><i>* Feet required</i></div>
+            <div class="error2-select-icon-wrapper"><i class="fas fa-exclamation-circle error2-icon"></i></div>
          </div>
          
          <!-- Rewrite for cuts container -->
@@ -139,7 +141,7 @@
                   <div class="error2-ft-text-wrapper"><i>* Feet required</i></div>
                   <div class="error2-ft-icon-wrapper"><i class="fas fa-exclamation-circle error2-icon"></i></div>
                   <!-- Inch Input -->
-                  <input type="number" id="cut1LengthInch" class="cutLengthInch" name="cut-size-in" min="0" max="11" step="1" value="" placeholder="0" required>
+                  <input type="number" class="cutLengthInch" name="cut-size-in" min="0" max="11" step="1" value="" placeholder="0" required>
                   <span class="measurement-unit measurement-unit-in">in</span>
 
                   <div class="error2-inch-text-wrapper"><i>* Inch required</i></div>
@@ -154,8 +156,8 @@
 
                   <div class="error2-ft-text-wrapper"><i>* Feet required</i></div>
                   <div class="error2-ft-icon-wrapper"><i class="fas fa-exclamation-circle error2-icon"></i></div>
-                  <!-- Inch Input -->
-                  <input type="number" id="cut1LengthInch" class="cutLengthInch" name="cut-size-in" min="0" max="11" step="1" value="" placeholder="0" required>
+                   <!-- Inch Input -->
+                  <input type="number" class="cutLengthInch" name="cut-size-in" min="0" max="11" step="1" value="" placeholder="0" required>
                   <span class="measurement-unit measurement-unit-in">in</span>
 
                   <div class="error2-inch-text-wrapper"><i>* Inch required</i></div>
@@ -173,7 +175,7 @@
 
          <div class="input-group2">
             <label for="sell-price">Enter price of roll good</label>
-            <div class="input-wrapper input-price-wrapper">
+            <div id="input-price-wrapper" class="input-wrapper">
                <span class="currency-symbol">$</span>
                <input type="number" name="roll-good-price" id="sell-price-input" placeholder="0.00" value="" required>
                <span class="price-unit-measurement">Per SqYd</span>
