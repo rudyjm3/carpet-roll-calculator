@@ -21,7 +21,7 @@ This project was inspired by preping for inventory for the store Nov 2022. The a
 - [JavaScript Array forEach() resource 2](https://vanillajstoolkit.com/reference/loops/array-foreach/)
 - [Converting a NodeList to an array with vanilla JavaScript](https://gomakethings.com/converting-a-nodelist-to-an-array-with-vanilla-javascript/)
 - [Getting all of a form's elements with vanilla JS](https://gomakethings.com/getting-all-of-a-forms-elements-with-vanilla-js/)
-- [HTML <select> form Attribute](https://www.w3schools.com/tags/att_select_form.asp)
+- [HTML select form Attribute](https://www.w3schools.com/tags/att_select_form.asp)
 - [How to test if an element contains class in JavaScript in HTML?](https://www.tutorialspoint.com/How-to-test-if-an-element-contains-class-in-JavaScript-in-HTML)
 - [How do I select elements whose class name starts with a specific word?](https://stackoverflow.com/questions/58524685/how-do-i-select-elements-whose-class-name-starts-with-a-specific-word)
 - [Array.from()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
