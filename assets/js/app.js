@@ -35,7 +35,7 @@ function openForm(evt, formName) {
 #######################################################################*/
 for (const submitButton of submitButtons)
 submitButton.addEventListener('click', (event) => {
-   debugger;
+   // debugger;
 // This is causing browsers default form validation to not run/work    
    event.preventDefault();
    
@@ -61,9 +61,9 @@ submitButton.addEventListener('click', (event) => {
          break;
    }
 });
-//######################## END BUTTON LISTENER #########################//
+//######################## END SUBMIT BUTTON LISTENER #################//
 
-/* #####  Clear button function ################################
+/* ##### CLEAR BUTTON FUNCTION ################################
 ################################################################*/
 for(const clearButton of clearButtons)
 clearButton.addEventListener('click', () => {
@@ -173,7 +173,7 @@ const validateInputs = () => {
    }
 
    if (select1Value.selectedIndex === 0 || !rollDiameterValue || !tubeDiameterValue || !countedRingsValue) {
-      console.log("All 3 of the last inputs must have value.");
+      console.log("All inputs must have value.");
       return false;
    } else {
       console.log("All inputs have a value.");
@@ -189,7 +189,7 @@ const validateInputs = () => {
 
 /* ##### FORM 2 VALIDATION  ##############################
 #############################################################*/
-const Form2 = document.getElementById('form2-Cut-Calc');
+const form2 = document.getElementById('form2-Cut-Calc');
 const select2Width = document.getElementById('roll-width2');
 const cutList = document.getElementById('cuts-list');
 const footInputs = document.getElementsByClassName('cutLengthFt');
@@ -306,30 +306,53 @@ const setSuccessClearForm2 = element => {
 
 // ### START VALIDATION CHECK ###
 const validateInputsForm2 = () => {
+   // debugger;
    if (select2Width.selectedIndex === 0) {
          setErrorSelect(select2Width, '* Roll width selection required');  
       } else {
          setSuccessForm2Select2(select2Width); 
+         // setSuccessClearForm2(select2Width);//clearing success class
       }
-   const feet = Array.from(footInputs).forEach((footInput) => {
-      footInput.value.trim();
-      console.log("Input: " + footInput.value);
-      if (footInput.value === '') {
-      setErrorFt(footInput, '* Feet required');
+   
+   for (let i = 0; i < footInputs.length; i++) {
+      console.log(footInputs[i].value);
+      // let footInput = footInputs[i];
+      if (footInputs[i].value === "") {
+         
+         setErrorFt(footInputs[i], '* Feet required');
       } else {
-         setSuccessForm2Ft(footInput); 
+         setSuccessForm2Ft(footInputs[i]); 
       }
-   })
-
-   const inch = Array.from(inchInputs).forEach((inchInput) => {
-      console.log("Input: " + inchInput.value);
-      if (inchInput.value === '') {
-      setErrorInch(inchInput, '* Inch required');
+   }  
+   // 
+   // const feet = Array.from(footInputs).forEach((footInput) => {
+   //    footInput.value.trim();
+   //    console.log("Input: " + footInput.value);
+   //    if (footInput.value === '') {
+   //    setErrorFt(footInput, '* Feet required');
+   //    } else {
+   //       setSuccessForm2Ft(footInput); 
+   //    }
+   // })
+   //
+   for (let i = 0; i < inchInputs.length; i++) {
+      console.log(inchInputs[i].value);
+      if (inchInputs[i].value === "") {
+   
+         setErrorInch(inchInputs[i], '* Inch required');
       } else {
-         setSuccessForm2Inch(inchInput); 
+         setSuccessForm2Inch(inchInputs[i]); 
       }
-   })
-   inchInputs
+   } 
+   // const inch = Array.from(inchInputs).forEach((inchInput) => {
+   //    console.log("Input: " + inchInput.value);
+   //    if (inchInput.value === '') {
+   //    setErrorInch(inchInput, '* Inch required');
+   //    } else {
+   //       setSuccessForm2Inch(inchInput); 
+   //    }
+   // })
+  
    // const inchInputValue = inchInput.value.trim();
    const priceInputValue = priceInput.value.trim();
 
@@ -337,17 +360,54 @@ const validateInputsForm2 = () => {
       setErrorPrice(priceInput, '* Price required');
    } else {
       setSuccessForm2Price(priceInput);
+      // setSuccessClearForm2(priceInput);//clearing success class
+   }
+debugger;
+   
+   const foot = () => {
+      for (let i = 0; i < footInputs.length; i++) {
+         console.log(footInputs[i].className);
+         if (footInputs[i].classList.contains('error-input-border')) {
+            alert('this foot input has an error');
+            return false;
+         } else {
+            setSuccessForm2Ft(footInputs[i]);//clearing success class
+         }
+      }
+   }
+   const inch = () => {
+      for (let i = 0; i < inchInputs.length; i++) {
+         console.log(inchInputs[i].className);
+         if (inchInputs[i].classList.contains('error-input-border')) {
+            
+            return false;
+         } else {
+            setSuccessForm2Inch(inchInputs[i]);
+         }
+      }
    }
 
-   if ( select2Width.selectedIndex === 0 || footInputs.value === "" || inchInputs.value === "" || priceInputValue === "") {
+   // if ( select2Width.classList.contains('error-input-border') ||
+   //   priceInput.classList.contains('error-input-border')) {
+   //    alert ("Element class contains error-input-border.");
+   //    console.log("Element class contains error-input-border.");
+   //    return
+   // }
+
+   if ( select2Width.selectedIndex === 0 || foot() === false || inch() === false || priceInputValue === "") {
       console.log("All inputs must have value.");
+
       return false;
    } else {
       console.log("All inputs have a value.");
       setSuccessClearForm2(select2Width);
-      // setSuccessClearForm2(footInputs);
-      // setSuccessClearForm2(inchInputs);
-      setSuccessClearForm2(priceInput);
+      // Get all form 2 inputs type=number and clear success styling
+      const allNumInputs = form2.querySelectorAll('input[type=number]');
+      console.log(allNumInputs);
+      let allNumInputsArr = Array.from(allNumInputs).forEach(function (allNumInput) {
+         console.log(allNumInput);
+         setSuccessClearForm2(allNumInput);
+      });
       return true;
    }
 
