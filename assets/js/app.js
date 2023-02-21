@@ -362,7 +362,7 @@ const validateInputsForm2 = () => {
       setSuccessForm2Price(priceInput);
       // setSuccessClearForm2(priceInput);//clearing success class
    }
-debugger;
+// debugger;
    
    const foot = () => {
       for (let i = 0; i < footInputs.length; i++) {
@@ -493,52 +493,54 @@ function getSqyds() {
 /* Formula to convert inch to decimal (Divide inch by 12)
  example: 4in / 12 = 0.333
  */
+let cutCounter = 0;
 function updateCounter() { 
-   --cutCounter;
-   console.log("cut count = " + cutCounter);
+   cutItem = document.querySelectorAll('.cut-list-item');
+
+   for (let i = 0; i < cutItem.length; i++) {
+      cutCounter = cutItem.length ;
+   }
+   console.log("Cut count = " + cutCounter);
 }
+
 function removeCut(ele) {
    ele.parentNode.remove();
    updateCounter();
 }
 
-
 /* ### **** ADD NEW CUT REWRITE ### **** ##############################
 #######################################################################*/
-let cutCounter = 1;
-// Add a function to add another cut to the form
+
+// Function to add another cut to the form
 function addCut() {
-// event.preventDefault(); // Prevent form from submitting/clearing
-// Increment the counter
-cutCounter++;
-console.log("cut count " + cutCounter);
-// Create a new div for the cut
-let cutDiv = document.createElement("div");
-// Add class to new div 
-cutDiv.classList.add('cut-input-wrapper', 'added-cut');
-// Add the necessary input for the new cut
-cutDiv.innerHTML = `
-   <label for="cut${cutCounter}Length">Length of cut ${cutCounter}:</label>
-   <input type="number" class="cutLengthFt" name="cut-size-ft" min="0" step="1" value="" placeholder="0" required> 
-   <span class="measurement-unit measurement-unit-ft">ft</span> 
+   // REWRITE FOR NEW CUT ITEM ########
+   // Create a li for the new cut
+   let newCutItem = document.createElement('li');
+   // Add class to new cut item 
+   newCutItem.classList.add('cut-list-item', 'added-cut');
+   // Add the necessary html for the new cut
+   newCutItem.innerHTML = `
+   <input type="number" class="cutLengthFt" name="cut-size-ft" min="0" step="1" value="" placeholder="0" required>
+   <span class="measurement-unit measurement-unit-ft">ft</span>
 
    <div class="error2-ft-text-wrapper"><i>* Feet required</i></div>
    <div class="error2-ft-icon-wrapper"><i class="fas fa-exclamation-circle error2-icon"></i></div>
-
    <!-- Inch Input -->
-   <input type="number" id="cut1LengthInch" class="cutLengthInch" name="cut-size-in" min="0" max="11" step="1" value="" placeholder="0" required>
+   <input type="number" class="cutLengthInch" name="cut-size-in" min="0" max="11" step="1" value="" placeholder="0" required>
    <span class="measurement-unit measurement-unit-in">in</span>
 
    <div class="error2-inch-text-wrapper"><i>* Inch required</i></div>
    <div class="error2-inch-icon-wrapper"><i class="fas fa-exclamation-circle error2-icon"></i></div>
 
    <button type="button" class="delete-input-btn" onclick="removeCut(this);"><i class="far fa-trash-alt trash-icon"></i></button>
-`
+   `
+   // Add the new cut item to the cuts list container (ordered list)
+   document.getElementById('cuts-list').appendChild(newCutItem);
+   // Run cut counter to cut new number of cuts
+   updateCounter();
 
-{/* <button type="button" class="delete-input-btn" onclick="removeCut(this);"><i class="far fa-trash-alt trash-icon"></i></button> */}
-// Add the new div to the form
-document.getElementById("cuts").appendChild(cutDiv);
 }
+
 // ### **** END ADD NEW CUT REWRITE ### **** #############################//
 
 
@@ -657,10 +659,7 @@ function selectedWidth() {
 selectedWidth();
 
 // window.onload = widthSelection;
-
 document.getElementById('roll-width2').addEventListener('change', selectedWidth);
-
-// console.log(widthSelection);
 
 //######################### END PRICE CALC ##################################//
 
