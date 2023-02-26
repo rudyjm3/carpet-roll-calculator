@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 
@@ -91,13 +92,14 @@ hr {
 
 .form-heading {
    position: relative;
-   font-size: 12px;
    margin-bottom: 25px;
    border-bottom: 3px solid rgb(168, 168, 168);
 } 
-.form-heading > h1 {
+.form-heading > p {
    position: relative;
-   bottom: -3px;
+   bottom: -2px;
+   font-size: 1.5em;
+   font-weight: bold;
    width: fit-content;
    border-bottom: 3px solid rgba(247, 100, 2);
 }
@@ -106,8 +108,66 @@ hr {
    display: flex;
    justify-content: space-between;
    align-items: center;
-   margin-bottom: 15px;
+   margin-bottom: 20px;
 }
+.input-group > .error-text-wrapper, .error-icon-wrapper {
+   position: absolute;
+   width: max-content;
+   height: auto;
+   /* background-color: red; */
+}
+.error-text-wrapper {
+   font-size: 0.7em;
+   font-weight: 600;
+   color: red;
+   top: 106%;
+   left: 57%;
+   display: none;
+}
+.error-icon-wrapper {
+   top: 32%;
+   left: 87%;
+   font-size: 1em;
+   color: red;
+   transform: scale(0);
+   transition: all 0.3s ease-in-out
+}
+.fist-error-icon {  /*form1 drop down book*/
+   top: 32%;
+   left: 87%;
+}
+.error-input-border {
+   border: 2px solid red;
+   border-radius: 4px;
+   outline: none;
+   /* box-shadow: 0 0 4px 1px rgba(255, 0, 0, 0.8); */
+}
+.error-shake {
+   animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+   transform: translate3d(0, 0, 0);
+}
+@keyframes shake {
+   10%, 90% {
+     transform: translate3d(-1px, 0, 0);
+   }
+   
+   20%, 80% {
+     transform: translate3d(2px, 0, 0);
+   }
+ 
+   30%, 50%, 70% {
+     transform: translate3d(-4px, 0, 0);
+   }
+ 
+   40%, 60% {
+     transform: translate3d(4px, 0, 0);
+   }
+ }
+ .success-input-border {
+   border: 2px solid rgb(0, 215, 0);
+   border-radius: 4px;
+   outline: none;
+ }
 
 .input-group input[type="number"] {
    width: 25%;
@@ -139,10 +199,9 @@ hr {
    font-size: 15px;
 }
 
-
 /* Roll width selection styling */
 #roll-width {
-   width: auto;
+   width: 60%;
    height: 50px;
    padding: 0 10px;
    border-radius: 4px;
@@ -248,7 +307,7 @@ hr {
 }
 .results-title {
    position: relative;
-   bottom: -3px;
+   bottom: -2.5px;
    font-size: 1.5em;
    font-weight: bold;
    width: fit-content;
@@ -284,10 +343,15 @@ hr {
 /* ### FORM 2 STYLING #################################
 ######################################################### */
 .input-group2 {
+   position: relative;
    display: flex;
    justify-content: space-between;
    align-items: center;
-   margin-bottom: 15px;
+   margin-bottom: 20px;
+}
+.input-group2 > label {
+   font-weight: 500;
+   font-size: 15px;
 }
 #roll-width2 { 
    width: 60%;
@@ -298,55 +362,89 @@ hr {
    font-weight: 600;
    color: #333;
 }
-#cuts {
+/* Ordered list custom list counter and styling */
+#cuts-list {
+   /* delete default counter */
+   list-style-type: none;
+   /* create custom counter and set it to 0 */
+   counter-reset: elementcounter;
    width: 100%;
-}
-.cut-input-wrapper {
+ }
+ 
+ #cuts-list>li:before {
+   /* print out "Element " followed by the current counter value */
+   content: "Length of cut " counter(elementcounter) ": ";
+   /* increment counter */
+   counter-increment: elementcounter;
+   padding-right: 28px;
+   font-weight: 500;
+   font-size: 15px;
+ }
+ .cut-list-item {
    position: relative;
    display: flex;
    justify-content: space-between;
    align-items: center;
-   margin-bottom: 15px;
+   margin-bottom: 25px;
+ }
+/* End custom list counter and styling */
+
+
+/* old #cuts {
+   width: 100%;
+} */
+.cut-input-wrapper { /* Orderered List*/
+   position: relative;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-direction: column;
+   margin-bottom: 20px;
    transition:all 0.5s ease-in-out;
 }
-.input-group2 label {
+/* old .input-group2 label {
    width: 40%;
    font-weight: 500;
    font-size: 15px;
-   /* margin-right: 20px; */
-}
+   
+} */
 
 .input-group2 input[type="number"] {
    width: 24%;
    height: 50px;
-   padding: 0 17px 0 10px;
+   padding: 0 22px 0 10px;
    border-radius: 4px;
    /* text-align: center; */
    font-size: 17px;
    font-weight: 600;
    color: #333;
 }
-.input-group2:nth-last-child(3) {
+.input-group2:has(select) {
+   margin-bottom: 25px;
+}
+.input-group2:has(#input-price-wrapper) {
    margin-bottom: 40px;
 }
 
-.input-wrapper {
+/* .input-wrapper {
    position: relative;
    display: flex;
    justify-content: space-between;
    align-items: center;
    width: 60%;
-}
+} */
 .measurement-unit {
    position: relative;
    font-weight: 500;
 }
 .measurement-unit-ft {/* for foot unit */
-   left: -22px; 
+   left: -8%; 
+   width: 0;
    color: grey;
 }
 .measurement-unit-in {
-   left: -22px; /* for inch unit */
+   left: -8%; /* for inch unit */
+   width: 0;
    color: grey;
 }
 .delete-input-btn {
@@ -370,13 +468,18 @@ hr {
 .hidden-delete-btn {
    visibility: hidden;
 }
-.input-price-wrapper {
+#input-price-wrapper {
+   position: relative;
+   display: flex;
+   /* justify-content: space-between; */
+   align-items: center;
+   width: 60%;
    justify-content: flex-start;
 }
 .currency-symbol {
    margin-right: 5px;
-   font-weight: 600;
-   font-size: 1.5rem;
+   font-weight: 500;
+   font-size: 1.3rem;
 }
 
 #sell-price-input {
@@ -389,7 +492,103 @@ hr {
    margin-left: 5px;
 }
 
-/* Output Styling */
+/* ########### ERROR STYLING FORM 2 ########## */
+.error2-select-text-wrapper, .error2-select-icon-wrapper {
+   position: absolute;
+   width: max-content;
+   height: auto;
+}
+.error2-select-text-wrapper {
+   font-size: 0.7em;
+   font-weight: 600;
+   color: red;
+   top: 106%;
+   left: 41%;
+   display: none;
+}
+.error2-select-icon-wrapper {
+   right: 10%;
+   font-size: 1em;
+   color: red;
+   transform: scale(0);
+   transition: all 0.3s ease-in-out;
+}
+.cut-list-item > .error2-ft-text-wrapper, .error2-inch-text-wrapper, .error2-ft-icon-wrapper, .error2-inch-icon-wrapper {
+   position: absolute;
+   width: max-content;
+   height: auto;
+   /* background-color: red; */
+}
+.error2-ft-text-wrapper {
+   font-size: 0.7em;
+   font-weight: 600;
+   color: red;
+   top: 106%;
+   left: 41%;
+   display: none;
+}
+.error2-ft-icon-wrapper {
+   top: 32%;
+   left: 53%;
+   font-size: 1em;
+   color: red;
+   transform: scale(0);
+   transition: all 0.3s ease-in-out;
+}
+
+.error2-inch-text-wrapper {
+   font-size: 0.7em;
+   font-weight: 600;
+   color: red;
+   top: 106%;
+   left: 70%;
+   display: none;
+}
+.error2-inch-icon-wrapper {
+   top: 32%;
+   left: 81%;
+   font-size: 1em;
+   color: red;
+   transform: scale(0);
+   transition: all 0.3s ease-in-out;
+}
+#input-price-wrapper > .error-price-text-wrapper, 
+.error-price-icon-wrapper {
+   position: absolute;
+   width: max-content;
+   height: auto;
+}
+#input-price-wrapper > .error-price-icon-wrapper {
+   position: absolute;
+   width: max-content;
+   height: auto;
+}
+.error-price-text-wrapper {
+   font-size: 0.7em;
+   font-weight: 600;
+   color: red;
+   top: 105%;
+   left: 11%;
+   display: none;
+}
+
+.error-price-icon-wrapper {
+   top: 32%;
+   left: 40%;
+   font-size: 1em;
+   color: red;
+   transform: scale(0);
+   transition: all 0.3s ease-in-out;
+}
+.error2-input-border {
+   border: 2px solid red;
+   border-radius: 4px;
+   outline: none;
+}
+
+/* ########################################### */
+
+/* ########### Output Styling ########## */
 #output {
    margin-top: 25px;
    padding: 15px 25px;

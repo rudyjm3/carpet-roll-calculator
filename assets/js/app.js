@@ -1,4 +1,6 @@
 // let widthSelection = document.getElementById('roll-width');
+const rollSizeForm = document.getElementById('form1-Roll-Size-Calc');
+const cutForm = document.getElementById('form2-Cut_clac');
 let carpet_roll_diameter = document.getElementById('roll-diameter');  
 let tube_diameter = document.getElementById('tube-diameter');  //6;
 let numRings = document.getElementById('carpet-rings');
@@ -35,26 +37,32 @@ for (const submitButton of submitButtons)
 submitButton.addEventListener('click', (event) => {
 // This is causing browsers default form validation to not run/work    
    event.preventDefault();
-
+   
    let buttonValue = submitButton.value;
    switch (buttonValue) {
       case "Calculate-sqyd":
          console.log("Form 1's submit button has been pressed.");
+         //Run form validation
+         // validateInputs();
          // Run function for form1-Roll-Size-Calc
-         getSqyds();
+         if(validateInputs() === true) {
+           getSqyds(); 
+         }
          
          break;
       case "Calculate-cut-price-btn":
          console.log("Form 2's submit button was pressed."); 
          // Run function for form 2
-         getCutPrice();
+         if(validateInputsForm2() === true) {
+            getCutPrice();
+         }
         
          break;
    }
 });
-//######################## END BUTTON LISTENER #########################//
+//######################## END SUBMIT BUTTON LISTENER #################//
 
-/* #####  Clear button function ################################
+/* ##### CLEAR BUTTON FUNCTION ################################
 ################################################################*/
 for(const clearButton of clearButtons)
 clearButton.addEventListener('click', () => {
@@ -84,6 +92,318 @@ clearButton.addEventListener('click', () => {
 
 //######################### END CLEAR BTN FUNCTION ##########################//
 
+
+/* ##### FORM 1 VALIDATION  ##############################
+#############################################################*/
+const firstForm = document.getElementById('form1-Roll-Size-Calc');
+const select1 = document.getElementById('roll-width');
+const rollDiameter = document.getElementById('roll-diameter');
+const tubeDiameter = document.getElementById('tube-diameter');
+const countedRings = document.getElementById('carpet-rings');
+
+
+const setError = (element, message) => {
+   
+   const inputControl1 = element.parentElement;
+   const errorOutline = element;
+   const errorTxt = inputControl1.querySelector('.error-text-wrapper');
+   const errorIcon = inputControl1.querySelector('.error-icon-wrapper');
+   console.log(errorIcon);
+
+   errorTxt.innerText = message;
+   errorTxt.style.cssText = 'display: block;';
+   errorIcon.style.cssText = 'transform: scale(1);';
+   errorIcon.classList.add('error-shake');
+   errorOutline.classList.add('error-input-border');
+   errorOutline.classList.remove('success-input-border');
+   
+};
+
+const setSuccess = element => {
+   const inputControl1 = element.parentElement;
+   // console.log(inputControl1);
+   const successOutline = element;
+   const errorTxt = inputControl1.querySelector('.error-text-wrapper');
+   const errorIcon = inputControl1.querySelector('.error-icon-wrapper');
+
+   errorTxt.innerText = "";
+   errorTxt.style.cssText = 'display: block;';
+   errorIcon.style.cssText = 'transform: scale(0);';
+   errorIcon.classList.remove('error-shake');
+   successOutline.classList.remove('error-input-border');
+   successOutline.classList.add('success-input-border');
+};
+// Removes setSuccess styling when validation passes 100%
+const setSuccessClear = element => {
+   const inputControl1 = element.parentElement;
+   const successOutline = element;
+
+   successOutline.classList.remove('success-input-border');   
+};
+
+const validateInputs = () => {
+   const select1Value = document.getElementById('roll-width');
+   const rollDiameterValue = rollDiameter.value.trim();
+   const tubeDiameterValue = tubeDiameter.value.trim();
+   const countedRingsValue = countedRings.value.trim();
+
+   if (select1Value.selectedIndex === 0) {
+      setError(select1Value, '*Roll width selection required');  
+   } else {
+      setSuccess(select1Value); 
+   }
+
+   if (rollDiameterValue === '') {
+      setError(rollDiameter, '*Roll diameter inches required');
+   } else {
+      setSuccess(rollDiameter); 
+   }
+
+   if (tubeDiameterValue === '') {
+      setError(tubeDiameter, '*Tube diameter inches required');
+   } else {
+      setSuccess(tubeDiameter);
+   }
+
+   if (countedRingsValue === '') {
+      setError(countedRings, '*Number of carpet rings required');
+   } else {
+      setSuccess(countedRings);
+   }
+
+   if (select1Value.selectedIndex === 0 || !rollDiameterValue || !tubeDiameterValue || !countedRingsValue) {
+      console.log("All inputs must have value.");
+      return false;
+   } else {
+      console.log("All inputs have a value.");
+      setSuccessClear(select1Value);
+      setSuccessClear(rollDiameter);
+      setSuccessClear(tubeDiameter);
+      setSuccessClear(countedRings);
+      return true;
+   }
+
+};
+//################### END FORM 1 VALIDATION ##########################//
+
+/* ##### FORM 2 VALIDATION  ##############################
+#############################################################*/
+const form2 = document.getElementById('form2-Cut-Calc');
+const select2Width = document.getElementById('roll-width2');
+const cutList = document.getElementById('cuts-list');
+const footInputs = document.getElementsByClassName('cutLengthFt');
+const inchInputs = document.getElementsByClassName('cutLengthInch');
+const priceInput = document.getElementById('sell-price-input');
+
+const setErrorSelect = (element, message) => {
+   const inputControl2 = element.parentElement;
+   const error2Outline = element;
+   const error2SelectTxt = inputControl2.querySelector('.error2-select-text-wrapper');
+   const error2SelectIcon = inputControl2.querySelector('.error2-select-icon-wrapper');
+   error2SelectTxt.innerText = message;
+   error2SelectTxt.style.cssText = 'display: block;';
+   error2SelectIcon.style.cssText = 'transform: scale(1);';
+   error2SelectIcon.classList.add('error-shake');
+   error2Outline.classList.add('error-input-border');
+   error2Outline.classList.remove('success-input-border');
+};
+const setErrorFt = (element, message) => {
+   const inputControl2 = element.parentElement;
+   const error2Outline = element;
+   const error2FtTxt = inputControl2.querySelector('.error2-ft-text-wrapper');
+   const error2FtIcon = inputControl2.querySelector('.error2-ft-icon-wrapper');
+   error2FtTxt.innerText = message;
+   error2FtTxt.style.cssText = 'display: block;';
+   error2FtIcon.style.cssText = 'transform: scale(1);';
+   error2FtIcon.classList.add('error-shake');
+   error2Outline.classList.add('error-input-border');
+   error2Outline.classList.remove('success-input-border');
+};
+const setErrorInch = (element, message) => {
+   const inputControl2 = element.parentElement;
+   const error2Outline = element;
+   const error2InchTxt = inputControl2.querySelector('.error2-inch-text-wrapper');
+   const error2InchIcon = inputControl2.querySelector('.error2-inch-icon-wrapper');
+   error2InchTxt.innerText = message;
+   error2InchTxt.style.cssText = 'display: block;';
+   error2InchIcon.style.cssText = 'transform: scale(1);';
+   error2InchIcon.classList.add('error-shake');
+   error2Outline.classList.add('error-input-border');
+   error2Outline.classList.remove('success-input-border');
+};
+const setErrorPrice = (element, message) => {
+   const inputControl2 = element.parentElement;
+   const error2Outline = element;
+   const errorPriceTxt = inputControl2.querySelector('.error-price-text-wrapper');
+   const errorPriceIcon = inputControl2.querySelector('.error-price-icon-wrapper');
+   errorPriceTxt.innerText = message;
+   errorPriceTxt.style.cssText = 'display: block;';
+   errorPriceIcon.style.cssText = 'transform: scale(1);';
+   errorPriceIcon.classList.add('error-shake');
+   error2Outline.classList.add('error-input-border');
+   error2Outline.classList.remove('success-input-border');
+};
+
+const setSuccessForm2Select2 = element => {
+   const inputControl2 = element.parentElement;
+   const successOutline = element;
+   const error2SelectTxt = inputControl2.querySelector('.error2-select-text-wrapper');
+   const error2SelectIcon = inputControl2.querySelector('.error2-select-icon-wrapper');
+
+   error2SelectTxt.innerText = "";
+   error2SelectTxt.style.cssText = 'display: block;';
+   error2SelectIcon.style.cssText = 'transform: scale(0);';
+   error2SelectIcon.classList.remove('error-shake');
+   successOutline.classList.remove('error-input-border');
+   successOutline.classList.add('success-input-border');
+}
+const setSuccessForm2Ft = element => {
+   const inputControl2 = element.parentElement;
+   const successOutline = element;
+   
+   const error2Txt = inputControl2.querySelector('.error2-ft-text-wrapper');
+   const error2Icon = inputControl2.querySelector('.error2-ft-icon-wrapper');
+   error2Txt.innerText = "";
+   error2Txt.style.cssText = 'display: block;';
+   error2Icon.style.cssText = 'transform: scale(0);';
+   error2Icon.classList.remove('error-shake');
+   successOutline.classList.remove('error-input-border');
+   successOutline.classList.add('success-input-border');
+};
+const setSuccessForm2Inch = element => {
+   const inputControl2 = element.parentElement;
+   const successOutline = element;
+   
+   const error2Txt = inputControl2.querySelector('.error2-inch-text-wrapper');
+   const error2Icon = inputControl2.querySelector('.error2-inch-icon-wrapper');
+   error2Txt.innerText = "";
+   error2Txt.style.cssText = 'display: block;';
+   error2Icon.style.cssText = 'transform: scale(0);';
+   error2Icon.classList.remove('error-shake');
+   successOutline.classList.remove('error-input-border');
+   successOutline.classList.add('success-input-border');
+};
+const setSuccessForm2Price = element => {
+   const inputControl2 = element.parentElement;
+   const successOutline = element;
+   const errorPriceTxt = inputControl2.querySelector('.error-price-text-wrapper');
+   const errorPriceIcon = inputControl2.querySelector('.error-price-icon-wrapper');
+
+   errorPriceTxt.innerText = "";
+   errorPriceTxt.style.cssText = 'display: block;';
+   errorPriceIcon.style.cssText = 'transform: scale(0);';
+   errorPriceIcon.classList.remove('error-shake');
+   successOutline.classList.remove('error-input-border');
+   successOutline.classList.add('success-input-border');
+}
+// Removes setSuccess styling when validation passes 100%
+const setSuccessClearForm2 = element => {
+   const inputControl2 = element.parentElement;
+   const successOutline = element;
+   successOutline.classList.remove('success-input-border');   
+};
+
+// ### START VALIDATION CHECK ###
+const validateInputsForm2 = () => {
+   
+   if (select2Width.selectedIndex === 0) {
+         setErrorSelect(select2Width, '* Roll width selection required');  
+      } else {
+         setSuccessForm2Select2(select2Width); 
+         // setSuccessClearForm2(select2Width);//clearing success class
+      }
+   
+   for (let i = 0; i < footInputs.length; i++) {
+      console.log(footInputs[i].value);
+      // let footInput = footInputs[i];
+      if (footInputs[i].value === "") {
+         
+         setErrorFt(footInputs[i], '* Feet required');
+      } else {
+         setSuccessForm2Ft(footInputs[i]); 
+      }
+   }  
+   // 
+   // const feet = Array.from(footInputs).forEach((footInput) => {
+   //    footInput.value.trim();
+   //    console.log("Input: " + footInput.value);
+   //    if (footInput.value === '') {
+   //    setErrorFt(footInput, '* Feet required');
+   //    } else {
+   //       setSuccessForm2Ft(footInput); 
+   //    }
+   // })
+   //
+   for (let i = 0; i < inchInputs.length; i++) {
+      console.log(inchInputs[i].value);
+      if (inchInputs[i].value === "") {
+   
+         setErrorInch(inchInputs[i], '* Inch required');
+      } else {
+         setSuccessForm2Inch(inchInputs[i]); 
+      }
+   } 
+   // const inch = Array.from(inchInputs).forEach((inchInput) => {
+   //    console.log("Input: " + inchInput.value);
+   //    if (inchInput.value === '') {
+   //    setErrorInch(inchInput, '* Inch required');
+   //    } else {
+   //       setSuccessForm2Inch(inchInput); 
+   //    }
+   // })
+  
+   // const inchInputValue = inchInput.value.trim();
+   const priceInputValue = priceInput.value.trim();
+
+   if (priceInputValue === '') {
+      setErrorPrice(priceInput, '* Price required');
+   } else {
+      setSuccessForm2Price(priceInput);
+      // setSuccessClearForm2(priceInput);//clearing success class
+   }
+   
+   const foot = () => {
+      for (let i = 0; i < footInputs.length; i++) {
+         console.log(footInputs[i].className);
+         if (footInputs[i].classList.contains('error-input-border')) {
+           
+            return false;
+         } else {
+            setSuccessForm2Ft(footInputs[i]);//clearing success class
+         }
+      }
+   }
+   const inch = () => {
+      for (let i = 0; i < inchInputs.length; i++) {
+         console.log(inchInputs[i].className);
+         if (inchInputs[i].classList.contains('error-input-border')) {
+            
+            return false;
+         } else {
+            setSuccessForm2Inch(inchInputs[i]);
+         }
+      }
+   }
+
+   if ( select2Width.selectedIndex === 0 || foot() === false || inch() === false || priceInputValue === "") {
+      console.log("All inputs must have value.");
+
+      return false;
+   } else {
+      console.log("All inputs have a value.");
+      setSuccessClearForm2(select2Width);
+      // Get all form 2 inputs type=number and clear success styling
+      const allNumInputs = form2.querySelectorAll('input[type=number]');
+      // console.log(allNumInputs);
+      let allNumInputsArr = Array.from(allNumInputs).forEach(function (allNumInput) {
+         // console.log(allNumInput);
+         setSuccessClearForm2(allNumInput);
+      });
+      return true;
+   }
+
+};
+//################### END FORM 2 VALIDATION ##########################//
 
 /* ##### CALC ROLLED GOODS QUANTITY FUNCTION ##############################
 ################################################################*/
@@ -164,47 +484,56 @@ function getSqyds() {
 /* Formula to convert inch to decimal (Divide inch by 12)
  example: 4in / 12 = 0.333
  */
+let cutCounter = 1;
+function updateCounter() { 
 
-function updateCounter() {
-   
-   --cutCounter;
-   console.log("cut count = " + cutCounter);
+   cutItem = document.querySelectorAll('.cut-list-item');
+
+   for (let i = 0; i < cutItem.length; i++) {
+      cutCounter = cutItem.length ;
+   }
+   console.log("Cut count = " + cutCounter);
 }
+
 function removeCut(ele) {
-   
+ 
    ele.parentNode.remove();
    updateCounter();
 }
 
-
 /* ### **** ADD NEW CUT REWRITE ### **** ##############################
 #######################################################################*/
-let cutCounter = 1;
-// Add a function to add another cut to the form
-function addCut() {
-// event.preventDefault(); // Prevent form from submitting/clearing
-// Increment the counter
-cutCounter++;
-console.log("cut count " + cutCounter);
-// Create a new div for the cut
-let cutDiv = document.createElement("div");
-// Add class to new div 
-cutDiv.classList.add('cut-input-wrapper', 'added-cut');
-// Add the necessary input for the new cut
-cutDiv.innerHTML = `
-   <label for="cut${cutCounter}Length">Length of cut ${cutCounter}:</label>
-   <input type="number" class="cutLengthFt" name="cut-size-ft" min="0" step="1" value="" placeholder="0" required> 
-   <span class="measurement-unit measurement-unit-ft">ft</span> 
-   <!-- Inch Input -->
-   <input type="number" id="cut1LengthInch" class="cutLengthInch" name="cut-size-in" min="0" max="11" step="1" value="" placeholder="0" required>
-   <span class="measurement-unit measurement-unit-in">in</span>
-   <button type="button" class="delete-input-btn" onclick="removeCut(this);"><i class="far fa-trash-alt trash-icon"></i></button>
-`
 
-{/* <button type="button" class="delete-input-btn" onclick="removeCut(this);"><i class="far fa-trash-alt trash-icon"></i></button> */}
-// Add the new div to the form
-document.getElementById("cuts").appendChild(cutDiv);
+// Function to add another cut to the form
+function addCut() {
+   // REWRITE FOR NEW CUT ITEM ########
+   // Create a li for the new cut
+   let newCutItem = document.createElement('li');
+   // Add class to new cut item 
+   newCutItem.classList.add('cut-list-item', 'added-cut');
+   // Add the necessary html for the new cut
+   newCutItem.innerHTML = `
+   <input type="number" class="cutLengthFt" name="cut-size-ft" min="0" step="1" value="" placeholder="0" required>
+   <span class="measurement-unit measurement-unit-ft">ft</span>
+
+   <div class="error2-ft-text-wrapper"><i>* Feet required</i></div>
+   <div class="error2-ft-icon-wrapper"><i class="fas fa-exclamation-circle error2-icon"></i></div>
+   <!-- Inch Input -->
+   <input type="number" class="cutLengthInch" name="cut-size-in" min="0" max="11" step="1" value="" placeholder="0" required>
+   <span class="measurement-unit measurement-unit-in">in</span>
+
+   <div class="error2-inch-text-wrapper"><i>* Inch required</i></div>
+   <div class="error2-inch-icon-wrapper"><i class="fas fa-exclamation-circle error2-icon"></i></div>
+
+   <button type="button" class="delete-input-btn" onclick="removeCut(this);"><i class="far fa-trash-alt trash-icon"></i></button>
+   `
+   // Add the new cut item to the cuts list container (ordered list)
+   document.getElementById('cuts-list').appendChild(newCutItem);
+   // Run cut counter to cut new number of cuts
+   updateCounter();
+
 }
+
 // ### **** END ADD NEW CUT REWRITE ### **** #############################//
 
 
@@ -323,10 +652,7 @@ function selectedWidth() {
 selectedWidth();
 
 // window.onload = widthSelection;
-
 document.getElementById('roll-width2').addEventListener('change', selectedWidth);
-
-// console.log(widthSelection);
 
 //######################### END PRICE CALC ##################################//
 
