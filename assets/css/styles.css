@@ -92,13 +92,14 @@ hr {
 
 .form-heading {
    position: relative;
-   font-size: 12px;
    margin-bottom: 25px;
    border-bottom: 3px solid rgb(168, 168, 168);
 } 
-.form-heading > h1 {
+.form-heading > p {
    position: relative;
-   bottom: -3px;
+   bottom: -2px;
+   font-size: 1.5em;
+   font-weight: bold;
    width: fit-content;
    border-bottom: 3px solid rgba(247, 100, 2);
 }
@@ -306,7 +307,7 @@ hr {
 }
 .results-title {
    position: relative;
-   bottom: -3px;
+   bottom: -2.5px;
    font-size: 1.5em;
    font-weight: bold;
    width: fit-content;
@@ -348,8 +349,12 @@ hr {
    align-items: center;
    margin-bottom: 20px;
 }
+.input-group2 > label {
+   font-weight: 500;
+   font-size: 15px;
+}
 #roll-width2 { 
-   width: 61%;
+   width: 60%;
    height: 50px;
    border-radius: 4px;
    text-align: center;
@@ -372,6 +377,8 @@ hr {
    /* increment counter */
    counter-increment: elementcounter;
    padding-right: 28px;
+   font-weight: 500;
+   font-size: 15px;
  }
  .cut-list-item {
    position: relative;
@@ -506,7 +513,7 @@ hr {
    transform: scale(0);
    transition: all 0.3s ease-in-out;
 }
-.cut-input-wrapper > .error2-ft-text-wrapper, .error2-inch-text-wrapper, .error2-ft-icon-wrapper, .error2-inch-icon-wrapper {
+.cut-list-item > .error2-ft-text-wrapper, .error2-inch-text-wrapper, .error2-ft-icon-wrapper, .error2-inch-icon-wrapper {
    position: absolute;
    width: max-content;
    height: auto;

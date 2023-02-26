@@ -35,7 +35,6 @@ function openForm(evt, formName) {
 #######################################################################*/
 for (const submitButton of submitButtons)
 submitButton.addEventListener('click', (event) => {
-   // debugger;
 // This is causing browsers default form validation to not run/work    
    event.preventDefault();
    
@@ -104,7 +103,7 @@ const countedRings = document.getElementById('carpet-rings');
 
 
 const setError = (element, message) => {
-   // debugger;
+   
    const inputControl1 = element.parentElement;
    const errorOutline = element;
    const errorTxt = inputControl1.querySelector('.error-text-wrapper');
@@ -306,7 +305,7 @@ const setSuccessClearForm2 = element => {
 
 // ### START VALIDATION CHECK ###
 const validateInputsForm2 = () => {
-   // debugger;
+   
    if (select2Width.selectedIndex === 0) {
          setErrorSelect(select2Width, '* Roll width selection required');  
       } else {
@@ -362,13 +361,12 @@ const validateInputsForm2 = () => {
       setSuccessForm2Price(priceInput);
       // setSuccessClearForm2(priceInput);//clearing success class
    }
-// debugger;
    
    const foot = () => {
       for (let i = 0; i < footInputs.length; i++) {
          console.log(footInputs[i].className);
          if (footInputs[i].classList.contains('error-input-border')) {
-            alert('this foot input has an error');
+           
             return false;
          } else {
             setSuccessForm2Ft(footInputs[i]);//clearing success class
@@ -387,13 +385,6 @@ const validateInputsForm2 = () => {
       }
    }
 
-   // if ( select2Width.classList.contains('error-input-border') ||
-   //   priceInput.classList.contains('error-input-border')) {
-   //    alert ("Element class contains error-input-border.");
-   //    console.log("Element class contains error-input-border.");
-   //    return
-   // }
-
    if ( select2Width.selectedIndex === 0 || foot() === false || inch() === false || priceInputValue === "") {
       console.log("All inputs must have value.");
 
@@ -403,9 +394,9 @@ const validateInputsForm2 = () => {
       setSuccessClearForm2(select2Width);
       // Get all form 2 inputs type=number and clear success styling
       const allNumInputs = form2.querySelectorAll('input[type=number]');
-      console.log(allNumInputs);
+      // console.log(allNumInputs);
       let allNumInputsArr = Array.from(allNumInputs).forEach(function (allNumInput) {
-         console.log(allNumInput);
+         // console.log(allNumInput);
          setSuccessClearForm2(allNumInput);
       });
       return true;
@@ -493,8 +484,9 @@ function getSqyds() {
 /* Formula to convert inch to decimal (Divide inch by 12)
  example: 4in / 12 = 0.333
  */
-let cutCounter = 0;
+let cutCounter = 1;
 function updateCounter() { 
+
    cutItem = document.querySelectorAll('.cut-list-item');
 
    for (let i = 0; i < cutItem.length; i++) {
@@ -504,6 +496,7 @@ function updateCounter() {
 }
 
 function removeCut(ele) {
+ 
    ele.parentNode.remove();
    updateCounter();
 }
