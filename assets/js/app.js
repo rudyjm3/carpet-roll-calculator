@@ -75,6 +75,7 @@ clearButton.addEventListener('click', () => {
          document.getElementById('output-roll-size').textContent = "";
          document.getElementById('output-roll-size').style.visibility = "hidden";
          break;
+         
       case "Reset-price-form":
          console.log("Clear button on form 2 was clicked");
          const newCuts = document.querySelectorAll('.added-cut');
@@ -83,6 +84,7 @@ clearButton.addEventListener('click', () => {
                newCuts[i].remove();
                updateCounter();
             }
+            
          document.getElementById('form2-Cut-Calc').reset();
          document.getElementById('output-cut-price').innerHTML = "";
          document.getElementById('output-cut-price').style.visibility = "hidden";
@@ -108,7 +110,6 @@ const setError = (element, message) => {
    const errorOutline = element;
    const errorTxt = inputControl1.querySelector('.error-text-wrapper');
    const errorIcon = inputControl1.querySelector('.error-icon-wrapper');
-   console.log(errorIcon);
 
    errorTxt.innerText = message;
    errorTxt.style.cssText = 'display: block;';
@@ -116,7 +117,6 @@ const setError = (element, message) => {
    errorIcon.classList.add('error-shake');
    errorOutline.classList.add('error-input-border');
    errorOutline.classList.remove('success-input-border');
-   
 };
 
 const setSuccess = element => {
@@ -140,6 +140,7 @@ const setSuccessClear = element => {
 
    successOutline.classList.remove('success-input-border');   
 };
+
 
 const validateInputs = () => {
    const select1Value = document.getElementById('roll-width');
@@ -303,6 +304,14 @@ const setSuccessClearForm2 = element => {
    successOutline.classList.remove('success-input-border');   
 };
 
+// CLEAR ALL ERROR AND SUCCESS STYLING
+// const setClearReset = element => {
+//    const inputControl1 = element.parentElement;
+//    const formInputs = element;
+
+//    formInputs.classList.remove('success-input-border', 'error-input-border');   
+// };
+
 // ### START VALIDATION CHECK ###
 const validateInputsForm2 = () => {
    
@@ -323,17 +332,7 @@ const validateInputsForm2 = () => {
          setSuccessForm2Ft(footInputs[i]); 
       }
    }  
-   // 
-   // const feet = Array.from(footInputs).forEach((footInput) => {
-   //    footInput.value.trim();
-   //    console.log("Input: " + footInput.value);
-   //    if (footInput.value === '') {
-   //    setErrorFt(footInput, '* Feet required');
-   //    } else {
-   //       setSuccessForm2Ft(footInput); 
-   //    }
-   // })
-   //
+
    for (let i = 0; i < inchInputs.length; i++) {
       console.log(inchInputs[i].value);
       if (inchInputs[i].value === "") {
@@ -343,14 +342,6 @@ const validateInputsForm2 = () => {
          setSuccessForm2Inch(inchInputs[i]); 
       }
    } 
-   // const inch = Array.from(inchInputs).forEach((inchInput) => {
-   //    console.log("Input: " + inchInput.value);
-   //    if (inchInput.value === '') {
-   //    setErrorInch(inchInput, '* Inch required');
-   //    } else {
-   //       setSuccessForm2Inch(inchInput); 
-   //    }
-   // })
   
    // const inchInputValue = inchInput.value.trim();
    const priceInputValue = priceInput.value.trim();
@@ -386,17 +377,15 @@ const validateInputsForm2 = () => {
    }
 
    if ( select2Width.selectedIndex === 0 || foot() === false || inch() === false || priceInputValue === "") {
-      console.log("All inputs must have value.");
 
+      console.log("All inputs must have value.");
       return false;
    } else {
       console.log("All inputs have a value.");
       setSuccessClearForm2(select2Width);
       // Get all form 2 inputs type=number and clear success styling
       const allNumInputs = form2.querySelectorAll('input[type=number]');
-      // console.log(allNumInputs);
       let allNumInputsArr = Array.from(allNumInputs).forEach(function (allNumInput) {
-         // console.log(allNumInput);
          setSuccessClearForm2(allNumInput);
       });
       return true;
