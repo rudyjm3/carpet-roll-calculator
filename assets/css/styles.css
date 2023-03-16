@@ -244,7 +244,7 @@ hr {
    align-items: center;
    width: 100%;
 }
-#submit-btn {
+.submit-btn {
    display: flex;
    justify-content: center;
    align-items: center;
@@ -260,7 +260,7 @@ hr {
    cursor: pointer;
    transition: 0.3s;
 }
-#submit-btn:hover {
+.submit-btn:hover {
    color: #fff;
    background-color: rgba(249, 99, 2, 1);
 }
