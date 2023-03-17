@@ -40,12 +40,13 @@ body {
    min-height: 100vh;
    margin: 25px 0;
    background-color: #393939;
-   background: url("../../images/metal-background-black.jpg");
-   /* background: url("../../images/metal-background-black.jpg"), url("../../images/HD-logo.png"); */
+   background-image: url("../../images/metal-background-black.jpg");
+   /* background-image: url("../../images/metal-background-black.jpg"), url("../../images/HD-logo.png"); */
    background-position: center;
    background-repeat: no-repeat, repeat;
    background-size: cover, 100px 100px;
-   background-blend-mode: overlay;
+   background-blend-mode: soft-light;
+   /* background-blend-mode: overlay, soft-light; */
    font-family: 'Roboto', sans-serif;
 }
 
