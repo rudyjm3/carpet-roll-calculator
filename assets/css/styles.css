@@ -354,6 +354,15 @@ hr {
    font-weight: 500;
    font-size: 15px;
 }
+.input-group2 > label[for=roll-width2]::after {
+   content: "For runners use 6ft wide";
+    position: relative;
+    top: 4px;
+    left: 1px;
+    display: block;
+    width: max-content;
+    font-size: 11px; 
+}
 #roll-width2 { 
    width: 60%;
    height: 50px;
@@ -631,12 +640,18 @@ footer > p {
       left: 55%;
    }
    .error2-inch-icon-wrapper {
-      left: 83%;
+      left: 84%;
    }
    #input-price-wrapper {
       margin-right: 16px;
    }
    #sell-price-input {
       width: 159.35px;
+   }
+   .error-price-icon-wrapper {
+      left: 35%;
+   }
+   .error-price-text-wrapper {
+      left: 4%;
    }
 }
