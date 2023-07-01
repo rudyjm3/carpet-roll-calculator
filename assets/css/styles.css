@@ -629,6 +629,9 @@ footer > p {
    .form-container {
       width: 700px;
    }
+   .error2-select-text-wrapper {
+      left: 40%;
+   }
    .cut-list-item {
       width: 100%;
    }
