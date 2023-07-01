@@ -578,7 +578,7 @@ hr {
    font-weight: 600;
    color: red;
    top: 105%;
-   left: 11%;
+   left: 9%;
    display: none;
 }
 
@@ -653,5 +653,17 @@ footer > p {
    }
    .error-price-text-wrapper {
       left: 4%;
+   }
+
+   /* FORM1 RESPONSIVE STYLING */
+   /* ========================================== */
+   .fist-error-icon {
+      left: 91%;
+   }
+   .error-icon-wrapper {
+      left: 91.5%;
+   }
+   .error-text-wrapper {
+      left: 75%;
    }
 }
