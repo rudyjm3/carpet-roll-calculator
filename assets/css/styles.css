@@ -199,6 +199,15 @@ hr {
    font-weight: 500;
    font-size: 15px;
 }
+.input-group > label[for=roll-width]::after {
+   content: "For runners use 6ft wide";
+   position: relative;
+   top: 4px;
+   left: 1px;
+   display: block;
+   width: max-content;
+   font-size: 11px; 
+}
 
 /* Roll width selection styling */
 #roll-width {
@@ -356,12 +365,12 @@ hr {
 }
 .input-group2 > label[for=roll-width2]::after {
    content: "For runners use 6ft wide";
-    position: relative;
-    top: 4px;
-    left: 1px;
-    display: block;
-    width: max-content;
-    font-size: 11px; 
+   position: relative;
+   top: 4px;
+   left: 1px;
+   display: block;
+   width: max-content;
+   font-size: 11px; 
 }
 #roll-width2 { 
    width: 60%;
