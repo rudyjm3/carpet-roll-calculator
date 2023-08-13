@@ -38,7 +38,8 @@ body {
    /* height: 100vh; */
    /* height: 100%; */
    min-height: 100vh;
-   margin: 25px 0;
+   /* margin: 25px 0; */
+   padding-top: 25px;
    background-color: #393939;
    background-image: url("../../images/metal-background-black.jpg");
    /* background-image: url("../../images/metal-background-black.jpg"), url("../../images/HD-logo.png"); */
@@ -635,6 +636,7 @@ footer > p {
 /* MOBILE STYLING - START */
 /* ==========================================*/
 @media only screen and (min-width: 700px)  {
+   
    .form-container {
       width: 700px;
    }
