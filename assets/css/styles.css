@@ -59,6 +59,16 @@ body {
    width: 400px;
    height: fit-content;
 }
+header {
+   position: relative;
+   top: -19px;
+   left: -18px;
+   width: 700px;
+   height: 50px;
+   background-color: #333;
+   border-radius: 4px 4px 0 0;
+   opacity: 1;
+}
 .tab-wrapper {
    display: flex;
    justify-content: space-between;
