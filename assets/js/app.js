@@ -1,4 +1,5 @@
 // let widthSelection = document.getElementById('roll-width');
+const headerIcons = document.querySelectorAll('.header__menu-list-item');
 const rollSizeForm = document.getElementById('form1-Roll-Size-Calc');
 const cutForm = document.getElementById('form2-Cut_clac');
 let carpet_roll_diameter = document.getElementById('roll-diameter');  
@@ -9,6 +10,22 @@ let submitButtons = document.querySelectorAll('.submit-btn');
 let clearButtons = document.querySelectorAll('.clear-btn');
 const output = document.getElementById('output-roll-size');
 
+headerIcons.forEach((icon) => {
+   icon.addEventListener('click', () => {
+      const titleAttribute = icon.getAttribute('title');
+      if (titleAttribute === "How to use") {
+         console.log("The 1st icon was clicked with the attr of How to use");
+      } else if (titleAttribute === "Tips and FQ") {
+         console.log("2nd icon was clicked.");
+      } else {
+         console.log("Last icon was clicked.");
+      };
+   });
+});
+
+
+
+// console.log(headerIcons);
 /* #### Tab Function  ########################################################
 #############################################################################*/
 function openForm(evt, formName) {
