@@ -19,7 +19,6 @@ headerIcons.forEach((icon) => {
       const titleAttribute = icon.getAttribute('title');
       if (titleAttribute === "How to use") {
          console.log("The 1st icon was clicked with the attr of How to use");
-         // menuItemContent.classList.toggle('hide-menu');
          menuItemContent.innerHTML = howToTemplate;
          menuItemContent.style.top = "80px";
          menuItemContent.style.visibility = "visible";
@@ -106,7 +105,6 @@ let fqTemplate = `
 </ol>
 `;
 let feedbackFormTemplate = `
-
 <div class="feedbk-form-container">
    <div class="close-btn-wrapper">
       <button id="closeMenuBtn" onclick="closeMenu()"><i class="fas fa-window-close"></i></button>
@@ -137,6 +135,7 @@ let feedbackFormTemplate = `
    </form>
 </div>
 `;
+
 const closeBtn = document.getElementById('closeMenuBtn');
 function closeMenu() {
    menuItemContent.style.transform = "scale(0)";
