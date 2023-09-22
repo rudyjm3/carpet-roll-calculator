@@ -19,7 +19,7 @@ input[type=number]::-webkit-outer-spin-button {
    color: rgba(158, 158, 158, 0.5);
    font-weight: 600;
 }
-input, select {
+input, select, textarea {
    border: 2px solid rgb(165, 165, 165);
 }
 input:focus::placeholder {
@@ -682,7 +682,7 @@ footer > p {
    border-radius: 5px;
    padding: 20px;
    border: 2px solid #4a4a4a;
-   background-color: #fff;
+   background-color: #f6f6f6;
    box-shadow: 0px 5px 30px 15px rgba(0,0,0,0.5);
    -webkit-box-shadow: 0px 5px 30px 15px rgba(0,0,0,0.5);
    -moz-box-shadow: 0px 5px 30px 15px rgba(0,0,0,0.5);
@@ -694,6 +694,7 @@ footer > p {
    display: flex;
    justify-content: flex-end;
    align-items: center;
+   width: 100%;
 }
 #closeMenuBtn {
    border: none;
@@ -706,22 +707,81 @@ footer > p {
 #closeMenuBtn:hover {
    color: rgb(203, 39, 39);
 }
-.menu-popup-title-wrapper {
+/* .menu-popup-title-wrapper {
    font-size: 15px;
    text-align: center;
    padding: 10px;
    border-radius: 4px;
    background-color: #333;
    color: rgb(250, 145, 48);
-}
-.line-break {
+} */
+/* .line-break {
    position: relative;
    margin: 10px 0 15px 0;
-}
+} */
 #menu-display > ol {
    padding-left: 25px;
 }
 
+/* FEED BACK FORM STYLING */
+.feedbk-form-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: wrap;
+   height: -webkit-fill-available;
+}
+.feedback-form-txt {
+   margin-bottom: 15px;
+}
+.form-group {
+   width: 100%;
+   margin-bottom: 15px;
+}
+.form-group > label {
+   font-weight: 600;
+   color: grey;
+}
+.form-group > input {
+   border-radius: 4px;
+   height: 50px;
+   width: 25%;
+   padding: 10px;
+   font-size: 17px;
+   font-weight: 600;
+}
+.form-group > input:placeholder-shown {
+   font-size: 15px;
+}
+.form-group > textarea {
+   border-radius: 4px;
+   width: 100%;
+   padding: 10px;
+   font-size: 17px;
+   font-weight: 600;
+}
+.char-remaining-txt {
+   font-size: 12px;
+}
+.feedback-form-submit-btn-wrapper {
+   margin-top: 30px;
+}
+.feedback-form-submit-btn {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   height: 45px;
+   color: rgba(249, 99, 2, 1);
+   font-size: 15px;
+   font-weight: 600;
+   padding: 10px 15px;
+   background-color: #fff;
+   border-radius: 2px;
+   border: 2px solid rgba(249, 99, 2, 1);
+   cursor: pointer;
+   transition: 0.3s;
+}
 
 /* MOBILE STYLING - START */
 /* ==========================================*/
@@ -783,5 +843,9 @@ footer > p {
       width: 690px;
       height: 80vh;
       padding: 20px;
+      z-index: 10;
+   }
+   .feedback-form-submit-btn {
+      width: 80%;
    }
 }

@@ -21,21 +21,21 @@ headerIcons.forEach((icon) => {
          console.log("The 1st icon was clicked with the attr of How to use");
          // menuItemContent.classList.toggle('hide-menu');
          menuItemContent.innerHTML = howToTemplate;
-         menuItemContent.style.top = "73px";
+         menuItemContent.style.top = "80px";
          menuItemContent.style.visibility = "visible";
          menuItemContent.style.transform = "scale(1)";
          
       } else if (titleAttribute === "Tips and FQ") {
          console.log("2nd icon was clicked.");
          menuItemContent.innerHTML = fqTemplate;
-         menuItemContent.style.top = "73px";
+         menuItemContent.style.top = "80px";
          menuItemContent.style.visibility = "visible";
          menuItemContent.style.transform = "scale(1)";
          
       } else {
          console.log("Last icon was clicked.");
-         menuItemContent.innerHTML = howToTemplate;
-         menuItemContent.style.top = "73px";
+         menuItemContent.innerHTML = feedbackFormTemplate;
+         menuItemContent.style.top = "80px";
          menuItemContent.style.visibility = "visible";
          menuItemContent.style.transform = "scale(1)";
       };
@@ -46,16 +46,20 @@ let howToTemplate = `
 <div class="close-btn-wrapper">
    <button id="closeMenuBtn" onclick="closeMenu()"><i class="fas fa-window-close"></i></button>
 </div>
-<div class="menu-popup-title-wrapper">
-   <h2>How to use the Rolled Goods Calculator</h2>
+<div class="form-heading">
+   <p>How to use the Rolled Goods Calculator<p>
 </div>
 
 <br>
 
 <p>The rolled goods calculator will help you know how much material is on the roll in square yards (Sq. yd.) or linera feet (Lf) based on your roll width selection. The other feature if this rolled goods calculator is to help you give a pre tax total on cut/s needed by a customer.</p>
 <br>
-<h3>Rolled Goods Calculator</h3>
-<hr class="line-break">
+
+<div class="form-heading">
+   <p>Rolled Goods Calculator<p>
+</div>
+
+<!-- <hr class="line-break"> -->
 <ol>
    <li>Select the width of the rolled goods you are working with.</li>
    <li>Measure the entire diameter of the roll in inches and input the number. </li>
@@ -66,8 +70,10 @@ let howToTemplate = `
 
 <br>
 
-<h3>Calculate Carpet Price</h3>
-<hr class="line-break">
+<div class="form-heading">
+   <p>Calculate Carpet Price</p>
+</div>
+<!-- <hr class="line-break"> -->
 <ol>
    <li>Select the width of the rolled goods width you are working with.(Use the 6ft selection for runners)</li>
    <li>Enter the length of the cut. Example: Customer needs a 12'x13'8" cut of carpet. You just need to input the length which is 13ft 8in. <strong>All input fields must have a value even if it is zero</strong>.</li>
@@ -80,24 +86,56 @@ let fqTemplate = `
    <button id="closeMenuBtn" onclick="closeMenu()"><i class="fas fa-window-close"></i></button>
 </div>
 
-<div class="menu-popup-title-wrapper">
-   <h2>Frequently asked Questions / Tips and Tricks</h2>
+<div class="form-heading">
+   <p>Frequently asked Questions / Tips and Tricks</p>
 </div>
 
 <br>
 <ol>
-   <li>
+   <li style="margin-bottom:5px;>
       <p style="font-weight:600;">What if the length given to me is in inches?</p>
    </li>
-   <p style="border-radius: 4px; background-color: #d9d7d7; margin-bottom: 8px; padding: 6px;">
+   <p style="border-radius: 4px; background-color: #e3e3e3; margin-bottom: 15px; padding: 6px;">
       With the <span style="font-weight:600; color:#0f68bc;">Calc Carpet Price</span> calculator you can input 0 for the foot input and just input the inches in the inch input field.
    </p>
 
-   <li><p style="font-weight:600;">Can the "Calc Roll Quanity" be used to calculate the total linear feet of runners?</p></li>
-   <p style="border-radius: 4px; background-color: #d9d7d7; padding: 6px;">
+   <li style="margin-bottom:5px;><p style="font-weight:600;">Can the "Calc Roll Quanity" calculator be used to calculate the total linear feet of runners?</p></li>
+   <p style="border-radius: 4px; background-color: #e3e3e3; margin-bottom: 15px; padding: 6px;">
       Yes. Select "6ft wide" when selecting the "Roll width size" to calculate how many linear feet is left on the roll for runners.
    </p>
 </ol>
+`;
+let feedbackFormTemplate = `
+
+<div class="feedbk-form-container">
+   <div class="close-btn-wrapper">
+      <button id="closeMenuBtn" onclick="closeMenu()"><i class="fas fa-window-close"></i></button>
+   </div>
+
+   <form action="" method="post" id="feedback-form" name="feedback-form">
+      <div class="form-heading">
+         <p>Feed Back Form</p>
+      </div>
+      <div class="feedback-form-txt">
+         <p>Appreciate any feedback you may have that will help make this tool more helpful or if you notice any issues please let me know. Thank you.</p>
+      </div>
+      <div class="form-group">
+         <label for="store-num">Store #</label>
+         <br>
+         <input type="number" name="store-num" id="store-num-input" value="" placeholder="Optional" />
+      </div>
+      <div class="form-group">
+         <label for="textarea">Comment</label>
+         <br>
+         <textarea id="txt-area" name="txtarea" rows="6" cols="60" maxlength="300" required ></textarea>
+         <br>
+         <p class="char-remaining-txt">Characters remaining: <span id="textarea-char-counter">300</span></p>            
+      </div>
+      <div class="form-group feedback-form-submit-btn-wrapper">
+         <button type="submit" class="feedback-form-submit-btn">Submit</button>
+      </div>
+   </form>
+</div>
 `;
 const closeBtn = document.getElementById('closeMenuBtn');
 function closeMenu() {
@@ -128,7 +166,7 @@ function openForm(evt, formName) {
  //######################### END TAB FUNCTION ##############################//
 
 
-/* ##### SUBMIT BUTTON LISTENER  #########################################
+/* ##### SUBMIT BUTTON LISTENER FOR CALCULATORS ###########################
 #######################################################################*/
 for (const submitButton of submitButtons)
 submitButton.addEventListener('click', (event) => {
@@ -157,7 +195,7 @@ submitButton.addEventListener('click', (event) => {
          break;
    }
 });
-//######################## END SUBMIT BUTTON LISTENER #################//
+//########## END SUBMIT BUTTON LISTENER FOR CALCULATORS  #################//
 
 /* ##### CLEAR BUTTON FUNCTION ################################
 ################################################################*/
