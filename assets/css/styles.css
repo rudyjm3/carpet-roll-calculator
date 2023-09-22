@@ -97,7 +97,9 @@ header {
 .header__menu-list-item > svg:hover {
    color: rgb(250, 145, 48);
 }
-
+.hide-feedback {
+   display: none;
+}
 
 .tab-wrapper {
    display: flex;
