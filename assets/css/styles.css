@@ -65,7 +65,7 @@ header {
    position: relative;
    top: -19px;
    left: -18px;
-   width: 700px;
+   width: 400px;
    height: 50px;
    background-color: #333;
    font-size: 1.2rem;
@@ -676,7 +676,7 @@ footer > p {
    display: block;
    position: absolute;
    top: 100%;
-   width: 500px;
+   width: 390px;
    height: 80vh;
    border-radius: 5px;
    padding: 20px;
@@ -691,6 +691,10 @@ footer > p {
    transform: scale(0);
    overflow: scroll;
    transition: all 0.5s ease-in-out;
+}
+.line-break {
+   position: relative;
+   margin: 10px 0 15px 0
 }
 
 /* .hide-menu {
@@ -723,6 +727,13 @@ footer > p {
    .form-container {
       width: 700px;
    }
+   header {
+      position: relative;
+      top: -19px;
+      left: -18px;
+      width: 700px;
+   }
+
    .error2-select-text-wrapper {
       left: 40%;
    }
@@ -762,5 +773,11 @@ footer > p {
    }
    .error-text-wrapper {
       left: 75%;
+   }
+
+   #menu-display {
+      width: 690px;
+      height: 80vh;
+      padding: 20px;
    }
 }

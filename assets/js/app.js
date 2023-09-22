@@ -49,7 +49,7 @@ let howToTemplate = `
 <p>The rolled goods calculator will help you know how much material is on the roll in square yards (Sq. yd.) or linera feet (Lf) based on your roll width selection. The other feature if this rolled goods calculator is to help you give a pre tax total on cut/s needed by a customer.</p>
 <br>
 <h3>Rolled Goods Calculator</h3>
-<hr>
+<hr class="line-break">
 <ol>
    <li>Select the width of the rolled goods width you are working with.</li>
    <li>Measure the entire diameter of the roll in inches and input the number. </li>
@@ -61,7 +61,7 @@ let howToTemplate = `
 <br>
 
 <h3>Calculate Carpet Price</h3>
-<hr>
+<hr class="line-break">
 <ol>
    <li>Select the width of the rolled goods width you are working with.(Use the 6ft selection for runners)</li>
    <li>Enter the length of the cut. Example: Customer needs a 12'x13'8" cut of carpet. You just need to input the length which is 13ft 8in. <strong>All input fields must have a value even if it is zero</strong>.</li>
