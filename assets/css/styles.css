@@ -660,7 +660,7 @@ footer {
    left: -18px;
    bottom: -19px;
    display: flex;
-   justify-content: center;
+   justify-content: space-between;
    align-items: center;
    width: calc(100% + 36px);
    padding: 15px;
@@ -674,6 +674,7 @@ footer > p {
 }
 #menu-display {
    display: block;
+   visibility: hidden;
    position: absolute;
    top: 100%;
    width: 390px;
@@ -682,29 +683,14 @@ footer > p {
    padding: 20px;
    border: 2px solid #4a4a4a;
    background-color: #fff;
-   /* box-shadow: 0px 8px 15px 6px rgba(0,0,0,0.5);
-   -webkit-box-shadow: 0px 8px 15px 6px rgba(0,0,0,0.5);
-   -moz-box-shadow: 0px 8px 15px 6px rgba(0,0,0,0.5); */
    box-shadow: 0px 5px 30px 15px rgba(0,0,0,0.5);
    -webkit-box-shadow: 0px 5px 30px 15px rgba(0,0,0,0.5);
    -moz-box-shadow: 0px 5px 30px 15px rgba(0,0,0,0.5);
    transform: scale(0);
-   overflow: scroll;
-   transition: all 0.5s ease-in-out;
+   overflow-x: hidden;
+   transition: all 0.7s cubic-bezier(0.68,-0.55,0.27,1.55);;
 }
-.line-break {
-   position: relative;
-   margin: 10px 0 15px 0
-}
-
-/* .hide-menu {
-   top: 100%;
-   transform: scale(0);
-} */
-#menu-display > ol {
-   padding-left: 25px;
-}
-.btn-wrapper {
+.close-btn-wrapper {
    display: flex;
    justify-content: flex-end;
    align-items: center;
@@ -718,8 +704,25 @@ footer > p {
    transition: color 0.5s ease-in-out;
 }
 #closeMenuBtn:hover {
-   color: rgb(203, 39, 39)
+   color: rgb(203, 39, 39);
 }
+.menu-popup-title-wrapper {
+   font-size: 15px;
+   text-align: center;
+   padding: 10px;
+   border-radius: 4px;
+   background-color: #333;
+   color: rgb(250, 145, 48);
+}
+.line-break {
+   position: relative;
+   margin: 10px 0 15px 0;
+}
+#menu-display > ol {
+   padding-left: 25px;
+}
+
+
 /* MOBILE STYLING - START */
 /* ==========================================*/
 @media only screen and (min-width: 700px)  {
@@ -774,7 +777,8 @@ footer > p {
    .error-text-wrapper {
       left: 75%;
    }
-
+   /* MENU POPUP STYLING */
+   /* ========================================= */
    #menu-display {
       width: 690px;
       height: 80vh;

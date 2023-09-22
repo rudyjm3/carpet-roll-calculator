@@ -12,8 +12,8 @@ let clearButtons = document.querySelectorAll('.clear-btn');
 const output = document.getElementById('output-roll-size');
 
 
-/* #### Header Icon Click Event Listener  ##################################
-#############################################################################*/
+/* #### Menu Header Icon Click Event Listener  ###########################
+########################################################################## */
 headerIcons.forEach((icon) => {
    icon.addEventListener('click', () => {
       const titleAttribute = icon.getAttribute('title');
@@ -21,37 +21,43 @@ headerIcons.forEach((icon) => {
          console.log("The 1st icon was clicked with the attr of How to use");
          // menuItemContent.classList.toggle('hide-menu');
          menuItemContent.innerHTML = howToTemplate;
-         menuItemContent.style.top = "15px";
+         menuItemContent.style.top = "73px";
+         menuItemContent.style.visibility = "visible";
          menuItemContent.style.transform = "scale(1)";
          
       } else if (titleAttribute === "Tips and FQ") {
          console.log("2nd icon was clicked.");
-         menuItemContent.innerHTML = howToTemplate;
-         menuItemContent.style.top = "15px";
+         menuItemContent.innerHTML = fqTemplate;
+         menuItemContent.style.top = "73px";
+         menuItemContent.style.visibility = "visible";
          menuItemContent.style.transform = "scale(1)";
          
       } else {
          console.log("Last icon was clicked.");
          menuItemContent.innerHTML = howToTemplate;
-         menuItemContent.style.top = "15px";
+         menuItemContent.style.top = "73px";
+         menuItemContent.style.visibility = "visible";
          menuItemContent.style.transform = "scale(1)";
       };
    });
 });
 
 let howToTemplate = `
-<div class="btn-wrapper">
+<div class="close-btn-wrapper">
    <button id="closeMenuBtn" onclick="closeMenu()"><i class="fas fa-window-close"></i></button>
 </div>
+<div class="menu-popup-title-wrapper">
+   <h2>How to use the Rolled Goods Calculator</h2>
+</div>
 
-<h2>How to use the Rolled Goods Calculator</h2>
 <br>
+
 <p>The rolled goods calculator will help you know how much material is on the roll in square yards (Sq. yd.) or linera feet (Lf) based on your roll width selection. The other feature if this rolled goods calculator is to help you give a pre tax total on cut/s needed by a customer.</p>
 <br>
 <h3>Rolled Goods Calculator</h3>
 <hr class="line-break">
 <ol>
-   <li>Select the width of the rolled goods width you are working with.</li>
+   <li>Select the width of the rolled goods you are working with.</li>
    <li>Measure the entire diameter of the roll in inches and input the number. </li>
    <li>Measure the diameter of the inner cardboard tube and input the inches.</li>
    <li>Count the number of rings the rolled material has and input the number</li>
@@ -69,12 +75,35 @@ let howToTemplate = `
    <li>Click the "Get Price" button. This will return the price of the cut/s before tax. Give you the total square yards of the cut/s. If you have multiple cuts it will return the total of all the lengths.</li>
 </ol>
 `;
+let fqTemplate = `
+<div class="close-btn-wrapper">
+   <button id="closeMenuBtn" onclick="closeMenu()"><i class="fas fa-window-close"></i></button>
+</div>
+
+<div class="menu-popup-title-wrapper">
+   <h2>Frequently asked Questions / Tips and Tricks</h2>
+</div>
+
+<br>
+<ol>
+   <li>
+      <p style="font-weight:600;">What if the length given to me is in inches?</p>
+   </li>
+   <p style="border-radius: 4px; background-color: #d9d7d7; margin-bottom: 8px; padding: 6px;">
+      With the <span style="font-weight:600; color:#0f68bc;">Calc Carpet Price</span> calculator you can input 0 for the foot input and just input the inches in the inch input field.
+   </p>
+
+   <li><p style="font-weight:600;">Can the "Calc Roll Quanity" be used to calculate the total linear feet of runners?</p></li>
+   <p style="border-radius: 4px; background-color: #d9d7d7; padding: 6px;">
+      Yes. Select "6ft wide" when selecting the "Roll width size" to calculate how many linear feet is left on the roll for runners.
+   </p>
+</ol>
+`;
 const closeBtn = document.getElementById('closeMenuBtn');
 function closeMenu() {
    menuItemContent.style.transform = "scale(0)";
    menuItemContent.style.top = "100%";
-   // menuItemContent.style.display = "none";
-   // menuItemContent.classList.toggle('hide-menu');
+   menuItemContent.style.visibility = "hidden";
 };
 
 /* #### Tab Function  ########################################################
@@ -681,7 +710,7 @@ function getCutPrice() {
       
       <p class="total-sqyd-results">Total square yards of ${cutCounter} cuts = ${sqyds}<span class="total-measure-unit-tag">/sqyds</span>
 
-      <p class="total-lf-results">Total length of all cuts = ${totalCutLength} /lf
+      <p class="total-lf-results">Total length of all cuts = ${totalCutLength}<span class="total-measure-unit-tag">/lf</span>
       `
    }
 
