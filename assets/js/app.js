@@ -110,7 +110,7 @@ let feedbackFormTemplate = `
       <button id="closeMenuBtn" onclick="closeMenu()"><i class="fas fa-window-close"></i></button>
    </div>
 
-   <form action="" method="post" id="feedback-form" name="feedback-form">
+   <form action="assets/js/submission-script.js" method="post" id="feedback-form" name="feedback-form">
       <div class="form-heading">
          <p>Feed Back Form</p>
       </div>
