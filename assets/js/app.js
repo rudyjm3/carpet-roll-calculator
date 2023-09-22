@@ -1,5 +1,6 @@
 // let widthSelection = document.getElementById('roll-width');
 const headerIcons = document.querySelectorAll('.header__menu-list-item');
+const menuItemContent = document.getElementById('menu-display');
 const rollSizeForm = document.getElementById('form1-Roll-Size-Calc');
 const cutForm = document.getElementById('form2-Cut_clac');
 let carpet_roll_diameter = document.getElementById('roll-diameter');  
@@ -10,22 +11,72 @@ let submitButtons = document.querySelectorAll('.submit-btn');
 let clearButtons = document.querySelectorAll('.clear-btn');
 const output = document.getElementById('output-roll-size');
 
+
+/* #### Header Icon Click Event Listener  ##################################
+#############################################################################*/
 headerIcons.forEach((icon) => {
    icon.addEventListener('click', () => {
       const titleAttribute = icon.getAttribute('title');
       if (titleAttribute === "How to use") {
          console.log("The 1st icon was clicked with the attr of How to use");
+         // menuItemContent.classList.toggle('hide-menu');
+         menuItemContent.innerHTML = howToTemplate;
+         menuItemContent.style.top = "15px";
+         menuItemContent.style.transform = "scale(1)";
+         
       } else if (titleAttribute === "Tips and FQ") {
          console.log("2nd icon was clicked.");
+         menuItemContent.innerHTML = howToTemplate;
+         menuItemContent.style.top = "15px";
+         menuItemContent.style.transform = "scale(1)";
+         
       } else {
          console.log("Last icon was clicked.");
+         menuItemContent.innerHTML = howToTemplate;
+         menuItemContent.style.top = "15px";
+         menuItemContent.style.transform = "scale(1)";
       };
    });
 });
 
+let howToTemplate = `
+<div class="btn-wrapper">
+   <button id="closeMenuBtn" onclick="closeMenu()"><i class="fas fa-window-close"></i></button>
+</div>
 
+<h2>How to use the Rolled Goods Calculator</h2>
+<br>
+<p>The rolled goods calculator will help you know how much material is on the roll in square yards (Sq. yd.) or linera feet (Lf) based on your roll width selection. The other feature if this rolled goods calculator is to help you give a pre tax total on cut/s needed by a customer.</p>
+<br>
+<h3>Rolled Goods Calculator</h3>
+<hr>
+<ol>
+   <li>Select the width of the rolled goods width you are working with.</li>
+   <li>Measure the entire diameter of the roll in inches and input the number. </li>
+   <li>Measure the diameter of the inner cardboard tube and input the inches.</li>
+   <li>Count the number of rings the rolled material has and input the number</li>
+   <li>Clicking the calculate button returns the total square yards that is currently on the roll. The more accurate your measurements are the closer you get the true square yardage that is left on the roll.</li>
+</ol>
 
-// console.log(headerIcons);
+<br>
+
+<h3>Calculate Carpet Price</h3>
+<hr>
+<ol>
+   <li>Select the width of the rolled goods width you are working with.(Use the 6ft selection for runners)</li>
+   <li>Enter the length of the cut. Example: Customer needs a 12'x13'8" cut of carpet. You just need to input the length which is 13ft 8in. <strong>All input fields must have a value even if it is zero</strong>.</li>
+   <li>Enter the <strong>square yard price</strong> or <strong>linear foot price</strong>.</li>
+   <li>Click the "Get Price" button. This will return the price of the cut/s before tax. Give you the total square yards of the cut/s. If you have multiple cuts it will return the total of all the lengths.</li>
+</ol>
+`;
+const closeBtn = document.getElementById('closeMenuBtn');
+function closeMenu() {
+   menuItemContent.style.transform = "scale(0)";
+   menuItemContent.style.top = "100%";
+   // menuItemContent.style.display = "none";
+   // menuItemContent.classList.toggle('hide-menu');
+};
+
 /* #### Tab Function  ########################################################
 #############################################################################*/
 function openForm(evt, formName) {
