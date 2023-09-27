@@ -1,8 +1,10 @@
 // let widthSelection = document.getElementById('roll-width');
 const headerIcons = document.querySelectorAll('.header__menu-list-item');
 const menuItemContent = document.getElementById('menu-display');
+
 const rollSizeForm = document.getElementById('form1-Roll-Size-Calc');
 const cutForm = document.getElementById('form2-Cut_clac');
+
 let carpet_roll_diameter = document.getElementById('roll-diameter');  
 let tube_diameter = document.getElementById('tube-diameter');  //6;
 let numRings = document.getElementById('carpet-rings');
@@ -110,7 +112,14 @@ let feedbackFormTemplate = `
       <button id="closeMenuBtn" onclick="closeMenu()"><i class="fas fa-window-close"></i></button>
    </div>
 
-   <form action="assets/js/submission-script.js" method="post" id="feedback-form" name="feedback-form">
+
+   <!-- action="https://script.google.com/macros/s/AKfycbxxvtt18dcYkd0DA9zzTcz3yuh6Eg8ikL89zy4u1thySbMkooyCI2sNfqsn-Gg0CdHy/exec" 
+      
+   method="POST" id="feedback-form" name="feedback-form" -->
+   <form action="https://script.google.com/macros/s/AKfycbxxvtt18dcYkd0DA9zzTcz3yuh6Eg8ikL89zy4u1thySbMkooyCI2sNfqsn-Gg0CdHy/exec" 
+      
+   method="POST" id="feedback-form" name="feedback-form">
+
       <div class="form-heading">
          <p>Feed Back Form</p>
       </div>
@@ -130,8 +139,9 @@ let feedbackFormTemplate = `
          <p class="char-remaining-txt">Characters remaining: <span id="textarea-char-counter">300</span></p>            
       </div>
       <div class="form-group feedback-form-submit-btn-wrapper">
-         <button type="submit" class="feedback-form-submit-btn">Submit</button>
+         <button type="submit" id="feedback-form-submitBtn" class="feedback-form-submit-btn">Submit</button>
       </div>
+      <div id="went"></div>
    </form>
 </div>
 `;
@@ -208,6 +218,11 @@ clearButton.addEventListener('click', () => {
          document.getElementById('form1-Roll-Size-Calc').reset();
          document.getElementById('output-roll-size').textContent = "";
          document.getElementById('output-roll-size').style.visibility = "hidden";
+
+         setSuccessClear(select1Value);
+      setSuccessClear(rollDiameter);
+      setSuccessClear(tubeDiameter);
+      setSuccessClear(countedRings);
          break;
          
       case "Reset-price-form":
