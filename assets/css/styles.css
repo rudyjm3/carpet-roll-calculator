@@ -51,6 +51,7 @@ body {
    background-blend-mode: soft-light;
    /* background-blend-mode: overlay, soft-light; */
    font-family: 'Roboto', sans-serif;
+   overflow-x: scroll;
 }
 
 .form-container {

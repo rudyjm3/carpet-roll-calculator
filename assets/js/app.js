@@ -35,7 +35,7 @@ headerIcons.forEach((icon) => {
          
       } else {
          console.log("Last icon was clicked.");
-         menuItemContent.innerHTML = feedbackFormTemplate;
+         menuItemContent.innerHTML = tempFeedbackTemplate;
          menuItemContent.style.top = "80px";
          menuItemContent.style.visibility = "visible";
          menuItemContent.style.transform = "scale(1)";
@@ -145,7 +145,30 @@ let feedbackFormTemplate = `
    </form>
 </div>
 `;
+let tempFeedbackTemplate = `
+<div class="close-btn-wrapper">
+   <button id="closeMenuBtn" onclick="closeMenu()"><i class="fas fa-window-close"></i></button>
+</div>
+<div class="form-heading">
+   <p>Feed Back<p>
+</div>
 
+<br>
+
+<p>If you would like to leave any feedback, sugesstions, or 
+if you notice an issue you can let me know through one of the options below. Web form will be added at a later time for convenice. Thank you.
+</p>
+
+<br>
+
+<ul>
+   <li>Post it on Vivia Engage at this link
+<a href="https://www.yammer.com/homedepot.com/threads/2187206353313792?message_id=2187206353313792" target="_blank">Rolled Goods Calculator</a></li>
+   <li>Serach for the title of the post "HD Rolled Goods Calculator" on Viva Engage, and leave a comment on the post</li>
+   <li>Or a direct comment to me</li>
+</ul>
+
+`
 const closeBtn = document.getElementById('closeMenuBtn');
 function closeMenu() {
    menuItemContent.style.transform = "scale(0)";
