@@ -155,7 +155,7 @@ let tempFeedbackTemplate = `
 
 <br>
 
-<p>If you would like to leave any feedback, sugesstions, or 
+<p>If you would like to leave any feedback, suggestions, or 
 if you notice an issue you can let me know through one of the options below. Web form will be added at a later time for convenice. Thank you.
 </p>
 
@@ -655,6 +655,8 @@ function updateCounter() {
    }
    console.log("Cut count = " + cutCounter);
 }
+let cull = cutCounter * 0.33;
+console.log("Suggested cull amount = " + cull);
 
 function removeCut(ele) {
  
@@ -781,7 +783,7 @@ function getCutPrice() {
          <p class="results-title">Results</p>
       </div>
     
-      <p class="total-price-results">Total = $${sqydTotalPrice}<span class="before-tax-tag">(Before tax)</span></p>
+      <p class="total-price-results">Total = <span style="color:#16d216;">$${sqydTotalPrice}</span><span class="before-tax-tag">(Before tax)</span></p>
       
       <p class="total-sqyd-results">Total square yards of ${cutCounter} cuts = ${sqyds}<span class="total-measure-unit-tag">/sqyds</span>
 
