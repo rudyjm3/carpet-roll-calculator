@@ -243,9 +243,9 @@ clearButton.addEventListener('click', () => {
          document.getElementById('output-roll-size').style.visibility = "hidden";
 
          setSuccessClear(select1Value);
-      setSuccessClear(rollDiameter);
-      setSuccessClear(tubeDiameter);
-      setSuccessClear(countedRings);
+         setSuccessClear(rollDiameter);
+         setSuccessClear(tubeDiameter);
+         setSuccessClear(countedRings);
          break;
          
       case "Reset-price-form":
@@ -646,17 +646,20 @@ function getSqyds() {
  example: 4in / 12 = 0.333
  */
 let cutCounter = 1;
+let cull = 0.33; //Cull is what is given away and needs to be accounted for under reason code 2
 function updateCounter() { 
-
    cutItem = document.querySelectorAll('.cut-list-item');
 
    for (let i = 0; i < cutItem.length; i++) {
-      cutCounter = cutItem.length ;
+      cutCounter = cutItem.length ;  
+      cull = cutItem.length * 0.33;
    }
+   
    console.log("Cut count = " + cutCounter);
-}
-let cull = cutCounter * 0.33;
-console.log("Suggested cull amount = " + cull);
+   console.log(cull);
+   // updateCullAmount();
+};
+
 
 function removeCut(ele) {
  
@@ -788,6 +791,10 @@ function getCutPrice() {
       <p class="total-sqyd-results">Total square yards of ${cutCounter} cuts = ${sqyds}<span class="total-measure-unit-tag">/sqyds</span>
 
       <p class="total-lf-results">Total length of all cuts = ${totalCutLength}<span class="total-measure-unit-tag">/lf</span>
+
+      <div class="cull-alert-wrapper">
+         <p class="cull-txt pulse">Suggested cull to ZMA = ${cull}</p><span class="cull-tool-tip"><i class="far fa-question-circle"></i><span class="cull-tool-tip-txt">Helpful reminder to ZMA the extra few inches that is not charged for. It addes up over time if never captured.</span></span>
+      </div>
       `
    }
 

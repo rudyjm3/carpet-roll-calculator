@@ -340,7 +340,7 @@ hr {
 }
 #output-roll-size,
 #output-cut-price {
-   border: 2px solid grey;
+   border: 1px solid grey;
    border-radius: 4px;
    margin-top: 20px;
    padding: 18px;
@@ -658,6 +658,74 @@ hr {
    width: 100%;
    background-color: #f6f6f6;
 }
+.cull-alert-wrapper {
+   position: relative;
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+}
+.cull-txt {
+   width: max-content;
+   color: rgba(249, 99, 2, 1);
+   font-weight: 600;
+   margin-right: 6px;
+   padding: 5px 8px;
+   border-radius: 3px;
+   border: 1px solid rgba(249, 99, 2, 1);
+   background-color: #f9f9f9;
+}
+.pulse {
+   animation: pulse-animation 1s ease-in-out;
+   animation-iteration-count: 4;
+ }
+ 
+ @keyframes pulse-animation {
+   0% {
+     box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+   }
+   100% {
+     box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+   }
+ }
+ .cull-tool-tip {
+   color: #666;
+ }
+ .cull-tool-tip-txt {
+   width: 100%;
+   top: -72px;
+   left: 0;
+ }
+ /* Tooltip text */
+.cull-tool-tip .cull-tool-tip-txt {
+   visibility: hidden;
+   width: auto;
+   background-color: #333;
+   color: #fff;
+   text-align: center;
+   padding: 5px;
+   border-radius: 6px;
+   top: -70px;
+   /* Position the tooltip text */
+   position: absolute;
+   z-index: 1;
+ }
+ .cull-tool-tip .cull-tool-tip-txt::before {
+   content: " ";
+   border-left: 12px solid transparent;
+   border-right: 12px solid transparent;
+   border-top: 12px solid #333;
+   top: 65px;
+   left: 230px;
+   width: 0px;
+   height: 20px;
+   display: block;
+   position: absolute;
+ }
+ /* Show the tooltip text when hover over the tooltip container */
+ .cull-tool-tip:hover .cull-tool-tip-txt {
+   visibility: visible;
+ }
+
 footer {
    position: relative;
    left: -18px;
@@ -710,18 +778,7 @@ footer > p {
 #closeMenuBtn:hover {
    color: rgb(203, 39, 39);
 }
-/* .menu-popup-title-wrapper {
-   font-size: 15px;
-   text-align: center;
-   padding: 10px;
-   border-radius: 4px;
-   background-color: #333;
-   color: rgb(250, 145, 48);
-} */
-/* .line-break {
-   position: relative;
-   margin: 10px 0 15px 0;
-} */
+
 #menu-display > ol {
    padding-left: 25px;
 }
@@ -851,4 +908,32 @@ footer > p {
    .feedback-form-submit-btn {
       width: 80%;
    }
+   /* CULL TOOL TIP */
+   /* ========================================= */
+   .cull-tool-tip .cull-tool-tip-txt {
+      visibility: hidden;
+      width: 50%;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 5px;
+      border-radius: 6px;
+      top: -20px;
+      left: 265px;
+      /* Position the tooltip text */
+      position: absolute;
+      z-index: 1;
+    }
+    .cull-tool-tip .cull-tool-tip-txt::before {
+      content: " ";
+      border-top: 12px solid transparent;
+      border-right: 12px solid #333;
+      border-bottom: 12px solid transparent;
+      top: 23px;
+      left: -42px;
+      width: 20px;
+      height: 0px;
+      /* display: block;
+      position: absolute;  */
+    }
 }
