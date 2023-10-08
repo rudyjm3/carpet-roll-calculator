@@ -422,6 +422,7 @@ hr {
    font-size: 0.55rem;
    font-weight: 500;
    float: right;
+   margin-right: 10px;
 }
 .cuts-output {
    /* font-size: 1.2rem; */
@@ -943,7 +944,7 @@ footer > p {
    }
    .cut-lf-output {
       font-size: 0.8rem;
-      margin-right: 66px;
+      margin-right: 82px;
    }
    /* CULL TOOL TIP */
    /* ========================================= */
