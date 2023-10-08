@@ -51,8 +51,6 @@ let howToTemplate = `
    <p>How to use the Rolled Goods Calculator<p>
 </div>
 
-<br>
-
 <p>The rolled goods calculator will help you know how much material is on the roll in square yards (Sq. yd.) or linera feet (Lf) based on your roll width selection. The other feature if this rolled goods calculator is to help you give a pre tax total on cut/s needed by a customer.</p>
 <br>
 
@@ -165,7 +163,7 @@ if you notice an issue you can let me know through one of the options below. Web
    <li>Post it on Vivia Engage at this link
 <a href="https://www.yammer.com/homedepot.com/threads/2187206353313792?message_id=2187206353313792" target="_blank">Rolled Goods Calculator</a></li>
    <li>Serach for the title of the post "HD Rolled Goods Calculator" on Viva Engage, and leave a comment on the post</li>
-   <li>Or a direct comment to me</li>
+   <!-- <li>Or a direct comment to me</li> -->
 </ul>
 
 `
@@ -770,13 +768,21 @@ function getCutPrice() {
       <div class="output-title-wrapper">
          <p class="results-title">Results</p>
       </div>   
-   
-      <p class="total-price-results">Total = $${lfTotalPrice}
-      <span class="before-tax-tag">(Before tax)</span></p>
-      
-      <p class="total-cuts-results">Total Cuts = ${cutCounter}</p>
-      
-      <p class="total-lf-results">Total length of all cuts = ${linearFeet} /lf
+      <dic class="total-price-results full-width">
+         <p class="price-output">$${lfTotalPrice}
+         <span class="before-tax-tag">(Before tax)</span></p>
+      </div>
+<!-- NEED TO FINISH THIS AREA AND MAKE PRICE AND QTY 
+     SIDE BY SIDE LIKE WITH 12' SELECTION -->
+      <p class="total-lf-results">Total length of ${cutCounter} cuts = ${linearFeet} /lf
+
+      <!-- <div class="cull-alert-wrapper">
+         <p class="cull-txt pulse">Suggested cull to ZMA = ${cull}</p>
+         <span class="cull-tool-tip">
+            <i class="far fa-question-circle"></i>
+            <span class="cull-tool-tip-txt">Helpful reminder to ZMA reason code 02 the extra few inches that is not charged for. It adds up over time if never captured which causes shrink.</span>
+         </span>
+      </div> -->
       `
    } else {
       output2.style.cssText = 'visibility: visible;opacity: 1;';
@@ -786,14 +792,28 @@ function getCutPrice() {
          <p class="results-title">Results</p>
       </div>
     
-      <p class="total-price-results">Total = <span style="color:#16d216;">$${sqydTotalPrice}</span><span class="before-tax-tag">(Before tax)</span></p>
+      <div class="total-price-results">
+         <p class="price-output">
+            $${sqydTotalPrice}<span class="before-tax-tag">(Before tax)</span> 
+         </p> 
+      </div>
       
-      <p class="total-sqyd-results">Total square yards of ${cutCounter} cuts = ${sqyds}<span class="total-measure-unit-tag">/sqyds</span>
-
-      <p class="total-lf-results">Total length of all cuts = ${totalCutLength}<span class="total-measure-unit-tag">/lf</span>
+      <div class="total-sqyd-results">
+         <p class="sqyd-output">${sqyds}<span class="total-measure-unit-tag">/sqyds</span></p>
+         <!--<p class="total-cuts-ouput">Total cuts: ${cutCounter}</p>-->
+      </div>
+      <div class="total-cuts-lf-results">
+         <p class="cut-lf-output">Total length of <span class="cuts-output">${cutCounter}</span> cuts: ${totalCutLength}
+         <span class="total-measure-unit-tag">/lf</span></p>
+      </div>
+      
 
       <div class="cull-alert-wrapper">
-         <p class="cull-txt pulse">Suggested cull to ZMA = ${cull}</p><span class="cull-tool-tip"><i class="far fa-question-circle"></i><span class="cull-tool-tip-txt">Helpful reminder to ZMA the extra few inches that is not charged for. It addes up over time if never captured.</span></span>
+         <p class="cull-txt pulse">Suggested cull to ZMA = ${cull}</p>
+         <span class="cull-tool-tip">
+            <i class="far fa-question-circle"></i>
+            <span class="cull-tool-tip-txt">Helpful reminder to ZMA reason code 02 the extra few inches that is not charged for. It adds up over time if never captured which causes shrink.</span>
+         </span>
       </div>
       `
    }
