@@ -768,7 +768,7 @@ function getCutPrice() {
       <div class="output-title-wrapper">
          <p class="results-title">Results</p>
       </div>   
-      <dic class="total-price-results full-width">
+      <div class="total-price-results full-width">
          <p class="price-output">$${lfTotalPrice}
          <span class="before-tax-tag">(Before tax)</span></p>
       </div>
