@@ -1013,20 +1013,45 @@ function generateCutPricePrintTemplate(carpetWidth, totalLength, totalPrice, tot
     const inchInputs = document.querySelectorAll('.cutLengthInch');
     let cutsHTML = '';
 
-    // Generate HTML for each cut
+    // Generate HTML for each cut - different format based on roll width
     for (let i = 0; i < feetInputs.length; i++) {
         const feet = feetInputs[i].value;
         const inches = inchInputs[i].value;
         const totalInches = (parseInt(feet) * 12) + parseInt(inches);
-        const cutSqyds = ((totalInches / 12) * carpetWidth / 9).toFixed(2);
-
-        cutsHTML += `
-            <div class="cut-detail">
-                <p>Cut ${i + 1}: ${feet}'${inches}" = ${cutSqyds} sq. yards</p>
-            </div>
-        `;
+        
+        if (carpetWidth === "6") {
+            // For 6ft rolls, show linear feet
+            const linearFeet = ((totalInches) / 12).toFixed(2);
+            cutsHTML += `
+                <div class="cut-detail">
+                    <p>Cut ${i + 1}: ${feet}'${inches}" = ${linearFeet} linear feet</p>
+                </div>
+            `;
+        } else {
+            // For other widths, show square yards
+            const cutSqyds = ((totalInches / 12) * carpetWidth / 9).toFixed(2);
+            cutsHTML += `
+                <div class="cut-detail">
+                    <p>Cut ${i + 1}: ${feet}'${inches}" = ${cutSqyds} sq. yards</p>
+                </div>
+            `;
+        }
     }
 
+    // Update totals section in printContent
+    const totalsSection = `
+        <div class="totals-section">
+            <h3>Totals:</h3>
+            ${carpetWidth === "6" 
+                ? `<p><strong>Total Length:</strong> ${totalLength} linear feet</p>`
+                : `<p><strong>Total Square Yards:</strong> ${totalSqyds}</p>
+                   <p><strong>Total Length:</strong> ${totalLength} linear feet</p>`
+            }
+            <p><strong>Total Price:</strong> <span class="price">$${totalPrice}</span> <span style="font-size: 0.8em">(Before tax)</span></p>
+        </div>
+    `;
+
+    // Use updated totalsSection in printContent
     const printContent = `
         <html>
             <head>
@@ -1087,12 +1112,7 @@ function generateCutPricePrintTemplate(carpetWidth, totalLength, totalPrice, tot
                     ${cutsHTML}
                 </div>
 
-                <div class="totals-section">
-                    <h3>Totals:</h3>
-                    <p><strong>Total Length:</strong> ${totalLength} linear feet</p>
-                    ${carpetWidth !== "6" ? `<p><strong>Total Square Yards:</strong> ${totalSqyds}</p>` : ''}
-                    <p><strong>Total Price:</strong> <span class="price">$${totalPrice}</span> <span style="font-size: 0.8em">(Before tax)</span></p>
-                </div>
+                ${totalsSection}
 
                 <div class="sku-number">
                     <p><strong>SKU: ${skuNumber}</strong></p>
