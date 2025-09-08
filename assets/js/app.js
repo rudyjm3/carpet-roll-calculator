@@ -606,31 +606,87 @@ function getSqyds() {
    console.log("Sq. Yds. = " + sqyd);
    let linear_feet = ((sqyd * 9) / carpetWidth).toFixed(2);
    console.log(linear_feet + " lf.");
-   /* Determmine weather to show total square yards or linear footage 
+   /* Determnine weather to show total square yards or linear footage 
    based on selected roll width size */
+   // Create formula explanation HTML
+   let formulaHtml = `
+      <div class="formula-explanation">
+         <h3>Calculation Breakdown</h3>
+         <div class="formula-steps">
+            <p>1. Add roll diameter and tube diameter:</p>
+            <div class="calculation-step">
+               ${carpet_roll_diameter.value}" + ${tube_diameter.value}" = ${addedDiameters}"
+            </div>
+
+            <p>2. Multiply by number of rings counted:</p>
+            <div class="calculation-step">
+               ${addedDiameters}" × ${numRings.value} rings = ${diametersTimesRings}"
+            </div>
+
+            <p>3. Multiply by width multiplier (${multiplier}) for ${carpetWidth}' wide roll:</p>
+            <div class="calculation-step">
+               ${diametersTimesRings}" × ${multiplier} = ${sqyd} sq. yards
+            </div>
+
+            <p>4. Convert to linear feet:</p>
+            <div class="calculation-step">
+               (${sqyd} sq. yards × 9) ÷ ${carpetWidth}' = ${linear_feet} linear feet
+            </div>
+         </div>
+      </div>
+
+      <div class="print-section">
+         <div id="sku-input-section" style="display: none; margin-top: 10px;">
+            <input type="text" id="sku-number" placeholder="Enter SKU Number" style="margin-right: 10px;">
+            <button onclick="printCalculation('${carpetWidth}', ${addedDiameters}, ${diametersTimesRings}, ${multiplier}, ${sqyd}, ${linear_feet})" class="print-confirm-btn">Confirm & Print</button>
+         </div>
+         <button onclick="document.getElementById('sku-input-section').style.display = 'block'" class="print-btn">Print Out</button>
+      </div>
+   `;
+
+   // Add to output HTML
    if(carpetWidth === "6") {
-      
       output.style.cssText = 'visibility: visible;opacity: 1;';
-      output.innerHTML = 
-      `
-      <div class="output-title-wrapper">
-         <p class="results-title">Results</p>
-      </div>   
-      
-      <p class="total-qty-results">Total = ${linear_feet}<span class="total-measure-unit-tag">Linear Feet</span></p>
-      `
+      output.innerHTML = `
+         <div class="output-title-wrapper">
+            <p class="results-title">Results</p>
+         </div>   
+         <p class="total-qty-results">Total = ${linear_feet}<span class="total-measure-unit-tag">Linear Feet</span></p>
+      `;
+
+      // Add print section after form
+      const printSection = document.createElement('div');
+      printSection.className = 'print-section';
+      printSection.innerHTML = `
+         <button type="button" onclick="showSkuInput()" class="print-btn">Print Out</button>
+         <div id="sku-input-section" style="display: none; margin-top: 10px;">
+            <input type="text" id="sku-number" placeholder="Enter SKU Number" style="margin-right: 10px;">
+            <button type="button" onclick="generatePrintTemplate(${addedDiameters}, ${diametersTimesRings}, ${multiplier}, ${sqyd}, ${linear_feet}, '${carpetWidth}')" class="print-confirm-btn">Confirm & Print</button>
+         </div>
+      `;
+      output.appendChild(printSection);
+
    } else {
       output.style.cssText = 'visibility: visible;opacity: 1;';
-      output.innerHTML = 
-      `
-      <div class="output-title-wrapper">
-         <p class="results-title">Results</p>
-      </div>   
-      
-      <p class="total-qty-results">Total = ${sqyd}<span class="total-measure-unit-tag">Square Yards</span></p>
+      output.innerHTML = `
+         <div class="output-title-wrapper">
+            <p class="results-title">Results</p>
+         </div>   
+         <p class="total-qty-results">Total = ${sqyd}<span class="total-measure-unit-tag">Square Yards</span></p>
+         <p>Linear feet = ${linear_feet}</p>
+      `;
 
-      <p>Linear feet = ${linear_feet}</p>
-      `
+      // Add print section after form
+      const printSection = document.createElement('div');
+      printSection.className = 'print-section';
+      printSection.innerHTML = `
+         <button type="button" onclick="showSkuInput()" class="print-btn">Print Out</button>
+         <div id="sku-input-section" style="display: none; margin-top: 10px;">
+            <input type="text" id="sku-number" placeholder="Enter SKU Number" style="margin-right: 10px;">
+            <button type="button" onclick="generatePrintTemplate(${addedDiameters}, ${diametersTimesRings}, ${multiplier}, ${sqyd}, ${linear_feet}, '${carpetWidth}')" class="print-confirm-btn">Confirm & Print</button>
+         </div>
+      `;
+      output.appendChild(printSection);
    }
 
 }
@@ -854,3 +910,77 @@ document.getElementById('roll-width2').addEventListener('change', selectedWidth)
 - 12' multiplier = 0.1744
 - 15' multiplier = 0.2182
 */
+
+function showSkuInput() {
+   const skuSection = document.getElementById('sku-input-section');
+   if (skuSection) {
+      skuSection.style.display = 'block';
+   }
+}
+
+function generatePrintTemplate(addedDiameters, diametersTimesRings, multiplier, sqyd, linear_feet, carpetWidth) {
+   const skuNumber = document.getElementById('sku-number').value;
+   if (!skuNumber) {
+      alert('Please enter a SKU number');
+      return;
+   }
+
+   // Create print window HTML
+   const printContent = `
+      <html>
+         <head>
+            <title>Carpet Roll Calculation</title>
+            <style>
+               body { font-family: Arial, sans-serif; padding: 20px; }
+               .header { text-align: center; margin-bottom: 20px; }
+               .calculation-step { margin: 10px 0; padding: 10px; border-left: 3px solid #0f68bc; }
+               .final-results { margin: 20px 0; padding: 15px; background-color: #f5f5f5; }
+               .sku-number { margin-top: 20px; text-align: right; }
+               @media print { .no-print { display: none; } }
+            </style>
+         </head>
+         <body>
+            <div class="header">
+               <h2>Carpet Roll Calculation Report</h2>
+               <p>Date: ${new Date().toLocaleDateString()}</p>
+            </div>
+
+            <div class="calculation-steps">
+               <div class="calculation-step">
+                  Roll diameter + tube diameter = ${carpet_roll_diameter.value}" + ${tube_diameter.value}" = ${addedDiameters}"
+               </div>
+
+               <div class="calculation-step">
+                  Total × rings counted = ${addedDiameters}" × ${numRings.value} = ${diametersTimesRings}"
+               </div>
+
+               <div class="calculation-step">
+                  Result × width multiplier = ${diametersTimesRings}" × ${multiplier} = ${sqyd} sq. yards
+               </div>
+
+               <div class="calculation-step">
+                  Linear feet conversion = (${sqyd} sq. yards × 9) ÷ ${carpetWidth}' = ${linear_feet} linear feet
+               </div>
+            </div>
+
+            <div class="final-results">
+               <h3>Final Results:</h3>
+               <p><strong>${carpetWidth === "6" ? 
+                  `${linear_feet} Linear Feet` : 
+                  `${sqyd} Square Yards (${linear_feet} Linear Feet)`
+               }</strong></p>
+            </div>
+
+            <div class="sku-number">
+               <p><strong>SKU: ${skuNumber}</strong></p>
+            </div>
+
+            <button class="no-print" onclick="window.print()">Print</button>
+         </body>
+      </html>
+   `;
+
+   const printWindow = window.open('', '_blank');
+   printWindow.document.write(printContent);
+   printWindow.document.close();
+}
