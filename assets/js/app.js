@@ -818,62 +818,69 @@ function getCutPrice() {
    // Display results based on roll width selected
    let output2 = document.getElementById('output-cut-price');
    if(selectedCarpetWidth === "6") {
-      output2.style.cssText = 'visibility: visible;opacity: 1;';
-      output2.innerHTML = 
-      `
-      <div class="output-title-wrapper">
-         <p class="results-title">Results</p>
-      </div>   
-      <div class="total-price-results full-width">
-         <p class="price-output">$${lfTotalPrice}
-         <span class="before-tax-tag">(Before tax)</span></p>
-      </div>
-<!-- NEED TO FINISH THIS AREA AND MAKE PRICE AND QTY 
-     SIDE BY SIDE LIKE WITH 12' SELECTION -->
-      <p class="total-lf-results">Total length of ${cutCounter} cuts = ${linearFeet} /lf
+        output2.style.cssText = 'visibility: visible;opacity: 1;';
+        output2.innerHTML = `
+            <div class="output-title-wrapper">
+                <p class="results-title">Results</p>
+            </div>   
+            <div class="total-price-results full-width">
+                <p class="price-output">$${lfTotalPrice}
+                <span class="before-tax-tag">(Before tax)</span></p>
+            </div>
+            <p class="total-lf-results">Total length of ${cutCounter} cuts = ${linearFeet} /lf</p>
 
-      <!-- <div class="cull-alert-wrapper">
-         <p class="cull-txt pulse">Suggested cull to ZMA = ${cull}</p>
-         <span class="cull-tool-tip">
-            <i class="far fa-question-circle"></i>
-            <span class="cull-tool-tip-txt">Helpful reminder to ZMA reason code 02 the extra few inches that is not charged for. It adds up over time if never captured which causes shrink.</span>
-         </span>
-      </div> -->
-      `
-   } else {
-      output2.style.cssText = 'visibility: visible;opacity: 1;';
-      output2.innerHTML = 
-      `
-      <div class="output-title-wrapper">
-         <p class="results-title">Results</p>
-      </div>
-    
-      <div class="total-price-results">
-         <p class="price-output">
-            $${sqydTotalPrice}<span class="before-tax-tag">(Before tax)</span> 
-         </p> 
-      </div>
-      
-      <div class="total-sqyd-results">
-         <p class="sqyd-output">${sqyds}<span class="total-measure-unit-tag">/sqyds</span></p>
-         <!--<p class="total-cuts-ouput">Total cuts: ${cutCounter}</p>-->
-      </div>
-      <div class="total-cuts-lf-results">
-         <p class="cut-lf-output">Total length of <span class="cuts-output">${cutCounter}</span> cuts: ${totalCutLength}
-         <span class="total-measure-unit-tag">/lf</span></p>
-      </div>
-      
+            <div class="cull-alert-wrapper">
+               <p class="cull-txt pulse">Suggested cull to ZMA = ${cull}</p>
+               <span class="cull-tool-tip">
+                  <i class="far fa-question-circle"></i>
+                  <span class="cull-tool-tip-txt">Helpful reminder to ZMA reason code 02 the extra few inches that is not charged for. It adds up over time if never captured which causes shrink.</span>
+               </span>
+            </div>
 
-      <div class="cull-alert-wrapper">
-         <p class="cull-txt pulse">Suggested cull to ZMA = ${cull}</p>
-         <span class="cull-tool-tip">
-            <i class="far fa-question-circle"></i>
-            <span class="cull-tool-tip-txt">Helpful reminder to ZMA reason code 02 the extra few inches that is not charged for. It adds up over time if never captured which causes shrink.</span>
-         </span>
-      </div>
-      `
-   }
+            <div class="print-section">
+                <button type="button" onclick="showSkuInputCutPrice()" class="print-btn">Print Out</button>
+                <div id="sku-input-section-cuts" style="display: none; margin-top: 10px;">
+                    <input type="text" id="sku-number-cuts" placeholder="Enter SKU Number" style="margin-right: 10px;">
+                    <button type="button" onclick="generateCutPricePrintTemplate('${selectedCarpetWidth}', ${linearFeet}, ${lfTotalPrice})" class="print-confirm-btn">Confirm & Print</button>
+                </div>
+            </div>
+        `;
+    } else {
+        output2.style.cssText = 'visibility: visible;opacity: 1;';
+        output2.innerHTML = `
+            <div class="output-title-wrapper">
+                <p class="results-title">Results</p>
+            </div>
+            <div class="total-price-results">
+                <p class="price-output">
+                    $${sqydTotalPrice}<span class="before-tax-tag">(Before tax)</span> 
+                </p> 
+            </div>
+            <div class="total-sqyd-results">
+                <p class="sqyd-output">${sqyds}<span class="total-measure-unit-tag">/sqyds</span></p>
+            </div>
+            <div class="total-cuts-lf-results">
+                <p class="cut-lf-output">Total length of <span class="cuts-output">${cutCounter}</span> cuts: ${totalCutLength}
+                <span class="total-measure-unit-tag">/lf</span></p>
+            </div>
 
+            <div class="cull-alert-wrapper">
+               <p class="cull-txt pulse">Suggested cull to ZMA = ${cull}</p>
+               <span class="cull-tool-tip">
+                  <i class="far fa-question-circle"></i>
+                  <span class="cull-tool-tip-txt">Helpful reminder to ZMA reason code 02 the extra few inches that is not charged for. It adds up over time if never captured which causes shrink.</span>
+               </span>
+            </div>
+
+            <div class="print-section">
+                <button type="button" onclick="showSkuInputCutPrice()" class="print-btn">Print Out</button>
+                <div id="sku-input-section-cuts" style="display: none; margin-top: 10px;">
+                    <input type="text" id="sku-number-cuts" placeholder="Enter SKU Number" style="margin-right: 10px;">
+                    <button type="button" onclick="generateCutPricePrintTemplate('${selectedCarpetWidth}', ${totalCutLength}, ${sqydTotalPrice}, ${sqyds})" class="print-confirm-btn">Confirm & Print</button>
+                </div>
+            </div>
+        `;
+    }
 };
 
 function selectedWidth() {
@@ -966,9 +973,10 @@ function generatePrintTemplate(addedDiameters, diametersTimesRings, multiplier, 
             <div class="final-results">
                <h3>Final Results:</h3>
                <p><strong>${carpetWidth === "6" ? 
-                  `${linear_feet} Linear Feet` : 
-                  `${sqyd} Square Yards (${linear_feet} Linear Feet)`
+                  `${Math.round(linear_feet)} Linear Feet` : 
+                  `${Math.round(sqyd)} Square Yards (${Math.round(linear_feet)} Linear Feet)`
                }</strong></p>
+               <p style="font-size: 11px; color: #666; margin-top: 5px;">Round to Nearest Whole Number</p>
             </div>
 
             <div class="sku-number">
@@ -983,4 +991,120 @@ function generatePrintTemplate(addedDiameters, diametersTimesRings, multiplier, 
    const printWindow = window.open('', '_blank');
    printWindow.document.write(printContent);
    printWindow.document.close();
+}
+
+// Add these new functions for cut price printing
+function showSkuInputCutPrice() {
+    const skuSection = document.getElementById('sku-input-section-cuts');
+    if (skuSection) {
+        skuSection.style.display = 'block';
+    }
+}
+
+function generateCutPricePrintTemplate(carpetWidth, totalLength, totalPrice, totalSqyds) {
+    const skuNumber = document.getElementById('sku-number-cuts').value;
+    if (!skuNumber) {
+        alert('Please enter a SKU number');
+        return;
+    }
+
+    // Get all cuts
+    const feetInputs = document.querySelectorAll('.cutLengthFt');
+    const inchInputs = document.querySelectorAll('.cutLengthInch');
+    let cutsHTML = '';
+
+    // Generate HTML for each cut
+    for (let i = 0; i < feetInputs.length; i++) {
+        const feet = feetInputs[i].value;
+        const inches = inchInputs[i].value;
+        const totalInches = (parseInt(feet) * 12) + parseInt(inches);
+        const cutSqyds = ((totalInches / 12) * carpetWidth / 9).toFixed(2);
+
+        cutsHTML += `
+            <div class="cut-detail">
+                <p>Cut ${i + 1}: ${feet}'${inches}" = ${cutSqyds} sq. yards</p>
+            </div>
+        `;
+    }
+
+    const printContent = `
+        <html>
+            <head>
+                <title>Carpet Cut Price Calculation</title>
+                <style>
+                    body { 
+                        font-family: Arial, sans-serif; 
+                        padding: 20px;
+                        line-height: 1.6;
+                    }
+                    .header { 
+                        text-align: center; 
+                        margin-bottom: 20px;
+                        padding-bottom: 10px;
+                        border-bottom: 2px solid #ccc;
+                    }
+                    .cuts-section {
+                        margin: 20px 0;
+                        padding: 15px;
+                        background-color: #f5f5f5;
+                        border-radius: 4px;
+                    }
+                    .cut-detail {
+                        padding: 8px;
+                        border-left: 3px solid #0f68bc;
+                        margin: 10px 0;
+                        background-color: white;
+                    }
+                    .totals-section {
+                        margin: 20px 0;
+                        padding: 15px;
+                        background-color: #f0f0f0;
+                        border-radius: 4px;
+                    }
+                    .price {
+                        color: #16d216;
+                        font-size: 1.2em;
+                        font-weight: bold;
+                    }
+                    .sku-number {
+                        margin-top: 20px;
+                        text-align: right;
+                        font-size: 14px;
+                    }
+                    @media print {
+                        .no-print { display: none; }
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="header">
+                    <h2>Carpet Cut Price Calculation</h2>
+                    <p>Date: ${new Date().toLocaleDateString()}</p>
+                </div>
+
+                <div class="cuts-section">
+                    <h3>Cut Details (${carpetWidth}' Wide Roll):</h3>
+                    ${cutsHTML}
+                </div>
+
+                <div class="totals-section">
+                    <h3>Totals:</h3>
+                    <p><strong>Total Length:</strong> ${totalLength} linear feet</p>
+                    ${carpetWidth !== "6" ? `<p><strong>Total Square Yards:</strong> ${totalSqyds}</p>` : ''}
+                    <p><strong>Total Price:</strong> <span class="price">$${totalPrice}</span> <span style="font-size: 0.8em">(Before tax)</span></p>
+                </div>
+
+                <div class="sku-number">
+                    <p><strong>SKU: ${skuNumber}</strong></p>
+                    <p style="font-size: 12px; color: #666;">Generated: ${new Date().toLocaleString()}</p>
+                </div>
+
+                <button class="no-print" onclick="window.print()">Print</button>
+            </body>
+        </html>
+    `;
+
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(printContent);
+    printWindow.document.close();
 }
