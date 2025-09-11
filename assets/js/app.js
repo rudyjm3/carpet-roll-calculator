@@ -936,15 +936,18 @@ function generatePrintTemplate(addedDiameters, diametersTimesRings, multiplier, 
    const printContent = `
       <html>
          <head>
-            <title>Carpet Roll Calculation</title>
+            <title>Rolled Goods Calculation</title>
             <style>
                body { font-family: Arial, sans-serif; padding: 20px; }
                .header { text-align: center; margin-bottom: 20px; }
                .calculation-step { margin: 10px 0; padding: 10px; border-left: 3px solid #0f68bc; }
                .final-results { margin: 20px 0; padding: 15px; background-color: #f5f5f5; }
-               .sku-number { margin-top: 20px; text-align: right; }
+               .sku-number { margin-top: 20px; text-align: left; font-size: 1.1rem; }
                @media print { .no-print { display: none; } }
+               .no-print { background-color: #4187ca; width: 40%; height: 45px;
+               padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; color: white; font-size: 15px; font-weight: 600;}
             </style>
+            
          </head>
          <body>
             <div class="header">
@@ -972,16 +975,18 @@ function generatePrintTemplate(addedDiameters, diametersTimesRings, multiplier, 
 
             <div class="final-results">
                <h3>Final Results:</h3>
-               <p><strong>${carpetWidth === "6" ? 
+
+               <div class="sku-number">
+                  <p><strong>SKU: ${skuNumber}</strong></p>
+               </div>
+               <p style="font-size: 1.1rem;"><strong>${carpetWidth === "6" ? 
                   `${Math.round(linear_feet)} Linear Feet` : 
-                  `${Math.round(sqyd)} Square Yards (${Math.round(linear_feet)} Linear Feet)`
+                  `${Math.round(sqyd)} Square Yards`
                }</strong></p>
-               <p style="font-size: 11px; color: #666; margin-top: 5px;">Round to Nearest Whole Number</p>
+               <p style="font-size: 11px; color: #666; margin-top: 5px;">Rounded to Nearest Whole Number</p>
             </div>
 
-            <div class="sku-number">
-               <p><strong>SKU: ${skuNumber}</strong></p>
-            </div>
+            
 
             <button class="no-print" onclick="window.print()">Print</button>
          </body>
