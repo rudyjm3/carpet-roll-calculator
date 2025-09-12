@@ -684,6 +684,7 @@ hr {
    background-color: #f6f6f6;
 }
 .cull-alert-wrapper {
+   width: 100%;
    position: relative;
    display: flex;
    justify-content: flex-start;

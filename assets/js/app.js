@@ -940,12 +940,15 @@ function generatePrintTemplate(addedDiameters, diametersTimesRings, multiplier, 
             <style>
                body { font-family: Arial, sans-serif; padding: 20px; }
                .header { text-align: center; margin-bottom: 20px; }
-               .calculation-step { margin: 10px 0; padding: 10px; border-left: 3px solid #0f68bc; }
-               .final-results { margin: 20px 0; padding: 15px; background-color: #f5f5f5; }
+               .calcualtion-steps {margin: 20px 0; padding: 15px;
+               background-color: #f5f5f5; border-radius: 4px;}
+               .calculation-step {padding: 8px; border-left: 3px solid #0f68bc;
+                margin: 10px 0; background-color: white;}
+               .final-results { width: fit-content;margin: 20px 0; padding: 15px; background-color: #f5f5f5; }
                .sku-number { margin-top: 20px; text-align: left; font-size: 1.1rem; }
                @media print { .no-print { display: none; } }
-               .no-print { background-color: #4187ca; width: 40%; height: 45px;
-               padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; color: white; font-size: 15px; font-weight: 600;}
+               .no-print { background-color: #4187ca; width: fit-content; height: 45px;
+               padding: 10px 25px; border: none; border-radius: 4px; cursor: pointer; color: white; font-size: 15px; font-weight: 600;}
             </style>
             
          </head>
@@ -985,8 +988,6 @@ function generatePrintTemplate(addedDiameters, diametersTimesRings, multiplier, 
                }</strong></p>
                <p style="font-size: 11px; color: #666; margin-top: 5px;">Rounded to Nearest Whole Number</p>
             </div>
-
-            
 
             <button class="no-print" onclick="window.print()">Print</button>
          </body>
@@ -1047,12 +1048,18 @@ function generateCutPricePrintTemplate(carpetWidth, totalLength, totalPrice, tot
     const totalsSection = `
         <div class="totals-section">
             <h3>Totals:</h3>
+            <div class="sku-number">
+                  <p><strong>SKU: ${skuNumber}</strong></p>
+            </div>
             ${carpetWidth === "6" 
                 ? `<p><strong>Total Length:</strong> ${totalLength} linear feet</p>`
-                : `<p><strong>Total Square Yards:</strong> ${totalSqyds}</p>
-                   <p><strong>Total Length:</strong> ${totalLength} linear feet</p>`
+                : `<p><strong>Total Square Yards:</strong> <span style="font-size: 1rem; font-weight: 600;">${totalSqyds} Sqyds</span></p>
+                <!-- <p><strong>Total Length:</strong> ${totalLength} linear feet</p> -->
+               `
             }
             <p><strong>Total Price:</strong> <span class="price">$${totalPrice}</span> <span style="font-size: 0.8em">(Before tax)</span></p>
+
+            <p style="font-size: 12px; color: #666;">Generated: ${new Date().toLocaleString()}</p>
         </div>
     `;
 
@@ -1098,18 +1105,20 @@ function generateCutPricePrintTemplate(carpetWidth, totalLength, totalPrice, tot
                     }
                     .sku-number {
                         margin-top: 20px;
-                        text-align: right;
-                        font-size: 14px;
+                        text-align: left;
+                        font-size: 1rem;
                     }
                     @media print {
                         .no-print { display: none; }
                     }
+                     .no-print {background-color: #4187ca; width: fit-content; height: 45px;
+                     padding: 10px 25px; border: none; border-radius: 4px; cursor: pointer; color: white; font-size: 15px; font-weight: 600;}
                 </style>
             </head>
             <body>
                 <div class="header">
-                    <h2>Carpet Cut Price Calculation</h2>
-                    <p>Date: ${new Date().toLocaleDateString()}</p>
+                    <h2>Carpet Cut Ticket</h2>
+                    <!-- <p>Date: ${new Date().toLocaleDateString()}</p> -->
                 </div>
 
                 <div class="cuts-section">
@@ -1118,11 +1127,6 @@ function generateCutPricePrintTemplate(carpetWidth, totalLength, totalPrice, tot
                 </div>
 
                 ${totalsSection}
-
-                <div class="sku-number">
-                    <p><strong>SKU: ${skuNumber}</strong></p>
-                    <p style="font-size: 12px; color: #666;">Generated: ${new Date().toLocaleString()}</p>
-                </div>
 
                 <button class="no-print" onclick="window.print()">Print</button>
             </body>
