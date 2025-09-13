@@ -940,11 +940,11 @@ function generatePrintTemplate(addedDiameters, diametersTimesRings, multiplier, 
             <style>
                body { font-family: Arial, sans-serif; padding: 20px; }
                .header { text-align: center; margin-bottom: 20px; }
-               .calcualtion-steps {margin: 20px 0; padding: 15px;
+               .calculation-steps {margin: 20px 0; padding: 15px;
                background-color: #f5f5f5; border-radius: 4px;}
                .calculation-step {padding: 8px; border-left: 3px solid #0f68bc;
                 margin: 10px 0; background-color: white;}
-               .final-results { width: fit-content;margin: 20px 0; padding: 15px; background-color: #f5f5f5; }
+               .final-results { margin: 20px 0; padding: 15px; background-color: #f5f5f5; }
                .sku-number { margin-top: 20px; text-align: left; font-size: 1.1rem; }
                @media print { .no-print { display: none; } }
                .no-print { background-color: #4187ca; width: fit-content; height: 45px;
@@ -954,25 +954,25 @@ function generatePrintTemplate(addedDiameters, diametersTimesRings, multiplier, 
          </head>
          <body>
             <div class="header">
-               <h2>Carpet Roll Calculation Report</h2>
+               <h2>${carpetWidth}ft Rolled Goods Calculation</h2>
                <p>Date: ${new Date().toLocaleDateString()}</p>
             </div>
 
             <div class="calculation-steps">
                <div class="calculation-step">
-                  Roll diameter + tube diameter = ${carpet_roll_diameter.value}" + ${tube_diameter.value}" = ${addedDiameters}"
+                  <p>Roll diameter + tube diameter = ${carpet_roll_diameter.value}" + ${tube_diameter.value}" = ${addedDiameters}"</p>
                </div>
 
                <div class="calculation-step">
-                  Total × rings counted = ${addedDiameters}" × ${numRings.value} = ${diametersTimesRings}"
+                  <p>Total × rings counted = ${addedDiameters}" × ${numRings.value} = ${diametersTimesRings}"</p>
                </div>
 
                <div class="calculation-step">
-                  Result × width multiplier = ${diametersTimesRings}" × ${multiplier} = ${sqyd} sq. yards
+                  <p>Result × width multiplier = ${diametersTimesRings}" × ${multiplier} = ${sqyd} sq. yards</p>
                </div>
 
                <div class="calculation-step">
-                  Linear feet conversion = (${sqyd} sq. yards × 9) ÷ ${carpetWidth}' = ${linear_feet} linear feet
+                  <p>Linear feet conversion = (${sqyd} sq. yards × 9) ÷ ${carpetWidth}' = ${linear_feet} linear feet</p>
                </div>
             </div>
 
@@ -1099,7 +1099,8 @@ function generateCutPricePrintTemplate(carpetWidth, totalLength, totalPrice, tot
                         border-radius: 4px;
                     }
                     .price {
-                        color: #16d216;
+                        color: #333;
+                        // color: #16d216;
                         font-size: 1.2em;
                         font-weight: bold;
                     }
