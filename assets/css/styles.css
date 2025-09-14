@@ -995,7 +995,11 @@ footer > p {
     font-size: 15px;
     font-weight: 600;
 }
-
+@media (width <= 700px)  {
+   .print-confirm-btn {
+      min-width: 45%;
+   }
+}
 .print-btn:hover, .print-confirm-btn:hover {
     background-color: #0d5aa3;
 }
