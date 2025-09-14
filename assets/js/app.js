@@ -52,6 +52,7 @@ let howToTemplate = `
 </div>
 
 <p>The rolled goods calculator will help you know how much material is on the roll in square yards (Sq. yd.) or linera feet (Lf) based on your roll width selection. The other feature of this rolled goods calculator is to help you give a pre tax total on rolled good cut/s needed by a customer.</p>
+<br>
 <p>New feature added (9/13/2025): You can now print a "Rolled Goods Inventory Calculation" worksheet for your rolled goods inventory records. You can also print a "Cut Price Ticket" for the "Calc Carpet Price Cut" calculation. Just click the print button at the bottom of either results section, input the SKU of the rolled good you are calculating and click the "Confirm and Print" button.</p>
 
 <br>
