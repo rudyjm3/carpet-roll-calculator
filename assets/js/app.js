@@ -51,11 +51,13 @@ let howToTemplate = `
    <p>How to use the Rolled Goods Calculator<p>
 </div>
 
-<p>The rolled goods calculator will help you know how much material is on the roll in square yards (Sq. yd.) or linera feet (Lf) based on your roll width selection. The other feature if this rolled goods calculator is to help you give a pre tax total on cut/s needed by a customer.</p>
+<p>The rolled goods calculator will help you know how much material is on the roll in square yards (Sq. yd.) or linera feet (Lf) based on your roll width selection. The other feature of this rolled goods calculator is to help you give a pre tax total on rolled good cut/s needed by a customer.</p>
+<p>New feature added (9/13/2025): You can now print a "Rolled Goods Inventory Calculation" worksheet for your rolled goods inventory records. You can also print a "Cut Price Ticket" for the "Calc Carpet Price Cut" calculation. Just click the print button at the bottom of either results section, input the SKU of the rolled good you are calculating and click the "Confirm and Print" button.</p>
+
 <br>
 
 <div class="form-heading">
-   <p>Rolled Goods Calculator<p>
+   <p>Rolled Goods Inventory Calculator<p>
 </div>
 
 <!-- <hr class="line-break"> -->
@@ -65,6 +67,7 @@ let howToTemplate = `
    <li>Measure the diameter of the inner cardboard tube and input the inches.</li>
    <li>Count the number of rings the rolled material has and input the number</li>
    <li>Clicking the calculate button returns the total square yards that is currently on the roll. The more accurate your measurements are the closer you get the true square yardage that is left on the roll.</li>
+   <li>After clicking the "Calculate" button a print button will appear so the rolled good caculation report can be printed out with the formula used to figure the total square yards on the roll. Just click the print button and input the sku of the rolled goods and click the "Confirm and Print" button. </li>
 </ol>
 
 <br>
@@ -95,12 +98,16 @@ let fqTemplate = `
       <p style="font-weight:600;">What if the length given to me is in inches?</p>
    </li>
    <p style="border-radius: 4px; background-color: #e3e3e3; margin-bottom: 15px; padding: 6px;">
-      With the <span style="font-weight:600; color:#0f68bc;">Calc Carpet Price</span> calculator you can input 0 for the foot input and just input the inches in the inch input field.
+      With the <span style="font-weight:600; color:#0f68bc;">Calc Carpet Cut Price</span> calculator you can input 0 for the foot input and just input the inches in the inch input field.
    </p>
 
    <li style="margin-bottom:5px;><p style="font-weight:600;">Can the "Calc Roll Quanity" calculator be used to calculate the total linear feet of runners?</p></li>
    <p style="border-radius: 4px; background-color: #e3e3e3; margin-bottom: 15px; padding: 6px;">
       Yes. Select "6ft wide" when selecting the "Roll width size" to calculate how many linear feet is left on the roll for runners.
+   </p>
+   <li style="margin-bottom:5px;><p style="font-weight:600;">Can either calculation results be printed out?</p></li>
+   <p style="border-radius: 4px; background-color: #e3e3e3; margin-bottom: 15px; padding: 6px;">
+      Yes. Whether you are useing the "Rolled Goods Inventory Calculator" or the "Calc Carpet Cut Price" calculator, after clicking the calculate button a print button will appear below the results section. Just click the print button and input the sku of the rolled goods and click the "Confirm and Print" button. Only one sku can be done at a time then start a new calculation for a different sku.
    </p>
 </ol>
 `;
@@ -936,7 +943,7 @@ function generatePrintTemplate(addedDiameters, diametersTimesRings, multiplier, 
    const printContent = `
       <html>
          <head>
-            <title>Rolled Goods Calculation</title>
+            <title>Rolled Goods Inventory Calculation</title>
             <style>
                body { font-family: Arial, sans-serif; padding: 20px; }
                .header { text-align: center; margin-bottom: 20px; }
@@ -954,8 +961,9 @@ function generatePrintTemplate(addedDiameters, diametersTimesRings, multiplier, 
          </head>
          <body>
             <div class="header">
-               <h2>${carpetWidth}ft Rolled Goods Calculation</h2>
-               <p>Date: ${new Date().toLocaleDateString()}</p>
+               <h2>${carpetWidth}ft Rolled Goods Inventory Calculation</h2>
+               <!-- <p>Date: ${new Date().toLocaleDateString()}</p> -->
+               <p style="font-size: 1rem; font-weight: 600; color: #666;">Generated: ${new Date().toLocaleString()}</p>
             </div>
 
             <div class="calculation-steps">
@@ -977,7 +985,7 @@ function generatePrintTemplate(addedDiameters, diametersTimesRings, multiplier, 
             </div>
 
             <div class="final-results">
-               <h3>Final Results:</h3>
+               <h3>Invetory Results:</h3>
 
                <div class="sku-number">
                   <p><strong>SKU: ${skuNumber}</strong></p>
